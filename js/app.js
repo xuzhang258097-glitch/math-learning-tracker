@@ -30,6 +30,16 @@ function loadState() {
     const saved = localStorage.getItem('mathStudyState');
     if (saved) {
       appState = JSON.parse(saved);
+      // Auto-reset if study plan has expired (today > startDate + totalDays)
+      if (appState.startDate) {
+        const start = new Date(appState.startDate);
+        const today = new Date();
+        const dayDiff = Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1;
+        if (dayDiff > TOTAL_DAYS) {
+          appState.startDate = formatDate(new Date());
+          saveState();
+        }
+      }
     } else {
       appState.startDate = formatDate(new Date());
       saveState();
@@ -236,8 +246,20 @@ function renderDashboard() {
       <div class="today-card">
         <div class="today-title">\u{1F389} \u606d\u559c\u5b8c\u6210\u5168\u90e8\u5b66\u4e60\uff01</div>
         <div class="today-content">\u4f60\u5df2\u7ecf\u5b8c\u6210\u4e86\u9ad8\u7b49\u6570\u5b66\u5168\u90e8 ${TOTAL_DAYS} \u5929\u7684\u5b66\u4e60\u8ba1\u5212\u3002\u53ef\u4ee5\u8003\u8651\u7ee7\u7eed\u5b66\u4e60\u5b9e\u5206\u6790\u3001\u590d\u5206\u6790\u6216\u5fae\u5206\u51e0\u4f55\u7b49\u8fdb\u9636\u5185\u5bb9\u3002</div>
+        <div style="margin-top:14px;">
+          <button class="btn btn-secondary" id="btn-reset-startdate" style="width:100%">\u{1F504} \u91cd\u65b0\u5f00\u59cb\u5b66\u4e60\u8ba1\u5212</button>
+        </div>
       </div>
     `;
+    const resetBtn = document.getElementById('btn-reset-startdate');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        appState.startDate = formatDate(new Date());
+        saveState();
+        renderAll();
+        showToast('\u5df2\u91cd\u65b0\u5f00\u59cb\u5b66\u4e60\u8ba1\u5212\uff0c\u4eca\u5929\u662f\u7b2c 1 \u5929\uff01');
+      });
+    }
   }
 
   // Mini phase overview
@@ -284,8 +306,18 @@ function renderToday() {
         <div class="empty-state-icon">\u{1F389}</div>
         <h3>\u5168\u90e8\u5b8c\u6210\uff01</h3>
         <p>\u4f60\u5df2\u7ecf\u5b66\u5b8c\u4e86\u6240\u6709\u5185\u5bb9\uff0c\u592a\u68d2\u4e86\uff01</p>
+        <button class="btn btn-secondary" id="btn-today-reset" style="margin-top:16px;min-width:200px;">\u{1F504} \u91cd\u65b0\u5f00\u59cb\u5b66\u4e60\u8ba1\u5212</button>
       </div>
     `;
+    const resetBtn = document.getElementById('btn-today-reset');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        appState.startDate = formatDate(new Date());
+        saveState();
+        renderAll();
+        showToast('\u5df2\u91cd\u65b0\u5f00\u59cb\u5b66\u4e60\u8ba1\u5212\uff0c\u4eca\u5929\u662f\u7b2c 1 \u5929\uff01');
+      });
+    }
     return;
   }
 
