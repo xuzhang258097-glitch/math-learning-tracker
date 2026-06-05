@@ -393,15 +393,17 @@ function renderRoadmap() {
             ${phase.dailyTasks.map((task, i) => {
               const globalDay = phaseStart + i;
               const isToday = globalDay === todayDay;
-              const isChecked = appState.checkins[getStudyDate(appState.startDate, globalDay)];
+              const dateStr = getStudyDate(appState.startDate, globalDay);
+              const isChecked = appState.checkins[dateStr];
               return `
-                <div class="task-item" style="${isToday ? 'background:' + phase.bgColor + ';border-radius:6px;padding:10px;margin:0 -6px;' : ''}">
+                <div class="task-item ${isChecked ? 'task-checked' : ''}" onclick="openTaskDetail(event, ${idx}, ${i})" style="${isToday ? 'background:' + phase.bgColor + ';border-radius:6px;padding:10px;margin:0 -6px;' : ''}">
                   <div class="task-day">${isChecked ? '\u2705' : (i + 1)}</div>
                   <div class="task-detail">
                     <h4>${task.title} ${isToday ? '<span style="color:' + phase.color + ';font-size:11px;">(\u4eca\u65e5)</span>' : ''}</h4>
                     <p>${task.content}</p>
                     ${task.proofFocus !== '\u65e0' ? `<p style="color:${phase.color};margin-top:4px;">&#x1F4DD; \u8bc1\u660e\uff1a${task.proofFocus}</p>` : ''}
                   </div>
+                  <div class="task-arrow">&#x203A;</div>
                 </div>
               `;
             }).join('')}
@@ -675,6 +677,111 @@ function showToast(message) {
     setTimeout(() => toast.remove(), 300);
   }, 2500);
 }
+
+// ---------- Task Detail Modal ----------
+let currentModalPhaseIdx = -1;
+let currentModalDayIdx = -1;
+let currentModalGlobalDay = -1;
+let currentModalDateStr = '';
+
+function openTaskDetail(event, phaseIdx, dayIdx) {
+  if (event) event.stopPropagation();
+
+  const phase = STUDY_PLAN.phases[phaseIdx];
+  const task = phase.dailyTasks[dayIdx];
+  const globalDay = getPhaseStartDay(phaseIdx) + dayIdx;
+  const dateStr = getStudyDate(appState.startDate, globalDay);
+
+  currentModalPhaseIdx = phaseIdx;
+  currentModalDayIdx = dayIdx;
+  currentModalGlobalDay = globalDay;
+  currentModalDateStr = dateStr;
+
+  document.getElementById('modal-phase').textContent = `${phase.name} \u00b7 \u7b2c ${dayIdx + 1} / ${phase.durationDays} \u5929 \u00b7 ${dateStr}`;
+  document.getElementById('modal-title').textContent = task.title;
+  document.getElementById('modal-content').textContent = task.content;
+  document.getElementById('modal-resources').textContent = task.resources;
+
+  const proofSection = document.getElementById('modal-proof-section');
+  if (task.proofFocus && task.proofFocus !== '\u65e0') {
+    proofSection.style.display = 'block';
+    document.getElementById('modal-proof').textContent = task.proofFocus;
+  } else {
+    proofSection.style.display = 'none';
+  }
+
+  updateModalButtonState();
+
+  const modal = document.getElementById('task-modal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  AudioSystem.playClick();
+}
+
+function closeTaskDetail() {
+  const modal = document.getElementById('task-modal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  currentModalPhaseIdx = -1;
+  currentModalDayIdx = -1;
+  currentModalGlobalDay = -1;
+  currentModalDateStr = '';
+}
+
+function updateModalButtonState() {
+  const btn = document.getElementById('modal-checkin-btn');
+  const statusEl = document.getElementById('modal-status');
+  const isChecked = appState.checkins[currentModalDateStr];
+  const dateObj = new Date(currentModalDateStr);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const isFuture = dateObj > today;
+
+  if (isFuture) {
+    btn.className = 'btn btn-secondary';
+    btn.textContent = '\u8fd8\u4e0d\u80fd\u6253\u5361\u672a\u6765\u65e5\u671f';
+    btn.disabled = true;
+    statusEl.textContent = '';
+  } else if (isChecked) {
+    btn.className = 'btn btn-secondary';
+    btn.textContent = '\u53d6\u6d88\u5b8c\u6210';
+    btn.disabled = false;
+    statusEl.innerHTML = '<span style="color:var(--success);font-weight:500;">\u2705 \u5df2\u5b8c\u6210</span>';
+  } else {
+    btn.className = 'btn btn-primary';
+    btn.textContent = '\u6807\u8bb0\u4e3a\u5df2\u5b8c\u6210';
+    btn.disabled = false;
+    statusEl.textContent = '';
+  }
+}
+
+function modalCheckin() {
+  if (!currentModalDateStr) return;
+
+  const isChecked = appState.checkins[currentModalDateStr];
+
+  if (isChecked) {
+    delete appState.checkins[currentModalDateStr];
+    saveState();
+    AudioSystem.playWarning();
+    showToast('\u5df2\u53d6\u6d88\u5b8c\u6210');
+  } else {
+    appState.checkins[currentModalDateStr] = true;
+    saveState();
+    AudioSystem.playCheckin();
+    celebrateCheckin();
+    showToast('\u2705 \u6253\u5361\u6210\u529f\uff01\u7ee7\u7eed\u4fdd\u6301\uff01');
+  }
+
+  updateModalButtonState();
+  renderRoadmap();
+  renderDashboard();
+  renderCalendar();
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeTaskDetail();
+});
 
 // Start
 init();

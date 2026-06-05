@@ -319,6 +319,47 @@
     </button>
   </nav>
 
+  <!-- Task Detail Modal -->
+  <div class="task-modal" id="task-modal">
+    <div class="task-modal-overlay" onclick="closeTaskDetail()"></div>
+    <div class="task-modal-panel">
+      <div class="task-modal-header">
+        <div>
+          <div class="task-modal-phase" id="modal-phase"></div>
+          <h2 class="task-modal-title" id="modal-title"></h2>
+        </div>
+        <button class="task-modal-close" onclick="closeTaskDetail()">&#x2715;</button>
+      </div>
+      <div class="task-modal-body">
+        <div class="task-modal-section">
+          <div class="task-modal-label">学习内容</div>
+          <div class="task-modal-content" id="modal-content"></div>
+        </div>
+        <div class="task-modal-section" id="modal-proof-section">
+          <div class="task-modal-label">证明重点</div>
+          <div class="task-modal-proof" id="modal-proof"></div>
+        </div>
+        <div class="task-modal-section">
+          <div class="task-modal-label">参考资源</div>
+          <div class="task-modal-resources" id="modal-resources"></div>
+        </div>
+        <div class="task-modal-section task-modal-schedule">
+          <div class="task-modal-label">今日学习建议</div>
+          <ul>
+            <li><strong>输入（35分钟）：</strong>观看宋浩老师对应章节视频，或精读同济教材</li>
+            <li><strong>消化（20分钟）：</strong>合上书本，在草稿纸上复现今日涉及的定理证明</li>
+            <li><strong>输出（30分钟）：</strong>做 5-8 道课后习题，重点练习证明题</li>
+            <li><strong>复盘（5分钟）：</strong>用一句话总结今天学的核心概念</li>
+          </ul>
+        </div>
+      </div>
+      <div class="task-modal-footer">
+        <div class="task-modal-status" id="modal-status"></div>
+        <button class="btn btn-primary" id="modal-checkin-btn" onclick="modalCheckin()">标记为已完成</button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/data.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/app.js"></script>
