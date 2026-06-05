@@ -28,10 +28,8 @@ function loadState() {
     if (saved) {
       appState = JSON.parse(saved);
     } else {
-      // Default: start tomorrow
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      appState.startDate = formatDate(tomorrow);
+      // Default: start today
+      appState.startDate = formatDate(new Date());
       saveState();
     }
   } catch (e) {
