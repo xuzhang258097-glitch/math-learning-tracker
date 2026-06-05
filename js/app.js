@@ -9,6 +9,7 @@ let appState = {
 let timerInterval = null;
 let timerSeconds = 0;
 let timerRunning = false;
+let tickInterval = null;
 
 const TOTAL_DAYS = getTotalDays();
 
@@ -18,6 +19,8 @@ function init() {
   setupNavigation();
   setupTimer();
   setupSettings();
+  setupAudioToggle();
+  setupHoverSounds();
   renderAll();
 }
 
@@ -28,7 +31,6 @@ function loadState() {
     if (saved) {
       appState = JSON.parse(saved);
     } else {
-      // Default: start today
       appState.startDate = formatDate(new Date());
       saveState();
     }
@@ -41,22 +43,123 @@ function saveState() {
   localStorage.setItem('mathStudyState', JSON.stringify(appState));
 }
 
-// Navigation
+// ---------- Audio Toggle ----------
+function setupAudioToggle() {
+  const existing = document.getElementById('audio-toggle-btn');
+  if (existing) return;
+
+  const toggle = document.createElement('div');
+  toggle.className = 'audio-toggle';
+  toggle.id = 'audio-toggle-btn';
+  toggle.innerHTML = `
+    <span id="audio-icon">&#x1F507;</span>
+    <span id="audio-label">音效关</span>
+  `;
+  toggle.addEventListener('click', () => {
+    const enabled = AudioSystem.toggle();
+    updateAudioToggleUI(enabled);
+    if (enabled) AudioSystem.playSuccess();
+  });
+  document.body.appendChild(toggle);
+
+  // Initialize audio system
+  AudioSystem.init();
+  updateAudioToggleUI(AudioSystem.isEnabled());
+}
+
+function updateAudioToggleUI(enabled) {
+  const btn = document.getElementById('audio-toggle-btn');
+  const icon = document.getElementById('audio-icon');
+  const label = document.getElementById('audio-label');
+  if (!btn || !icon || !label) return;
+
+  if (enabled) {
+    btn.classList.add('active');
+    icon.textContent = '\u{1F50A}';
+    label.textContent = '音效开';
+  } else {
+    btn.classList.remove('active');
+    icon.textContent = '\u{1F507}';
+    label.textContent = '音效关';
+  }
+}
+
+// ---------- Hover Sounds ----------
+function setupHoverSounds() {
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest('.btn, .nav-link, .phase-header, .calendar-day, .resource-item')) {
+      AudioSystem.playHover();
+    }
+  }, { passive: true });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.btn, .nav-link, .phase-header, .calendar-day, .resource-item')) {
+      AudioSystem.playClick();
+    }
+  }, { passive: true });
+}
+
+// ---------- Number Animation ----------
+function animateNumber(element, target, suffix = '', duration = 800) {
+  if (!element) return;
+  const start = parseInt(element.textContent) || 0;
+  if (start === target) {
+    element.textContent = target + suffix;
+    return;
+  }
+
+  const startTime = performance.now();
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(start + (target - start) * eased);
+    element.textContent = current + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// ---------- Celebration Effect ----------
+function celebrateCheckin() {
+  const colors = ['#165DFF', '#36D399', '#FF9F43', '#F87272', '#86909C'];
+  const container = document.createElement('div');
+  container.className = 'celebration';
+  document.body.appendChild(container);
+
+  for (let i = 0; i < 24; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'celebration-particle';
+    const size = 4 + Math.random() * 6;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+    particle.style.left = (Math.random() * 100) + '%';
+    particle.style.top = '60%';
+    particle.style.animation = `celebrateUp ${0.8 + Math.random() * 0.6}s ease-out forwards`;
+    particle.style.animationDelay = (Math.random() * 0.3) + 's';
+    container.appendChild(particle);
+  }
+
+  setTimeout(() => container.remove(), 2000);
+}
+
+// ---------- Navigation ----------
 function setupNavigation() {
-  // Desktop sidebar nav
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const page = link.dataset.page;
+      AudioSystem.playPageSwitch();
       switchPage(page);
     });
   });
 
-  // Mobile bottom nav
   document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const page = link.dataset.page;
+      AudioSystem.playPageSwitch();
       switchPage(page);
     });
   });
@@ -70,11 +173,9 @@ function switchPage(page) {
   const target = document.getElementById('page-' + page);
   if (target) target.classList.add('active');
 
-  // Sync desktop nav
   const nav = document.querySelector(`.nav-link[data-page="${page}"]`);
   if (nav) nav.classList.add('active');
 
-  // Sync mobile nav
   const mobileNav = document.querySelector(`.mobile-nav-link[data-page="${page}"]`);
   if (mobileNav) mobileNav.classList.add('active');
 
@@ -82,7 +183,7 @@ function switchPage(page) {
   renderAll();
 }
 
-// Render all pages
+// ---------- Render All ----------
 function renderAll() {
   renderDashboard();
   renderToday();
@@ -91,17 +192,18 @@ function renderAll() {
   renderSettings();
 }
 
-// Dashboard
+// ---------- Dashboard ----------
 function renderDashboard() {
   const checkinDates = Object.keys(appState.checkins).filter(d => appState.checkins[d]);
   const completed = checkinDates.length;
   const streak = calculateStreak();
   const progress = Math.round((completed / TOTAL_DAYS) * 100);
 
-  document.getElementById('stat-total-days').textContent = TOTAL_DAYS;
-  document.getElementById('stat-completed-days').textContent = completed;
-  document.getElementById('stat-streak').textContent = streak;
-  document.getElementById('stat-progress').textContent = progress + '%';
+  animateNumber(document.getElementById('stat-total-days'), TOTAL_DAYS);
+  animateNumber(document.getElementById('stat-completed-days'), completed);
+  animateNumber(document.getElementById('stat-streak'), streak);
+  animateNumber(document.getElementById('stat-progress'), progress, '%');
+
   document.getElementById('progress-text').textContent = `${completed} / ${TOTAL_DAYS} 天`;
   document.getElementById('progress-fill').style.width = progress + '%';
 
@@ -113,8 +215,8 @@ function renderDashboard() {
     previewEl.innerHTML = `
       <div class="today-card">
         <div class="today-header">
-          <span class="today-badge">${todayTask.phase.name} · 第 ${todayTask.dayInPhase} 天</span>
-          <span class="streak-display">${streak > 0 ? '&#x1F525; 连续 ' + streak + ' 天' : ''}</span>
+          <span class="today-badge">${todayTask.phase.name} \u00b7 \u7b2c ${todayTask.dayInPhase} \u5929</span>
+          <span class="streak-display">${streak > 0 ? '\u{1F525} \u8fde\u7eed ' + streak + ' \u5929' : ''}</span>
         </div>
         <div class="today-title">${todayTask.task.title}</div>
         <div class="today-content">${todayTask.task.content}</div>
@@ -123,7 +225,7 @@ function renderDashboard() {
           <span class="meta-tag">&#x1F4DA; ${todayTask.task.resources}</span>
         </div>
         <button class="btn ${isChecked ? 'btn-success' : 'btn-primary'}" id="btn-dash-checkin" style="width:100%">
-          ${isChecked ? '&#x2705; 今日已打卡' : '&#x1F4DD; 今日学习打卡'}
+          ${isChecked ? '\u2705 \u4eca\u65e5\u5df2\u6253\u5361' : '\u{1F4DD} \u4eca\u65e5\u5b66\u4e60\u6253\u5361'}
         </button>
       </div>
     `;
@@ -131,8 +233,8 @@ function renderDashboard() {
   } else {
     previewEl.innerHTML = `
       <div class="today-card">
-        <div class="today-title">&#x1F389; 恭喜完成全部学习！</div>
-        <div class="today-content">你已经完成了高等数学全部 ${TOTAL_DAYS} 天的学习计划。可以考虑继续学习实分析、复分析或微分几何等进阶内容。</div>
+        <div class="today-title">\u{1F389} \u606d\u559c\u5b8c\u6210\u5168\u90e8\u5b66\u4e60\uff01</div>
+        <div class="today-content">\u4f60\u5df2\u7ecf\u5b8c\u6210\u4e86\u9ad8\u7b49\u6570\u5b66\u5168\u90e8 ${TOTAL_DAYS} \u5929\u7684\u5b66\u4e60\u8ba1\u5212\u3002\u53ef\u4ee5\u8003\u8651\u7ee7\u7eed\u5b66\u4e60\u5b9e\u5206\u6790\u3001\u590d\u5206\u6790\u6216\u5fae\u5206\u51e0\u4f55\u7b49\u8fdb\u9636\u5185\u5bb9\u3002</div>
       </div>
     `;
   }
@@ -150,17 +252,17 @@ function renderDashboard() {
     if (todayDay > phaseEnd) status = 'completed';
     else if (todayDay >= phaseStart) status = 'active';
 
-    const statusLabels = { completed: '已完成', active: '进行中', pending: '未开始' };
+    const statusLabels = { completed: '\u5df2\u5b8c\u6210', active: '\u8fdb\u884c\u4e2d', pending: '\u672a\u5f00\u59cb' };
     const phaseProgress = status === 'completed' ? 100 : status === 'active' ? Math.round(((todayDay - phaseStart + 1) / phase.durationDays) * 100) : 0;
 
     phasesHtml += `
-      <div style="margin-bottom:14px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-          <span style="font-size:14px;font-weight:500;">${phase.name}</span>
-          <span style="font-size:12px;color:var(--text-tertiary);">${statusLabels[status]} · ${phaseProgress}%</span>
+      <div class="phase-progress-mini">
+        <div class="phase-progress-label">
+          <span>${phase.name}</span>
+          <span>${statusLabels[status]} \u00b7 ${phaseProgress}%</span>
         </div>
-        <div class="progress-bar" style="height:6px;">
-          <div class="progress-fill" style="width:${phaseProgress}%;opacity:0.8;"></div>
+        <div class="progress-bar" style="height:5px;">
+          <div class="progress-fill" style="width:${phaseProgress}%;"></div>
         </div>
       </div>
     `;
@@ -169,7 +271,7 @@ function renderDashboard() {
   phasesEl.innerHTML = phasesHtml;
 }
 
-// Today page
+// ---------- Today Page ----------
 function renderToday() {
   const detailEl = document.getElementById('today-detail');
   const todayTask = getTodayTask(appState.startDate);
@@ -178,9 +280,9 @@ function renderToday() {
   if (!todayTask || !todayTask.task) {
     detailEl.innerHTML = `
       <div class="empty-state">
-        <div class="empty-state-icon">&#x1F389;</div>
-        <h3>全部完成！</h3>
-        <p>你已经学完了所有内容，太棒了！</p>
+        <div class="empty-state-icon">\u{1F389}</div>
+        <h3>\u5168\u90e8\u5b8c\u6210\uff01</h3>
+        <p>\u4f60\u5df2\u7ecf\u5b66\u5b8c\u4e86\u6240\u6709\u5185\u5bb9\uff0c\u592a\u68d2\u4e86\uff01</p>
       </div>
     `;
     return;
@@ -195,38 +297,38 @@ function renderToday() {
       <div class="today-header">
         <div>
           <span class="today-badge">${todayTask.phase.name}</span>
-          <span style="font-size:12px;color:var(--text-tertiary);margin-left:8px;">第 ${todayTask.dayInPhase} / ${todayTask.phase.durationDays} 天</span>
+          <span style="font-size:12px;color:var(--text-muted);margin-left:8px;">\u7b2c ${todayTask.dayInPhase} / ${todayTask.phase.durationDays} \u5929</span>
         </div>
-        <span class="streak-display">${streak > 0 ? '&#x1F525; 连续 ' + streak + ' 天' : ''}</span>
+        <span class="streak-display">${streak > 0 ? '\u{1F525} \u8fde\u7eed ' + streak + ' \u5929' : ''}</span>
       </div>
       <div class="today-title">${task.title}</div>
       <div class="today-content">${task.content}</div>
       <div class="today-meta">
-        <span class="meta-tag">&#x1F4DD; 证明重点：${task.proofFocus}</span>
-        <span class="meta-tag">&#x1F4DA; 参考：${task.resources}</span>
+        <span class="meta-tag">&#x1F4DD; \u8bc1\u660e\u91cd\u70b9\uff1a${task.proofFocus}</span>
+        <span class="meta-tag">&#x1F4DA; \u53c2\u8003\uff1a${task.resources}</span>
       </div>
       <div style="display:flex;gap:12px;">
         <button class="btn ${isChecked ? 'btn-success' : 'btn-primary'}" id="btn-today-checkin" style="flex:1">
-          ${isChecked ? '&#x2705; 今日已打卡' : '&#x1F4DD; 完成今日学习，点击打卡'}
+          ${isChecked ? '\u2705 \u4eca\u65e5\u5df2\u6253\u5361' : '\u{1F4DD} \u5b8c\u6210\u4eca\u65e5\u5b66\u4e60\uff0c\u70b9\u51fb\u6253\u5361'}
         </button>
-        ${isChecked ? `<button class="btn btn-secondary" id="btn-undo-checkin">撤销</button>` : ''}
+        ${isChecked ? `<button class="btn btn-secondary" id="btn-undo-checkin">\u64a4\u9500</button>` : ''}
       </div>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <span class="card-title">今日学习建议</span>
+        <span class="card-title">\u4eca\u65e5\u5b66\u4e60\u5efa\u8bae</span>
       </div>
-      <div style="font-size:14px;color:var(--text-secondary);line-height:1.8;">
-        <p style="margin-bottom:10px;"><strong>90 分钟安排：</strong></p>
+      <div style="font-size:14px;color:var(--text-body);line-height:1.8;">
+        <p style="margin-bottom:10px;"><strong>90 \u5206\u949f\u5b89\u6392\uff1a</strong></p>
         <ul style="margin-left:20px;margin-bottom:14px;">
-          <li><strong>输入（35 分钟）：</strong>观看宋浩老师对应章节视频，或精读同济教材</li>
-          <li><strong>消化（20 分钟）：</strong>合上书本，在草稿纸上复现今日涉及的定理证明</li>
-          <li><strong>输出（30 分钟）：</strong>做 5-8 道课后习题，重点练习证明题</li>
-          <li><strong>复盘（5 分钟）：</strong>用一句话总结今天学的核心概念</li>
+          <li><strong>\u8f93\u5165\uff0835 \u5206\u949f\uff09\uff1a</strong>\u89c2\u770b\u5b8b\u6d69\u8001\u5e08\u5bf9\u5e94\u7ae0\u8282\u89c6\u9891\uff0c\u6216\u7cbe\u8bfb\u540c\u6d4e\u6559\u6750</li>
+          <li><strong>\u6d88\u5316\uff0820 \u5206\u949f\uff09\uff1a</strong>\u5408\u4e0a\u4e66\u672c\uff0c\u5728\u8349\u7a3f\u7eb8\u4e0a\u590d\u73b0\u4eca\u65e5\u6d89\u53ca\u7684\u5b9a\u7406\u8bc1\u660e</li>
+          <li><strong>\u8f93\u51fa\uff0830 \u5206\u949f\uff09\uff1a</strong>\u505a 5-8 \u9053\u8bfe\u540e\u4e60\u9898\uff0c\u91cd\u70b9\u7ec3\u4e60\u8bc1\u660e\u9898</li>
+          <li><strong>\u590d\u76d8\uff085 \u5206\u949f\uff09\uff1a</strong>\u7528\u4e00\u53e5\u8bdd\u603b\u7ed3\u4eca\u5929\u5b66\u7684\u6838\u5fc3\u6982\u5ff5</li>
         </ul>
-        <p style="margin-bottom:10px;"><strong>证明要求：</strong></p>
-        <p>今天的证明重点是 <strong>${task.proofFocus}</strong>。建议准备一张白纸，不看任何资料，尝试独立写出完整证明过程。卡住的地方用铅笔标记，对照教材补全后再闭卷重写一遍。</p>
+        <p style="margin-bottom:10px;"><strong>\u8bc1\u660e\u8981\u6c42\uff1a</strong></p>
+        <p>\u4eca\u5929\u7684\u8bc1\u660e\u91cd\u70b9\u662f <strong>${task.proofFocus}</strong>\u3002\u5efa\u8bae\u51c6\u5907\u4e00\u5f20\u767d\u7eb8\uff0c\u4e0d\u770b\u4efb\u4f55\u8d44\u6599\uff0c\u5c1d\u8bd5\u72ec\u7acb\u5199\u51fa\u5b8c\u6574\u8bc1\u660e\u8fc7\u7a0b\u3002\u5361\u4f4f\u7684\u5730\u65b9\u7528\u94c5\u7b14\u6807\u8bb0\uff0c\u5bf9\u7167\u6559\u6750\u8865\u5168\u540e\u518d\u95ed\u5377\u91cd\u5199\u4e00\u904d\u3002</p>
       </div>
     </div>
   `;
@@ -240,7 +342,9 @@ function doCheckin() {
   const todayStr = formatDate(new Date());
   appState.checkins[todayStr] = true;
   saveState();
-  showToast('&#x2705; 打卡成功！继续保持！');
+  AudioSystem.playCheckin();
+  celebrateCheckin();
+  showToast('\u2705 \u6253\u5361\u6210\u529f\uff01\u7ee7\u7eed\u4fdd\u6301\uff01');
   renderAll();
 }
 
@@ -248,11 +352,12 @@ function undoCheckin() {
   const todayStr = formatDate(new Date());
   delete appState.checkins[todayStr];
   saveState();
-  showToast('打卡已撤销');
+  AudioSystem.playWarning();
+  showToast('\u6253\u5361\u5df2\u64a4\u9500');
   renderAll();
 }
 
-// Roadmap
+// ---------- Roadmap ----------
 function renderRoadmap() {
   const container = document.getElementById('roadmap-phases');
   let html = '';
@@ -266,7 +371,7 @@ function renderRoadmap() {
     if (todayDay > phaseEnd) status = 'completed';
     else if (todayDay >= phaseStart) status = 'active';
 
-    const statusLabels = { completed: '已完成', active: '进行中', pending: '未开始' };
+    const statusLabels = { completed: '\u5df2\u5b8c\u6210', active: '\u8fdb\u884c\u4e2d', pending: '\u672a\u5f00\u59cb' };
     const statusClass = `phase-status ${status}`;
 
     html += `
@@ -275,10 +380,10 @@ function renderRoadmap() {
           <div class="phase-indicator" style="background:${phase.bgColor};color:${phase.color};border:1px solid ${phase.borderColor}">${idx + 1}</div>
           <div class="phase-info">
             <div class="phase-name" style="color:${phase.color}">${phase.name}</div>
-            <div class="phase-subtitle">${phase.subtitle} · ${phase.durationDays} 天</div>
+            <div class="phase-subtitle">${phase.subtitle} \u00b7 ${phase.durationDays} \u5929</div>
           </div>
           <span class="${statusClass}">${statusLabels[status]}</span>
-          <span class="phase-expand" id="expand-${idx}">&#x25BC;</span>
+          <span class="phase-expand" id="expand-${idx}">\u25BC</span>
         </div>
         <div class="phase-body" id="phase-body-${idx}">
           <div class="phase-topics">
@@ -291,11 +396,11 @@ function renderRoadmap() {
               const isChecked = appState.checkins[getStudyDate(appState.startDate, globalDay)];
               return `
                 <div class="task-item" style="${isToday ? 'background:' + phase.bgColor + ';border-radius:6px;padding:10px;margin:0 -6px;' : ''}">
-                  <div class="task-day">${isChecked ? '&#x2705;' : (i + 1)}</div>
+                  <div class="task-day">${isChecked ? '\u2705' : (i + 1)}</div>
                   <div class="task-detail">
-                    <h4>${task.title} ${isToday ? '<span style="color:' + phase.color + ';font-size:11px;">(今日)</span>' : ''}</h4>
+                    <h4>${task.title} ${isToday ? '<span style="color:' + phase.color + ';font-size:11px;">(\u4eca\u65e5)</span>' : ''}</h4>
                     <p>${task.content}</p>
-                    ${task.proofFocus !== '无' ? `<p style="color:${phase.color};margin-top:4px;">&#x1F4DD; 证明：${task.proofFocus}</p>` : ''}
+                    ${task.proofFocus !== '\u65e0' ? `<p style="color:${phase.color};margin-top:4px;">&#x1F4DD; \u8bc1\u660e\uff1a${task.proofFocus}</p>` : ''}
                   </div>
                 </div>
               `;
@@ -317,20 +422,20 @@ function togglePhase(idx) {
   arrow.classList.toggle('expanded');
 }
 
-// Calendar
+// ---------- Calendar ----------
 function renderCalendar() {
   const now = new Date();
   const year = now.getFullYear();
   const month = now.getMonth();
-  const monthNames = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
-  document.getElementById('calendar-month-year').textContent = `${year}年 ${monthNames[month]}`;
+  const monthNames = ['\u4e00\u6708','\u4e8c\u6708','\u4e09\u6708','\u56db\u6708','\u4e94\u6708','\u516d\u6708','\u4e03\u6708','\u516b\u6708','\u4e5d\u6708','\u5341\u6708','\u5341\u4e00\u6708','\u5341\u4e8c\u6708'];
+  document.getElementById('calendar-month-year').textContent = `${year}\u5e74 ${monthNames[month]}`;
 
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const grid = document.getElementById('calendar-grid');
 
   let html = '';
-  const weekDays = ['日','一','二','三','四','五','六'];
+  const weekDays = ['\u65e5','\u4e00','\u4e8c','\u4e09','\u56db','\u4e94','\u516d'];
   weekDays.forEach(d => {
     html += `<div class="calendar-header">${d}</div>`;
   });
@@ -353,7 +458,6 @@ function renderCalendar() {
     if (isToday) classes += ' current';
     if (dateObj < startDate) classes += ' future';
 
-    // Find phase for this day
     let phaseLabel = '';
     if (dateObj >= startDate) {
       const diffTime = dateObj - startDate;
@@ -378,27 +482,31 @@ function toggleCalendarDay(dateStr) {
   const today = new Date();
   today.setHours(0,0,0,0);
   if (dateObj > today) {
-    showToast('还不能打卡未来的日期哦');
+    AudioSystem.playWarning();
+    showToast('\u8fd8\u4e0d\u80fd\u6253\u5361\u672a\u6765\u7684\u65e5\u671f\u54e6');
     return;
   }
   if (dateObj < new Date(appState.startDate)) {
-    showToast('此日期在学习开始之前');
+    AudioSystem.playWarning();
+    showToast('\u6b64\u65e5\u671f\u5728\u5b66\u4e60\u5f00\u59cb\u4e4b\u524d');
     return;
   }
 
   if (appState.checkins[dateStr]) {
     delete appState.checkins[dateStr];
-    showToast('已取消 ' + dateStr + ' 的打卡');
+    AudioSystem.playWarning();
+    showToast('\u5df2\u53d6\u6d88 ' + dateStr + ' \u7684\u6253\u5361');
   } else {
     appState.checkins[dateStr] = true;
-    showToast('&#x2705; ' + dateStr + ' 打卡成功');
+    AudioSystem.playSuccess();
+    showToast('\u2705 ' + dateStr + ' \u6253\u5361\u6210\u529f');
   }
   saveState();
   renderCalendar();
   renderDashboard();
 }
 
-// Settings
+// ---------- Settings ----------
 function renderSettings() {
   document.getElementById('setting-start-date').value = appState.startDate;
   document.getElementById('setting-daily-minutes').value = appState.dailyMinutes;
@@ -412,7 +520,8 @@ function setupSettings() {
       appState.startDate = newDate;
       appState.dailyMinutes = newMinutes;
       saveState();
-      showToast('设置已保存');
+      AudioSystem.playSuccess();
+      showToast('\u8bbe\u7f6e\u5df2\u4fdd\u5b58');
       renderAll();
     }
   });
@@ -426,7 +535,8 @@ function setupSettings() {
     a.download = `math-study-backup-${formatDate(new Date())}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    showToast('数据已导出');
+    AudioSystem.playSuccess();
+    showToast('\u6570\u636e\u5df2\u5bfc\u51fa');
   });
 
   document.getElementById('file-import').addEventListener('change', (e) => {
@@ -439,13 +549,16 @@ function setupSettings() {
         if (data.startDate && data.checkins) {
           appState = data;
           saveState();
-          showToast('数据已导入');
+          AudioSystem.playSuccess();
+          showToast('\u6570\u636e\u5df2\u5bfc\u5165');
           renderAll();
         } else {
-          showToast('文件格式不正确');
+          AudioSystem.playWarning();
+          showToast('\u6587\u4ef6\u683c\u5f0f\u4e0d\u6b63\u786e');
         }
       } catch (err) {
-        showToast('导入失败：' + err.message);
+        AudioSystem.playWarning();
+        showToast('\u5bfc\u5165\u5931\u8d25\uff1a' + err.message);
       }
     };
     reader.readAsText(file);
@@ -453,7 +566,7 @@ function setupSettings() {
   });
 
   document.getElementById('btn-reset').addEventListener('click', () => {
-    if (confirm('确定要清除所有学习记录吗？此操作不可恢复。')) {
+    if (confirm('\u786e\u5b9a\u8981\u6e05\u9664\u6240\u6709\u5b66\u4e60\u8bb0\u5f55\u5417\uff1f\u6b64\u64cd\u4f5c\u4e0d\u53ef\u6062\u590d\u3002')) {
       appState = {
         startDate: formatDate(new Date()),
         dailyMinutes: 90,
@@ -461,13 +574,14 @@ function setupSettings() {
         currentPhase: 0
       };
       saveState();
-      showToast('数据已重置');
+      AudioSystem.playWarning();
+      showToast('\u6570\u636e\u5df2\u91cd\u7f6e');
       renderAll();
     }
   });
 }
 
-// Timer
+// ---------- Timer ----------
 function setupTimer() {
   const display = document.getElementById('timer');
   const startBtn = document.getElementById('timer-start');
@@ -486,9 +600,13 @@ function setupTimer() {
       timerRunning = true;
       startBtn.disabled = true;
       pauseBtn.disabled = false;
+      AudioSystem.playTimerStart();
       timerInterval = setInterval(() => {
         timerSeconds++;
         updateDisplay();
+      }, 1000);
+      tickInterval = setInterval(() => {
+        AudioSystem.playTick();
       }, 1000);
     }
   });
@@ -497,24 +615,28 @@ function setupTimer() {
     if (timerRunning) {
       timerRunning = false;
       clearInterval(timerInterval);
+      clearInterval(tickInterval);
       startBtn.disabled = false;
       pauseBtn.disabled = true;
-      startBtn.textContent = '继续';
+      startBtn.textContent = '\u7ee7\u7eed';
+      AudioSystem.playTimerStop();
     }
   });
 
   resetBtn.addEventListener('click', () => {
     timerRunning = false;
     clearInterval(timerInterval);
+    clearInterval(tickInterval);
     timerSeconds = 0;
     updateDisplay();
     startBtn.disabled = false;
     pauseBtn.disabled = true;
-    startBtn.textContent = '开始';
+    startBtn.textContent = '\u5f00\u59cb';
+    AudioSystem.playTimerStop();
   });
 }
 
-// Helpers
+// ---------- Helpers ----------
 function getCurrentDay() {
   const start = new Date(appState.startDate);
   const today = new Date();
@@ -549,7 +671,7 @@ function showToast(message) {
 
   setTimeout(() => {
     toast.style.opacity = '0';
-    toast.style.transform = 'translateX(100%)';
+    toast.style.transform = 'translateX(20px)';
     setTimeout(() => toast.remove(), 300);
   }, 2500);
 }
