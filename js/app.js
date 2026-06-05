@@ -1410,5 +1410,12 @@ function renderGames() {
     SudokuGame.generate('easy');
     SudokuGame.renderNumpad();
   }
+
+  // Ensure board is rendered (re-render if board is empty, e.g. due to CSS not loaded yet)
+  const boardEl = document.getElementById('sudoku-board');
+  if (boardEl && boardEl.children.length === 0) {
+    SudokuGame.render();
+    SudokuGame.renderNumpad();
+  }
 }
 
