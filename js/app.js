@@ -43,7 +43,17 @@ function saveState() {
 
 // Navigation
 function setupNavigation() {
+  // Desktop sidebar nav
   document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.dataset.page;
+      switchPage(page);
+    });
+  });
+
+  // Mobile bottom nav
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const page = link.dataset.page;
@@ -55,13 +65,20 @@ function setupNavigation() {
 function switchPage(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.mobile-nav-link').forEach(n => n.classList.remove('active'));
 
   const target = document.getElementById('page-' + page);
   if (target) target.classList.add('active');
 
+  // Sync desktop nav
   const nav = document.querySelector(`.nav-link[data-page="${page}"]`);
   if (nav) nav.classList.add('active');
 
+  // Sync mobile nav
+  const mobileNav = document.querySelector(`.mobile-nav-link[data-page="${page}"]`);
+  if (mobileNav) mobileNav.classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   renderAll();
 }
 
