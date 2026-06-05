@@ -1284,6 +1284,7 @@ const SudokuGame = {
       }
     }
     boardEl.innerHTML = html;
+    console.log('[Sudoku] Board rendered, cells:', boardEl.children.length);
 
     // Update stats
     const errorsEl = document.getElementById('sudoku-errors');

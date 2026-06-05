@@ -1732,6 +1732,8 @@ body {
 .sudoku-board {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  aspect-ratio: 1;
   width: 100%;
   max-width: 468px;
   margin: 0 auto 20px;
@@ -1749,8 +1751,6 @@ body {
 }
 
 .sudoku-cell {
-  aspect-ratio: 1;
-  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
