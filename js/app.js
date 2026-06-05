@@ -684,6 +684,72 @@ let currentModalDayIdx = -1;
 let currentModalGlobalDay = -1;
 let currentModalDateStr = '';
 
+function renderModalLinksAndExercises(phaseIdx, dayIdx) {
+  const linksSection = document.getElementById('modal-links-section');
+  const linksContainer = document.getElementById('modal-links');
+  const exercisesSection = document.getElementById('modal-exercises-section');
+  const exercisesContainer = document.getElementById('modal-exercises');
+
+  const data = getExerciseData(phaseIdx, dayIdx);
+
+  if (data && data.links && data.links.length > 0) {
+    linksSection.style.display = 'block';
+    linksContainer.innerHTML = data.links.map(link =>
+      `<a href="${link.url}" class="modal-link" target="_blank" rel="noopener">${link.name}</a>`
+    ).join('');
+  } else {
+    linksSection.style.display = 'none';
+    linksContainer.innerHTML = '';
+  }
+
+  if (data && data.exercises && data.exercises.length > 0) {
+    exercisesSection.style.display = 'block';
+    exercisesContainer.innerHTML = data.exercises.map((ex, idx) => `
+      <div class="exercise-card">
+        <div class="exercise-question">${escapeHtml(ex.question)}</div>
+        <div class="exercise-answer-wrapper">
+          <button class="btn-answer" onclick="toggleAnswer(this, ${idx})">
+            <span>查看答案</span>
+          </button>
+          <div class="exercise-answer" id="ex-answer-${idx}">${escapeHtml(ex.answer)}</div>
+        </div>
+      </div>
+    `).join('');
+  } else {
+    // Show generic hint
+    const generic = getGenericExerciseHint(phaseIdx, dayIdx);
+    exercisesSection.style.display = 'block';
+    exercisesContainer.innerHTML = `
+      <div class="exercise-hint">${escapeHtml(generic.hint)}</div>
+    `;
+  }
+}
+
+function toggleAnswer(btn, idx) {
+  const answerEl = document.getElementById(`ex-answer-${idx}`);
+  const span = btn.querySelector('span');
+  if (answerEl.classList.contains('open')) {
+    answerEl.classList.remove('open');
+    span.textContent = '\u67e5\u770b\u7b54\u6848';
+    btn.classList.remove('active');
+  } else {
+    answerEl.classList.add('open');
+    span.textContent = '\u9690\u85cf\u7b54\u6848';
+    btn.classList.add('active');
+    AudioSystem.playClick();
+  }
+}
+
+function escapeHtml(text) {
+  if (!text) return '';
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function openTaskDetail(event, phaseIdx, dayIdx) {
   if (event) event.stopPropagation();
 
@@ -709,6 +775,9 @@ function openTaskDetail(event, phaseIdx, dayIdx) {
   } else {
     proofSection.style.display = 'none';
   }
+
+  // Render links and exercises
+  renderModalLinksAndExercises(phaseIdx, dayIdx);
 
   updateModalButtonState();
 
