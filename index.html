@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高数学习追踪</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span style="font-size:22px;">&#x2211;</span>
+        <span>高数学习追踪</span>
+      </div>
+      <div class="sidebar-subtitle">每天进步一点点</div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a class="nav-link active" data-page="dashboard">
+            <span class="nav-icon">&#x1F3E0;</span>
+            <span>仪表盘</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="today">
+            <span class="nav-icon">&#x1F4C5;</span>
+            <span>今日任务</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="roadmap">
+            <span class="nav-icon">&#x1F4D1;</span>
+            <span>学习路线</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="calendar">
+            <span class="nav-icon">&#x1F4C6;</span>
+            <span>学习日历</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="resources">
+            <span class="nav-icon">&#x1F4DA;</span>
+            <span>学习资源</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="settings">
+            <span class="nav-icon">&#x2699;</span>
+            <span>设置</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Dashboard Page -->
+      <div class="page active" id="page-dashboard">
+        <h1 class="page-title">学习仪表盘</h1>
+        <p class="page-subtitle">概览你的高等数学学习进度</p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="stat-total-days">0</div>
+            <div class="stat-label">总天数</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-completed-days">0</div>
+            <div class="stat-label">已完成</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-streak">0</div>
+            <div class="stat-label">连续打卡</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-progress">0%</div>
+            <div class="stat-label">总进度</div>
+          </div>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>整体进度</span>
+            <span id="progress-text">0 / 182 天</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div id="today-preview">
+          <!-- Filled by JS -->
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">五阶段学习路线</span>
+          </div>
+          <div id="dashboard-phases">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Today Page -->
+      <div class="page" id="page-today">
+        <h1 class="page-title">今日任务</h1>
+        <p class="page-subtitle">今天的学习内容与打卡</p>
+
+        <div id="today-detail">
+          <!-- Filled by JS -->
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">学习计时器</span>
+          </div>
+          <div class="timer-display" id="timer">00:00:00</div>
+          <div class="timer-controls">
+            <button class="btn btn-primary" id="timer-start">开始</button>
+            <button class="btn btn-secondary" id="timer-pause" disabled>暂停</button>
+            <button class="btn btn-secondary" id="timer-reset">重置</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roadmap Page -->
+      <div class="page" id="page-roadmap">
+        <h1 class="page-title">学习路线</h1>
+        <p class="page-subtitle">五个阶段的详细学习计划</p>
+        <div class="phases-grid" id="roadmap-phases">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- Calendar Page -->
+      <div class="page" id="page-calendar">
+        <h1 class="page-title">学习日历</h1>
+        <p class="page-subtitle">打卡记录与学习轨迹</p>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">本月打卡</span>
+            <span id="calendar-month-year" style="font-size:13px;color:var(--text-tertiary)"></span>
+          </div>
+          <div class="calendar-grid" id="calendar-grid">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources Page -->
+      <div class="page" id="page-resources">
+        <h1 class="page-title">学习资源</h1>
+        <p class="page-subtitle">推荐的教材、视频与辅助资料</p>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">核心教材</span>
+          </div>
+          <div class="resource-list">
+            <div class="resource-item">
+              <div class="resource-icon" style="background:#E6F1FB;color:#185FA5;">&#x1F4D6;</div>
+              <div class="resource-info">
+                <div class="resource-name">同济《高等数学》第七版（上册+下册）</div>
+                <div class="resource-desc">国内最经典的高数教材，配套习题丰富，是自学首选</div>
+              </div>
+              <span class="resource-tag">必读</span>
+            </div>
+            <div class="resource-item">
+              <div class="resource-icon" style="background:#EAF3DE;color:#3B6D11;">&#x1F4D6;</div>
+              <div class="resource-info">
+                <div class="resource-name">同济《线性代数》第六版</div>
+                <div class="resource-desc">经典线代教材，体系清晰，适合第五阶段使用</div>
+              </div>
+              <span class="resource-tag">第五阶段</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">视频课程</span>
+          </div>
+          <div class="resource-list">
+            <a class="resource-item" href="https://space.bilibili.com/66607740" target="_blank">
+              <div class="resource-icon" style="background:#FAECE7;color:#993C1D;">&#x25B6;</div>
+              <div class="resource-info">
+                <div class="resource-name">宋浩老师《高等数学》B站系列</div>
+                <div class="resource-desc">讲解极细、幽默风趣，最适合久未碰数学的人系统学习</div>
+              </div>
+              <span class="resource-tag">主视频</span>
+            </a>
+            <a class="resource-item" href="https://space.bilibili.com/52118504" target="_blank">
+              <div class="resource-icon" style="background:#EEEDFE;color:#534AB7;">&#x25B6;</div>
+              <div class="resource-info">
+                <div class="resource-name">张宇考研数学基础班</div>
+                <div class="resource-desc">难度稍高，适合想提升理解深度、检验掌握程度时补充</div>
+              </div>
+              <span class="resource-tag">拔高</span>
+            </a>
+            <a class="resource-item" href="https://www.bilibili.com/video/BV1aW411Q7x1" target="_blank">
+              <div class="resource-icon" style="background:#E1F5EE;color:#0F6E56;">&#x25B6;</div>
+              <div class="resource-info">
+                <div class="resource-name">3Blue1Brown《微积分的本质》</div>
+                <div class="resource-desc">可视化直觉，动画演示极限、导数、积分核心思想（英文+中字）</div>
+              </div>
+              <span class="resource-tag">直觉</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">辅助工具</span>
+          </div>
+          <div class="resource-list">
+            <div class="resource-item">
+              <div class="resource-icon" style="background:#F1EFE8;color:#5F5E5A;">&#x1F4CB;</div>
+              <div class="resource-info">
+                <div class="resource-name">《考研数学公式速查手册》</div>
+                <div class="resource-desc">随手查阅公式，免去翻书查找的时间，建议打印随身携带</div>
+              </div>
+              <span class="resource-tag">工具</span>
+            </div>
+            <div class="resource-item">
+              <div class="resource-icon" style="background:#E6F1FB;color:#185FA5;">&#x1F4BB;</div>
+              <div class="resource-info">
+                <div class="resource-name">GeoGebra / Desmos</div>
+                <div class="resource-desc">免费数学绘图工具，画函数图像、观察极限过程、验证积分结果</div>
+              </div>
+              <span class="resource-tag">工具</span>
+            </div>
+            <div class="resource-item">
+              <div class="resource-icon" style="background:#EAF3DE;color:#3B6D11;">&#x1F4DD;</div>
+              <div class="resource-info">
+                <div class="resource-name">活页笔记本 + 错题本</div>
+                <div class="resource-desc">推荐用活页本整理证明思路，错题本只记录"思路卡壳"的题而非计算错误</div>
+              </div>
+              <span class="resource-tag">方法</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Page -->
+      <div class="page" id="page-settings">
+        <h1 class="page-title">设置</h1>
+        <p class="page-subtitle">调整你的学习计划与偏好</p>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">学习计划</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">开始学习日期</label>
+            <input type="date" class="form-input" id="setting-start-date">
+            <p class="form-hint">从此日期起计算每日任务</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">每日学习时长（分钟）</label>
+            <input type="number" class="form-input" id="setting-daily-minutes" min="30" max="300" value="90">
+            <p class="form-hint">建议 90 分钟，可按实际情况调整</p>
+          </div>
+          <button class="btn btn-primary" id="btn-save-settings">保存设置</button>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">数据管理</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">导出学习记录</label>
+            <p class="form-hint">将所有打卡记录导出为 JSON 文件备份</p>
+            <button class="btn btn-secondary" id="btn-export">导出数据</button>
+          </div>
+          <div class="form-group">
+            <label class="form-label">导入学习记录</label>
+            <input type="file" class="form-input" id="file-import" accept=".json">
+            <p class="form-hint">从 JSON 文件恢复学习记录</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">重置所有数据</label>
+            <p class="form-hint">清除所有打卡记录和设置（不可恢复）</p>
+            <button class="btn btn-secondary" id="btn-reset" style="color:var(--accent-coral)">重置数据</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
