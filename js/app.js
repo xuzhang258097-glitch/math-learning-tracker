@@ -694,9 +694,13 @@ function renderModalLinksAndExercises(phaseIdx, dayIdx) {
 
   if (data && data.links && data.links.length > 0) {
     linksSection.style.display = 'block';
-    linksContainer.innerHTML = data.links.map(link =>
-      `<a href="${link.url}" class="modal-link" target="_blank" rel="noopener">${link.name}</a>`
-    ).join('');
+    linksContainer.innerHTML = data.links.map(link => {
+      if (link.url) {
+        return `<a href="${link.url}" class="modal-link" target="_blank" rel="noopener">${link.name}</a>`;
+      } else {
+        return `<div class="modal-link modal-link-text">${link.name}</div>`;
+      }
+    }).join('');
   } else {
     linksSection.style.display = 'none';
     linksContainer.innerHTML = '';

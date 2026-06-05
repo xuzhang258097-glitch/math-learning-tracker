@@ -1450,6 +1450,23 @@ body {
   opacity: 1;
 }
 
+.modal-link-text {
+  color: var(--text-muted);
+  cursor: default;
+  background: rgba(134, 144, 156, 0.04);
+  border-color: rgba(229, 230, 235, 0.40);
+}
+
+.modal-link-text:hover {
+  transform: none;
+  background: rgba(134, 144, 156, 0.04);
+  border-color: rgba(229, 230, 235, 0.40);
+}
+
+.modal-link-text::after {
+  content: none;
+}
+
 /* ---------- Modal Exercises ---------- */
 .task-modal-exercises {
   display: flex;

@@ -8,7 +8,7 @@ const EXERCISES_DB = {
   "0-1": {
     links: [
       { name: "📺 宋浩《预备知识》第1讲 - 函数基础", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=1" },
-      { name: "📖 同济《高等数学》第七版 1.1 映射与函数", url: "https://example.com/book/tongji-1-1" }
+      { name: "📖 同济《高等数学》第七版 1.1 映射与函数（请查阅实体书或电子书）", url: null }
     ],
     exercises: [
       {
@@ -43,7 +43,7 @@ const EXERCISES_DB = {
   "0-3": {
     links: [
       { name: "📺 宋浩《预备知识》第3讲 - 对数运算", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=3" },
-      { name: "📖 《考研数学公式速查手册》P1-2", url: "#" }
+      { name: "📖 《考研数学公式速查手册》P1-2（请查阅实体书）", url: null }
     ],
     exercises: [
       {
@@ -73,7 +73,7 @@ const EXERCISES_DB = {
   },
   "0-5": {
     links: [
-      { name: "📖 《三角公式速查表》", url: "#" }
+      { name: "📖 《三角公式速查表》（请打印或手写背诵）", url: null }
     ],
     exercises: [
       {
@@ -88,7 +88,7 @@ const EXERCISES_DB = {
   },
   "0-9": {
     links: [
-      { name: "📖 同济《高等数学》附录 - 数学归纳法", url: "#" }
+      { name: "📖 同济《高等数学》附录 - 数学归纳法", url: null }
     ],
     exercises: [
       {
@@ -102,7 +102,7 @@ const EXERCISES_DB = {
   "1-4": {
     links: [
       { name: "📺 宋浩《高等数学》第4讲 - 数列极限的ε-N定义", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=10" },
-      { name: "📖 同济《高等数学》2.1 数列的极限", url: "#" }
+      { name: "📖 同济《高等数学》2.1 数列的极限", url: null }
     ],
     exercises: [
       {
@@ -117,7 +117,7 @@ const EXERCISES_DB = {
   },
   "1-5": {
     links: [
-      { name: "📖 同济《高等数学》2.1 例题", url: "#" }
+      { name: "📖 同济《高等数学》2.1 例题", url: null }
     ],
     exercises: [
       {
@@ -132,7 +132,7 @@ const EXERCISES_DB = {
   },
   "1-7": {
     links: [
-      { name: "📖 同济《高等数学》2.2 收敛数列的性质", url: "#" }
+      { name: "📖 同济《高等数学》2.2 收敛数列的性质", url: null }
     ],
     exercises: [
       {
@@ -143,7 +143,7 @@ const EXERCISES_DB = {
   },
   "1-11": {
     links: [
-      { name: "📖 同济《高等数学》4.3 极限运算法则", url: "#" }
+      { name: "📖 同济《高等数学》4.3 极限运算法则", url: null }
     ],
     exercises: [
       {
@@ -162,7 +162,7 @@ const EXERCISES_DB = {
   },
   "1-13": {
     links: [
-      { name: "📖 同济《高等数学》4.5 两个重要极限", url: "#" }
+      { name: "📖 同济《高等数学》4.5 两个重要极限", url: null }
     ],
     exercises: [
       {
@@ -177,7 +177,7 @@ const EXERCISES_DB = {
   },
   "1-17": {
     links: [
-      { name: "📖 同济《高等数学》5.2 连续函数的性质", url: "#" }
+      { name: "📖 同济《高等数学》5.2 连续函数的性质", url: null }
     ],
     exercises: [
       {
@@ -193,7 +193,7 @@ const EXERCISES_DB = {
   "1-18": {
     links: [
       { name: "📺 宋浩《高等数学》第18讲 - 导数的概念", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=18" },
-      { name: "📖 同济《高等数学》6.1 导数的概念", url: "#" }
+      { name: "📖 同济《高等数学》6.1 导数的概念", url: null }
     ],
     exercises: [
       {
@@ -212,7 +212,7 @@ const EXERCISES_DB = {
   },
   "1-19": {
     links: [
-      { name: "📖 同济《高等数学》6.2 函数的求导法则", url: "#" }
+      { name: "📖 同济《高等数学》6.2 函数的求导法则", url: null }
     ],
     exercises: [
       {
@@ -228,7 +228,7 @@ const EXERCISES_DB = {
   "1-25": {
     links: [
       { name: "📺 宋浩《高等数学》第25讲 - 罗尔定理", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=25" },
-      { name: "📖 同济《高等数学》7.1 微分中值定理", url: "#" }
+      { name: "📖 同济《高等数学》7.1 微分中值定理", url: null }
     ],
     exercises: [
       {
@@ -243,7 +243,7 @@ const EXERCISES_DB = {
   },
   "1-26": {
     links: [
-      { name: "📖 同济《高等数学》7.1 拉格朗日中值定理", url: "#" }
+      { name: "📖 同济《高等数学》7.1 拉格朗日中值定理", url: null }
     ],
     exercises: [
       {
@@ -261,7 +261,7 @@ const EXERCISES_DB = {
   "2-4": {
     links: [
       { name: "📺 宋浩《高等数学》第30讲 - 第一类换元法", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=30" },
-      { name: "📖 同济《高等数学》8.2 换元积分法", url: "#" }
+      { name: "📖 同济《高等数学》8.2 换元积分法", url: null }
     ],
     exercises: [
       {
@@ -281,7 +281,7 @@ const EXERCISES_DB = {
   "2-8": {
     links: [
       { name: "📺 宋浩《高等数学》第32讲 - 分部积分法", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=32" },
-      { name: "📖 同济《高等数学》8.3 分部积分法", url: "#" }
+      { name: "📖 同济《高等数学》8.3 分部积分法", url: null }
     ],
     exercises: [
       {
@@ -301,7 +301,7 @@ const EXERCISES_DB = {
   "2-14": {
     links: [
       { name: "📺 宋浩《高等数学》第35讲 - 定积分的概念", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=35" },
-      { name: "📖 同济《高等数学》9.1 定积分的概念与性质", url: "#" }
+      { name: "📖 同济《高等数学》9.1 定积分的概念与性质", url: null }
     ],
     exercises: [
       {
@@ -316,7 +316,7 @@ const EXERCISES_DB = {
   },
   "2-16": {
     links: [
-      { name: "📖 同济《高等数学》9.3 微积分基本公式", url: "#" }
+      { name: "📖 同济《高等数学》9.3 微积分基本公式", url: null }
     ],
     exercises: [
       {
@@ -331,7 +331,7 @@ const EXERCISES_DB = {
   },
   "2-20": {
     links: [
-      { name: "📖 同济《高等数学》9.4 定积分的换元法", url: "#" }
+      { name: "📖 同济《高等数学》9.4 定积分的换元法", url: null }
     ],
     exercises: [
       {
@@ -349,7 +349,7 @@ const EXERCISES_DB = {
   "3-5": {
     links: [
       { name: "📺 宋浩《高等数学》第40讲 - 偏导数", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=40" },
-      { name: "📖 同济《高等数学》12.2 偏导数", url: "#" }
+      { name: "📖 同济《高等数学》12.2 偏导数", url: null }
     ],
     exercises: [
       {
@@ -364,7 +364,7 @@ const EXERCISES_DB = {
   },
   "3-6": {
     links: [
-      { name: "📖 同济《高等数学》12.3 全微分", url: "#" }
+      { name: "📖 同济《高等数学》12.3 全微分", url: null }
     ],
     exercises: [
       {
@@ -380,7 +380,7 @@ const EXERCISES_DB = {
   "3-23": {
     links: [
       { name: "📺 宋浩《高等数学》第48讲 - 格林公式", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=48" },
-      { name: "📖 同济《高等数学》14.3 格林公式", url: "#" }
+      { name: "📖 同济《高等数学》14.3 格林公式", url: null }
     ],
     exercises: [
       {
@@ -398,7 +398,7 @@ const EXERCISES_DB = {
   "4-3": {
     links: [
       { name: "📺 宋浩《高等数学》第52讲 - 正项级数审敛法", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=52" },
-      { name: "📖 同济《高等数学》16.2 常数项级数的审敛法", url: "#" }
+      { name: "📖 同济《高等数学》16.2 常数项级数的审敛法", url: null }
     ],
     exercises: [
       {
@@ -417,7 +417,7 @@ const EXERCISES_DB = {
   },
   "4-5": {
     links: [
-      { name: "📖 同济《高等数学》16.3 交错级数", url: "#" }
+      { name: "📖 同济《高等数学》16.3 交错级数", url: null }
     ],
     exercises: [
       {
@@ -432,7 +432,7 @@ const EXERCISES_DB = {
   },
   "4-11": {
     links: [
-      { name: "📖 同济《高等数学》16.5 函数展开成幂级数", url: "#" }
+      { name: "📖 同济《高等数学》16.5 函数展开成幂级数", url: null }
     ],
     exercises: [
       {
@@ -448,7 +448,7 @@ const EXERCISES_DB = {
   "4-18": {
     links: [
       { name: "📺 宋浩《高等数学》第58讲 - 一阶线性微分方程", url: "https://www.bilibili.com/video/BV1Eb411u7Fw?p=58" },
-      { name: "📖 同济《高等数学》17.2 一阶线性微分方程", url: "#" }
+      { name: "📖 同济《高等数学》17.2 一阶线性微分方程", url: null }
     ],
     exercises: [
       {
@@ -466,7 +466,7 @@ const EXERCISES_DB = {
   "5-4": {
     links: [
       { name: "📺 宋浩《线性代数》第4讲 - 行列式的性质", url: "https://www.bilibili.com/video/BV1aW411Q7x1?p=4" },
-      { name: "📖 同济《线性代数》1.4 行列式的性质", url: "#" }
+      { name: "📖 同济《线性代数》1.4 行列式的性质", url: null }
     ],
     exercises: [
       {
@@ -481,7 +481,7 @@ const EXERCISES_DB = {
   },
   "5-10": {
     links: [
-      { name: "📖 同济《线性代数》2.3 逆矩阵", url: "#" }
+      { name: "📖 同济《线性代数》2.3 逆矩阵", url: null }
     ],
     exercises: [
       {
@@ -497,7 +497,7 @@ const EXERCISES_DB = {
   "5-18": {
     links: [
       { name: "📺 宋浩《线性代数》第18讲 - 向量组的线性相关性", url: "https://www.bilibili.com/video/BV1aW411Q7x1?p=18" },
-      { name: "📖 同济《线性代数》4.2 向量组的线性相关性", url: "#" }
+      { name: "📖 同济《线性代数》4.2 向量组的线性相关性", url: null }
     ],
     exercises: [
       {
@@ -512,7 +512,7 @@ const EXERCISES_DB = {
   },
   "5-23": {
     links: [
-      { name: "📖 同济《线性代数》5.2 方阵的特征值与特征向量", url: "#" }
+      { name: "📖 同济《线性代数》5.2 方阵的特征值与特征向量", url: null }
     ],
     exercises: [
       {
@@ -529,9 +529,9 @@ const EXERCISES_DB = {
 
 // 通用资源链接模板
 const RESOURCE_TEMPLATES = {
-  "同济上": { name: "📖 同济《高等数学》第七版（上册）", url: "https://example.com/book/tongji-vol1" },
-  "同济下": { name: "📖 同济《高等数学》第七版（下册）", url: "https://example.com/book/tongji-vol2" },
-  "同济线代": { name: "📖 同济《线性代数》第六版", url: "https://example.com/book/tongji-linear" },
+  "同济上": { name: "📖 同济《高等数学》第七版（上册）", url: null },
+  "同济下": { name: "📖 同济《高等数学》第七版（下册）", url: null },
+  "同济线代": { name: "📖 同济《线性代数》第六版", url: null },
   "宋浩高数": { name: "📺 宋浩老师《高等数学》B站全集", url: "https://space.bilibili.com/66607740" },
   "宋浩线代": { name: "📺 宋浩老师《线性代数》B站全集", url: "https://space.bilibili.com/66607740" },
   "3B1B": { name: "📺 3Blue1Brown《微积分的本质》", url: "https://www.bilibili.com/video/BV1aW411Q7x1" },
