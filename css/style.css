@@ -1733,9 +1733,9 @@ body {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(9, 1fr);
-  aspect-ratio: 1;
   width: 100%;
   max-width: 468px;
+  min-height: 468px;
   margin: 0 auto 20px;
   background: #e8ebf0;
   border-radius: 12px;

@@ -1368,6 +1368,10 @@ document.addEventListener('keydown', (e) => {
 
 // ---- Games Page Render ----
 function renderGames() {
+  // Only render when games page is actually visible
+  const gamesPage = document.getElementById('page-games');
+  if (!gamesPage || !gamesPage.classList.contains('active')) return;
+
   // Init sudoku event listeners once
   if (!renderGames._initialized) {
     renderGames._initialized = true;
@@ -1406,16 +1410,12 @@ function renderGames() {
       SudokuGame.noteMode = !SudokuGame.noteMode;
       SudokuGame.render();
     });
-
-    // Generate first game
-    SudokuGame.generate('easy');
-    SudokuGame.renderNumpad();
   }
 
-  // Ensure board is rendered (re-render if board is empty, e.g. due to CSS not loaded yet)
+  // Generate and render board only when page is visible
   const boardEl = document.getElementById('sudoku-board');
   if (boardEl && boardEl.children.length === 0) {
-    SudokuGame.render();
+    SudokuGame.generate('easy');
     SudokuGame.renderNumpad();
   }
 }
