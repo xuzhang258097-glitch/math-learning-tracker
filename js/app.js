@@ -1,4 +1,4 @@
-// App state
+﻿// App state
 let appState = {
   startDate: '',
   dailyMinutes: 90,
@@ -189,6 +189,7 @@ function renderAll() {
   renderToday();
   renderRoadmap();
   renderCalendar();
+  renderGames();
   renderSettings();
 }
 
@@ -292,6 +293,69 @@ function renderToday() {
   const isChecked = appState.checkins[todayStr];
   const task = todayTask.task;
 
+  // Find phaseIdx and dayIdx for exercise data
+  let phaseIdx = -1;
+  let dayIdx = todayTask.dayInPhase - 1;
+  for (let i = 0; i < STUDY_PLAN.phases.length; i++) {
+    if (STUDY_PLAN.phases[i].name === todayTask.phase.name) {
+      phaseIdx = i;
+      break;
+    }
+  }
+
+  // Get exercise data for today
+  const exerciseData = (phaseIdx >= 0) ? getExerciseData(phaseIdx, dayIdx) : null;
+  const genericHint = (phaseIdx >= 0) ? getGenericExerciseHint(phaseIdx, dayIdx) : null;
+
+  // Build links HTML
+  let linksHtml = '';
+  if (exerciseData && exerciseData.links && exerciseData.links.length > 0) {
+    linksHtml = `
+      <div class="today-section">
+        <div class="today-section-title">\u{1F4DA} \u4eca\u65e5\u5b66\u4e60\u8d44\u6e90</div>
+        <div class="task-modal-links">
+          ${exerciseData.links.map(link => {
+            if (link.url) {
+              return `<a href="${link.url}" class="modal-link" target="_blank" rel="noopener">${link.name}</a>`;
+            } else {
+              return `<div class="modal-link modal-link-text">${link.name}</div>`;
+            }
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // Build exercises HTML
+  let exercisesHtml = '';
+  if (exerciseData && exerciseData.exercises && exerciseData.exercises.length > 0) {
+    exercisesHtml = `
+      <div class="today-section">
+        <div class="today-section-title">\u{270F}\uFE0F \u4eca\u65e5\u4e60\u9898</div>
+        <div class="task-modal-exercises">
+          ${exerciseData.exercises.map((ex, idx) => `
+            <div class="exercise-card">
+              <div class="exercise-question">${escapeHtml(ex.question)}</div>
+              <div class="exercise-answer-wrapper">
+                <button class="btn-answer" onclick="toggleTodayAnswer(this, ${idx})">
+                  <span>\u67e5\u770b\u7b54\u6848</span>
+                </button>
+                <div class="exercise-answer" id="today-ex-answer-${idx}">${escapeHtml(ex.answer)}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  } else if (genericHint) {
+    exercisesHtml = `
+      <div class="today-section">
+        <div class="today-section-title">\u{270F}\uFE0F \u4eca\u65e5\u4e60\u9898</div>
+        <div class="exercise-hint">${escapeHtml(genericHint.hint)}</div>
+      </div>
+    `;
+  }
+
   detailEl.innerHTML = `
     <div class="today-card">
       <div class="today-header">
@@ -304,8 +368,8 @@ function renderToday() {
       <div class="today-title">${task.title}</div>
       <div class="today-content">${task.content}</div>
       <div class="today-meta">
-        <span class="meta-tag">&#x1F4DD; \u8bc1\u660e\u91cd\u70b9\uff1a${task.proofFocus}</span>
-        <span class="meta-tag">&#x1F4DA; \u53c2\u8003\uff1a${task.resources}</span>
+        <span class="meta-tag">\u{1F4DD} \u8bc1\u660e\u91cd\u70b9\uff1a${task.proofFocus}</span>
+        <span class="meta-tag">\u{1F4DA} \u53c2\u8003\uff1a${task.resources}</span>
       </div>
       <div style="display:flex;gap:12px;">
         <button class="btn ${isChecked ? 'btn-success' : 'btn-primary'}" id="btn-today-checkin" style="flex:1">
@@ -315,10 +379,11 @@ function renderToday() {
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">\u4eca\u65e5\u5b66\u4e60\u5efa\u8bae</span>
-      </div>
+    ${linksHtml}
+    ${exercisesHtml}
+
+    <div class="today-section">
+      <div class="today-section-title">\u{1F4A1} \u4eca\u65e5\u5b66\u4e60\u5efa\u8bae</div>
       <div style="font-size:14px;color:var(--text-body);line-height:1.8;">
         <p style="margin-bottom:10px;"><strong>90 \u5206\u949f\u5b89\u6392\uff1a</strong></p>
         <ul style="margin-left:20px;margin-bottom:14px;">
@@ -744,6 +809,21 @@ function toggleAnswer(btn, idx) {
   }
 }
 
+function toggleTodayAnswer(btn, idx) {
+  const answerEl = document.getElementById(`today-ex-answer-${idx}`);
+  const span = btn.querySelector('span');
+  if (answerEl.classList.contains('open')) {
+    answerEl.classList.remove('open');
+    span.textContent = '\u67e5\u770b\u7b54\u6848';
+    btn.classList.remove('active');
+  } else {
+    answerEl.classList.add('open');
+    span.textContent = '\u9690\u85cf\u7b54\u6848';
+    btn.classList.add('active');
+    AudioSystem.playClick();
+  }
+}
+
 function escapeHtml(text) {
   if (!text) return '';
   return text
@@ -858,3 +938,445 @@ document.addEventListener('keydown', (e) => {
 
 // Start
 init();
+
+// ============================================================
+// SUDOKU GAME ENGINE
+// ============================================================
+
+const SudokuGame = {
+  board: [],          // current board state (0 = empty)
+  solution: [],       // complete solution
+  initial: [],       // which cells are given (true/false)
+  notes: [],         // pencil marks: notes[row][col] = Set of numbers
+  history: [],       // undo stack
+  selectedCell: null, // {row, col}
+  difficulty: 'easy',
+  timer: null,
+  seconds: 0,
+  errors: 0,
+  hintsUsed: 0,
+  noteMode: false,
+  completed: false,
+
+  // ---- Sudoku Generator ----
+  generate(difficulty) {
+    this.difficulty = difficulty;
+    this.completed = false;
+    this.errors = 0;
+    this.hintsUsed = 0;
+    this.history = [];
+    this.notes = Array.from({length:9}, () => Array.from({length:9}, () => new Set()));
+    this.selectedCell = null;
+    this.noteMode = false;
+    this.seconds = 0;
+    this.stopTimer();
+
+    // Generate a complete valid board
+    const board = Array.from({length:9}, () => Array(9).fill(0));
+    this.fillBoard(board);
+    this.solution = board.map(r => [...r]);
+
+    // Remove cells based on difficulty
+    const removeCount = {easy: 35, medium: 45, hard: 55}[difficulty] || 35;
+    this.board = board.map(r => [...r]);
+    this.initial = Array.from({length:9}, () => Array(9).fill(true));
+
+    const positions = [];
+    for (let r = 0; r < 9; r++)
+      for (let c = 0; c < 9; c++)
+        positions.push([r, c]);
+
+    // Shuffle positions
+    for (let i = positions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [positions[i], positions[j]] = [positions[j], positions[i]];
+    }
+
+    let removed = 0;
+    for (const [r, c] of positions) {
+      if (removed >= removeCount) break;
+      const backup = this.board[r][c];
+      this.board[r][c] = 0;
+      this.initial[r][c] = false;
+      removed++;
+    }
+
+    this.render();
+    this.startTimer();
+  },
+
+  fillBoard(board) {
+    const empty = this.findEmpty(board);
+    if (!empty) return true;
+    const [row, col] = empty;
+    const nums = this.shuffle([1,2,3,4,5,6,7,8,9]);
+    for (const num of nums) {
+      if (this.isValidPlacement(board, row, col, num)) {
+        board[row][col] = num;
+        if (this.fillBoard(board)) return true;
+        board[row][col] = 0;
+      }
+    }
+    return false;
+  },
+
+  findEmpty(board) {
+    for (let r = 0; r < 9; r++)
+      for (let c = 0; c < 9; c++)
+        if (board[r][c] === 0) return [r, c];
+    return null;
+  },
+
+  isValidPlacement(board, row, col, num) {
+    // Check row
+    for (let c = 0; c < 9; c++)
+      if (board[row][c] === num) return false;
+    // Check col
+    for (let r = 0; r < 9; r++)
+      if (board[r][col] === num) return false;
+    // Check 3x3 box
+    const br = Math.floor(row / 3) * 3;
+    const bc = Math.floor(col / 3) * 3;
+    for (let r = br; r < br + 3; r++)
+      for (let c = bc; c < bc + 3; c++)
+        if (board[r][c] === num) return false;
+    return true;
+  },
+
+  shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  },
+
+  // ---- Game Actions ----
+  selectCell(row, col) {
+    if (this.completed) return;
+    this.selectedCell = {row, col};
+    this.render();
+  },
+
+  inputNumber(num) {
+    if (!this.selectedCell || this.completed) return;
+    const {row, col} = this.selectedCell;
+    if (this.initial[row][col]) return; // can't change given cells
+
+    if (this.noteMode) {
+      // Toggle pencil mark
+      const prev = new Set(this.notes[row][col]);
+      if (this.notes[row][col].has(num)) {
+        this.notes[row][col].delete(num);
+      } else {
+        this.notes[row][col].add(num);
+      }
+      this.board[row][col] = 0; // clear the cell value when adding notes
+      this.history.push({type:'note', row, col, prevNotes: prev, prevVal: 0});
+    } else {
+      // Place number
+      const prevVal = this.board[row][col];
+      const prevNotes = new Set(this.notes[row][col]);
+      this.history.push({type:'input', row, col, prevVal, prevNotes});
+      this.board[row][col] = num;
+      this.notes[row][col].clear();
+
+      // Check if wrong
+      if (num !== this.solution[row][col]) {
+        this.errors++;
+        AudioSystem.playClick && AudioSystem.playClick();
+      } else {
+        // Remove this number from notes in same row/col/box
+        this.removeRelatedNotes(row, col, num);
+      }
+    }
+
+    this.render();
+    this.checkWin();
+  },
+
+  removeRelatedNotes(row, col, num) {
+    // Same row
+    for (let c = 0; c < 9; c++) this.notes[row][c].delete(num);
+    // Same col
+    for (let r = 0; r < 9; r++) this.notes[r][col].delete(num);
+    // Same box
+    const br = Math.floor(row / 3) * 3;
+    const bc = Math.floor(col / 3) * 3;
+    for (let r = br; r < br + 3; r++)
+      for (let c = bc; c < bc + 3; c++)
+        this.notes[r][c].delete(num);
+  },
+
+  clearCell() {
+    if (!this.selectedCell || this.completed) return;
+    const {row, col} = this.selectedCell;
+    if (this.initial[row][col]) return;
+    const prevVal = this.board[row][col];
+    const prevNotes = new Set(this.notes[row][col]);
+    this.history.push({type:'clear', row, col, prevVal, prevNotes});
+    this.board[row][col] = 0;
+    this.notes[row][col].clear();
+    this.render();
+  },
+
+  undo() {
+    if (this.history.length === 0 || this.completed) return;
+    const action = this.history.pop();
+    const {row, col} = action;
+    if (action.type === 'input' || action.type === 'clear') {
+      this.board[row][col] = action.prevVal;
+      this.notes[row][col] = action.prevNotes;
+    } else if (action.type === 'note') {
+      this.notes[row][col] = action.prevNotes;
+    }
+    this.render();
+  },
+
+  giveHint() {
+    if (this.completed) return;
+    // Find an empty cell and fill it
+    const emptyCells = [];
+    for (let r = 0; r < 9; r++)
+      for (let c = 0; c < 9; c++)
+        if (this.board[r][c] === 0 || this.board[r][c] !== this.solution[r][c])
+          emptyCells.push([r, c]);
+
+    if (emptyCells.length === 0) return;
+    const [r, c] = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    const prevVal = this.board[r][c];
+    const prevNotes = new Set(this.notes[r][c]);
+    this.history.push({type:'input', row: r, col: c, prevVal, prevNotes});
+    this.board[r][c] = this.solution[r][c];
+    this.notes[r][c].clear();
+    this.removeRelatedNotes(r, c, this.solution[r][c]);
+    this.hintsUsed++;
+    this.selectedCell = {row: r, col: c};
+    this.render();
+    this.checkWin();
+  },
+
+  checkBoard() {
+    if (this.completed) return;
+    let wrongCount = 0;
+    for (let r = 0; r < 9; r++) {
+      for (let c = 0; c < 9; c++) {
+        if (this.board[r][c] !== 0 && this.board[r][c] !== this.solution[r][c]) {
+          wrongCount++;
+        }
+      }
+    }
+    if (wrongCount === 0) {
+      showToast('✅ 目前没有错误，继续加油！');
+    } else {
+      showToast(`❌ 发现 ${wrongCount} 个错误，仔细检查一下`);
+    }
+  },
+
+  checkWin() {
+    for (let r = 0; r < 9; r++)
+      for (let c = 0; c < 9; c++)
+        if (this.board[r][c] !== this.solution[r][c]) return;
+    // Won!
+    this.completed = true;
+    this.stopTimer();
+    const mins = Math.floor(this.seconds / 60);
+    const secs = this.seconds % 60;
+    showToast(`🎉 恭喜完成！用时 ${mins}分${secs}秒，错误${this.errors}次，提示${this.hintsUsed}次`);
+    celebrateCheckin && celebrateCheckin();
+  },
+
+  // ---- Timer ----
+  startTimer() {
+    this.stopTimer();
+    this.timer = setInterval(() => {
+      this.seconds++;
+      const m = String(Math.floor(this.seconds / 60)).padStart(2, '0');
+      const s = String(this.seconds % 60).padStart(2, '0');
+      const el = document.getElementById('sudoku-timer');
+      if (el) el.textContent = `${m}:${s}`;
+    }, 1000);
+  },
+
+  stopTimer() {
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+  },
+
+  // ---- Rendering ----
+  render() {
+    const boardEl = document.getElementById('sudoku-board');
+    if (!boardEl) return;
+
+    let html = '';
+    for (let r = 0; r < 9; r++) {
+      for (let c = 0; c < 9; c++) {
+        const val = this.board[r][c];
+        const isInitial = this.initial[r][c];
+        const isSelected = this.selectedCell && this.selectedCell.row === r && this.selectedCell.col === c;
+        const isRelated = this.selectedCell && (
+          this.selectedCell.row === r ||
+          this.selectedCell.col === c ||
+          (Math.floor(this.selectedCell.row / 3) === Math.floor(r / 3) &&
+           Math.floor(this.selectedCell.col / 3) === Math.floor(c / 3))
+        );
+        const isSameNum = val !== 0 && this.selectedCell && this.board[this.selectedCell.row][this.selectedCell.col] === val;
+        const isWrong = val !== 0 && !isInitial && val !== this.solution[r][c];
+        const cellNotes = this.notes[r][c];
+
+        let cls = 'sudoku-cell';
+        if (isInitial) cls += ' given';
+        if (isSelected) cls += ' selected';
+        else if (isRelated) cls += ' related';
+        if (isSameNum && !isSelected) cls += ' same-num';
+        if (isWrong) cls += ' wrong';
+        // Box borders
+        if (c % 3 === 0 && c > 0) cls += ' box-left';
+        if (r % 3 === 0 && r > 0) cls += ' box-top';
+
+        let content = '';
+        if (val !== 0) {
+          content = `<span class="cell-value">${val}</span>`;
+        } else if (cellNotes.size > 0) {
+          content = '<div class="cell-notes">';
+          for (let n = 1; n <= 9; n++) {
+            content += `<span class="note-num">${cellNotes.has(n) ? n : ''}</span>`;
+          }
+          content += '</div>';
+        }
+
+        html += `<div class="${cls}" data-row="${r}" data-col="${c}">${content}</div>`;
+      }
+    }
+    boardEl.innerHTML = html;
+
+    // Update stats
+    const errorsEl = document.getElementById('sudoku-errors');
+    if (errorsEl) errorsEl.textContent = this.errors;
+    const hintsEl = document.getElementById('sudoku-hints-used');
+    if (hintsEl) hintsEl.textContent = this.hintsUsed;
+
+    // Note button state
+    const noteBtn = document.getElementById('sudoku-note-btn');
+    if (noteBtn) {
+      noteBtn.className = `btn btn-sm ${this.noteMode ? 'btn-primary' : 'btn-secondary'}`;
+    }
+
+    // Attach cell click handlers
+    boardEl.querySelectorAll('.sudoku-cell').forEach(cell => {
+      cell.addEventListener('click', () => {
+        const row = parseInt(cell.dataset.row);
+        const col = parseInt(cell.dataset.col);
+        this.selectCell(row, col);
+      });
+    });
+  },
+
+  renderNumpad() {
+    const numpadEl = document.getElementById('sudoku-numpad');
+    if (!numpadEl) return;
+    let html = '';
+    for (let n = 1; n <= 9; n++) {
+      // Count remaining
+      let count = 0;
+      for (let r = 0; r < 9; r++)
+        for (let c = 0; c < 9; c++)
+          if (this.board[r][c] === n) count++;
+      const done = count >= 9;
+      html += `<button class="numpad-btn ${done ? 'completed' : ''}" data-num="${n}">${n}</button>`;
+    }
+    html += `<button class="numpad-btn numpad-delete" data-num="0">✕</button>`;
+    numpadEl.innerHTML = html;
+
+    numpadEl.querySelectorAll('.numpad-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const num = parseInt(btn.dataset.num);
+        if (num === 0) {
+          this.clearCell();
+        } else {
+          this.inputNumber(num);
+        }
+      });
+    });
+  }
+};
+
+// ---- Keyboard support for Sudoku ----
+document.addEventListener('keydown', (e) => {
+  if (!SudokuGame.selectedCell) return;
+  // Only when on games page
+  const gamesPage = document.getElementById('page-games');
+  if (!gamesPage || !gamesPage.classList.contains('active')) return;
+
+  const key = e.key;
+  if (key >= '1' && key <= '9') {
+    SudokuGame.inputNumber(parseInt(key));
+  } else if (key === 'Backspace' || key === 'Delete') {
+    SudokuGame.clearCell();
+  } else if (key === 'z' && (e.ctrlKey || e.metaKey)) {
+    e.preventDefault();
+    SudokuGame.undo();
+  } else if (key === 'n' || key === 'N') {
+    SudokuGame.noteMode = !SudokuGame.noteMode;
+    SudokuGame.render();
+  } else if (key === 'ArrowUp' && SudokuGame.selectedCell.row > 0) {
+    SudokuGame.selectCell(SudokuGame.selectedCell.row - 1, SudokuGame.selectedCell.col);
+  } else if (key === 'ArrowDown' && SudokuGame.selectedCell.row < 8) {
+    SudokuGame.selectCell(SudokuGame.selectedCell.row + 1, SudokuGame.selectedCell.col);
+  } else if (key === 'ArrowLeft' && SudokuGame.selectedCell.col > 0) {
+    SudokuGame.selectCell(SudokuGame.selectedCell.row, SudokuGame.selectedCell.col - 1);
+  } else if (key === 'ArrowRight' && SudokuGame.selectedCell.col < 8) {
+    SudokuGame.selectCell(SudokuGame.selectedCell.row, SudokuGame.selectedCell.col + 1);
+  }
+});
+
+// ---- Games Page Render ----
+function renderGames() {
+  // Init sudoku event listeners once
+  if (!renderGames._initialized) {
+    renderGames._initialized = true;
+
+    // Difficulty buttons
+    document.querySelectorAll('.sudoku-difficulty .btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.sudoku-difficulty .btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const diff = btn.dataset.difficulty;
+        SudokuGame.generate(diff);
+        SudokuGame.renderNumpad();
+      });
+    });
+
+    // Action buttons
+    const newBtn = document.getElementById('sudoku-new');
+    if (newBtn) newBtn.addEventListener('click', () => {
+      const activeDiff = document.querySelector('.sudoku-difficulty .btn.active');
+      const diff = activeDiff ? activeDiff.dataset.difficulty : 'easy';
+      SudokuGame.generate(diff);
+      SudokuGame.renderNumpad();
+    });
+
+    const hintBtn = document.getElementById('sudoku-hint');
+    if (hintBtn) hintBtn.addEventListener('click', () => SudokuGame.giveHint());
+
+    const checkBtn = document.getElementById('sudoku-check');
+    if (checkBtn) checkBtn.addEventListener('click', () => SudokuGame.checkBoard());
+
+    const undoBtn = document.getElementById('sudoku-undo');
+    if (undoBtn) undoBtn.addEventListener('click', () => SudokuGame.undo());
+
+    const noteBtn = document.getElementById('sudoku-note-btn');
+    if (noteBtn) noteBtn.addEventListener('click', () => {
+      SudokuGame.noteMode = !SudokuGame.noteMode;
+      SudokuGame.render();
+    });
+
+    // Generate first game
+    SudokuGame.generate('easy');
+    SudokuGame.renderNumpad();
+  }
+}
+

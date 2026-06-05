@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>高数学习追踪</title>
+  <title>米奇妙妙屋</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
     <aside class="sidebar">
       <div class="sidebar-brand">
         <div class="brand-mark">&Sigma;</div>
-        <span>高数学习追踪</span>
+        <span>米奇妙妙屋</span>
       </div>
       <div class="sidebar-subtitle">每天进步一点点</div>
       <ul class="nav-menu">
@@ -47,6 +47,12 @@
           <a class="nav-link" data-page="resources">
             <span class="nav-icon">&#x1F4DA;</span>
             <span>学习资源</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="games">
+            <span class="nav-icon">&#x1F9E0;</span>
+            <span>智力游戏</span>
           </a>
         </li>
         <li class="nav-item">
@@ -249,6 +255,60 @@
         </div>
       </div>
 
+      <!-- Games Page -->
+      <div class="page" id="page-games">
+        <h1 class="page-title">智力游戏</h1>
+        <p class="page-subtitle">锻炼大脑，提升逻辑思维</p>
+
+        <div class="game-tabs">
+          <button class="game-tab active" data-game="sudoku">数独</button>
+        </div>
+
+        <!-- Sudoku Game -->
+        <div id="sudoku-container">
+          <div class="sudoku-toolbar">
+            <div class="sudoku-difficulty">
+              <button class="btn btn-sm btn-secondary active" data-difficulty="easy">简单</button>
+              <button class="btn btn-sm btn-secondary" data-difficulty="medium">中等</button>
+              <button class="btn btn-sm btn-secondary" data-difficulty="hard">困难</button>
+            </div>
+            <div class="sudoku-actions">
+              <button class="btn btn-sm btn-secondary" id="sudoku-new">新游戏</button>
+              <button class="btn btn-sm btn-secondary" id="sudoku-hint">提示</button>
+              <button class="btn btn-sm btn-secondary" id="sudoku-check">检查</button>
+              <button class="btn btn-sm btn-secondary" id="sudoku-undo">撤销</button>
+            </div>
+          </div>
+
+          <div class="sudoku-stats">
+            <div class="sudoku-stat">
+              <span class="sudoku-stat-label">用时</span>
+              <span class="sudoku-stat-value" id="sudoku-timer">00:00</span>
+            </div>
+            <div class="sudoku-stat">
+              <span class="sudoku-stat-label">错误</span>
+              <span class="sudoku-stat-value" id="sudoku-errors">0</span>
+            </div>
+            <div class="sudoku-stat">
+              <span class="sudoku-stat-label">提示</span>
+              <span class="sudoku-stat-value" id="sudoku-hints-used">0</span>
+            </div>
+          </div>
+
+          <div class="sudoku-board" id="sudoku-board">
+            <!-- Filled by JS -->
+          </div>
+
+          <div class="sudoku-numpad" id="sudoku-numpad">
+            <!-- Filled by JS -->
+          </div>
+
+          <div class="sudoku-note-toggle">
+            <button class="btn btn-sm" id="sudoku-note-btn">✏️ 笔记模式</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Settings Page -->
       <div class="page" id="page-settings">
         <h1 class="page-title">设置</h1>
@@ -313,6 +373,10 @@
       <span class="mobile-nav-icon">&#x1F4C6;</span>
       <span>日历</span>
     </button>
+    <button class="mobile-nav-link" data-page="games">
+      <span class="mobile-nav-icon">&#x1F9E0;</span>
+      <span>游戏</span>
+    </button>
     <button class="mobile-nav-link" data-page="settings">
       <span class="mobile-nav-icon">&#x2699;</span>
       <span>设置</span>
@@ -374,3 +438,4 @@
   <script src="js/app.js"></script>
 </body>
 </html>
+
