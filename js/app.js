@@ -200,6 +200,7 @@ function renderAll() {
   renderRoadmap();
   renderCalendar();
   renderGames();
+  renderResources();
   renderSettings();
 }
 
@@ -1660,5 +1661,120 @@ function renderGames() {
       SudokuGame.renderNumpad();
     }
   }
+}
+
+// ---------- Resources Page ----------
+function renderResources() {
+  const container = document.getElementById('resources-content');
+  if (!container) return;
+
+  if (typeof RESOURCES_DATA === 'undefined') {
+    container.innerHTML = '<p style="color:var(--text-muted)">资源数据加载中...</p>';
+    return;
+  }
+
+  const d = RESOURCES_DATA;
+
+  let html = '';
+
+  // ---- Core Textbooks ----
+  html += `<div class="card"><div class="card-header"><span class="card-title">\u{1F4D6} 核心教材</span><span class="card-sub">以下教材需购买实体书，每天对照学习计划精读</span></div><div class="resource-grid">`;
+  d.textbooks.forEach(book => {
+    const buyBtns = book.buyLinks.map(l => {
+      if (l.url) return `<a href="${l.url}" class="resource-buy-btn" target="_blank" rel="noopener">${l.name}</a>`;
+      return '';
+    }).join('');
+    html += `
+      <div class="resource-card">
+        <div class="resource-card-cover">${book.cover}</div>
+        <div class="resource-card-body">
+          <div class="resource-card-name">${book.name}</div>
+          <div class="resource-card-meta">${book.author} &middot; ${book.publisher}</div>
+          ${book.isbn ? `<div class="resource-card-isbn">ISBN: ${book.isbn}</div>` : ''}
+          <div class="resource-card-desc">${book.desc}</div>
+          <div class="resource-card-tags">${book.tags.map(t => `<span class="resource-tag">${t}</span>`).join('')}</div>
+          <div class="resource-card-usage">\u{1F4CC} ${book.usage}</div>
+          <div class="resource-card-buy">${buyBtns}</div>
+        </div>
+      </div>`;
+  });
+  html += `</div></div>`;
+
+  // ---- Supplements ----
+  html += `<div class="card"><div class="card-header"><span class="card-title">\u{1F4DA} 辅导书与习题集</span></div><div class="resource-grid">`;
+  d.supplements.forEach(book => {
+    const buyBtns = book.buyLinks.map(l => {
+      if (l.url) return `<a href="${l.url}" class="resource-buy-btn" target="_blank" rel="noopener">${l.name}</a>`;
+      return '';
+    }).join('');
+    html += `
+      <div class="resource-card">
+        <div class="resource-card-cover">${book.cover}</div>
+        <div class="resource-card-body">
+          <div class="resource-card-name">${book.name}</div>
+          <div class="resource-card-meta">${book.author} &middot; ${book.publisher || ''}</div>
+          ${book.isbn ? `<div class="resource-card-isbn">ISBN: ${book.isbn}</div>` : ''}
+          <div class="resource-card-desc">${book.desc}</div>
+          <div class="resource-card-tags">${book.tags.map(t => `<span class="resource-tag">${t}</span>`).join('')}</div>
+          <div class="resource-card-usage">\u{1F4CC} ${book.usage}</div>
+          ${buyBtns ? `<div class="resource-card-buy">${buyBtns}</div>` : ''}
+        </div>
+      </div>`;
+  });
+  html += `</div></div>`;
+
+  // ---- Video Courses ----
+  html += `<div class="card"><div class="card-header"><span class="card-title">\u{1F3AC} 视频课程</span></div><div class="resource-grid">`;
+  d.videos.forEach(v => {
+    html += `
+      <div class="resource-card resource-card-clickable" onclick="window.open('${v.url}', '_blank')">
+        <div class="resource-card-cover">${v.cover}</div>
+        <div class="resource-card-body">
+          <div class="resource-card-name">${v.name}</div>
+          <div class="resource-card-meta">${v.platform} &middot; ${v.author}</div>
+          <div class="resource-card-desc">${v.desc}</div>
+          <div class="resource-card-tags">${v.tags.map(t => `<span class="resource-tag">${t}</span>`).join('')}</div>
+          <div class="resource-card-usage">\u{1F4CC} ${v.usage}</div>
+        </div>
+      </div>`;
+  });
+  html += `</div></div>`;
+
+  // ---- Online Tools ----
+  html += `<div class="card"><div class="card-header"><span class="card-title">\u{1F6E0}\uFE0F 在线工具</span></div><div class="resource-grid">`;
+  d.tools.forEach(tool => {
+    html += `
+      <div class="resource-card ${tool.url ? 'resource-card-clickable' : ''}" ${tool.url ? `onclick="window.open('${tool.url}', '_blank')"` : ''}>
+        <div class="resource-card-cover">${tool.cover}</div>
+        <div class="resource-card-body">
+          <div class="resource-card-name">${tool.name}</div>
+          <div class="resource-card-meta">${tool.type === 'web' ? '网页工具' : tool.type === 'pdf' ? 'PDF 手册' : '在线工具'}</div>
+          <div class="resource-card-desc">${tool.desc}</div>
+          <div class="resource-card-tags">${tool.tags.map(t => `<span class="resource-tag">${t}</span>`).join('')}</div>
+          <div class="resource-card-usage">\u{1F4CC} ${tool.usage}</div>
+        </div>
+      </div>`;
+  });
+  html += `</div></div>`;
+
+  // ---- Formula Cheat Sheets ----
+  html += `<div class="card"><div class="card-header"><span class="card-title">\u{1F4CB} 公式速查手册</span><span class="card-sub">建议打印贴墙，每天看一遍</span></div><div class="resource-list">`;
+  d.formulas.forEach(f => {
+    html += `
+      <div class="resource-item">
+        <div class="resource-icon formula-icon">\u{1F4C4}</div>
+        <div class="resource-info">
+          <div class="resource-name">${f.name}</div>
+          <div class="resource-desc">${f.desc}</div>
+        </div>
+        <div class="resource-item-right">
+          <span class="resource-tag">${f.tags.join(' ')}</span>
+          <span class="resource-usage-hint">${f.usage}</span>
+        </div>
+      </div>`;
+  });
+  html += `</div></div>`;
+
+  container.innerHTML = html;
 }
 

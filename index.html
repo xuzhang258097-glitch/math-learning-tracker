@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
   <div class="app-container">
@@ -164,95 +164,8 @@
       <!-- Resources Page -->
       <div class="page" id="page-resources">
         <h1 class="page-title">学习资源</h1>
-        <p class="page-subtitle">推荐的教材、视频与辅助资料</p>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">核心教材</span>
-          </div>
-          <div class="resource-list">
-            <div class="resource-item">
-              <div class="resource-icon" style="background:#E6F1FB;color:#185FA5;">&#x1F4D6;</div>
-              <div class="resource-info">
-                <div class="resource-name">同济《高等数学》第七版（上册+下册）</div>
-                <div class="resource-desc">国内最经典的高数教材，配套习题丰富，是自学首选</div>
-              </div>
-              <span class="resource-tag">必读</span>
-            </div>
-            <div class="resource-item">
-              <div class="resource-icon" style="background:#EAF3DE;color:#3B6D11;">&#x1F4D6;</div>
-              <div class="resource-info">
-                <div class="resource-name">同济《线性代数》第六版</div>
-                <div class="resource-desc">经典线代教材，体系清晰，适合第五阶段使用</div>
-              </div>
-              <span class="resource-tag">第五阶段</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">视频课程</span>
-          </div>
-          <div class="resource-list">
-            <a class="resource-item" href="https://space.bilibili.com/66607740" target="_blank">
-              <div class="resource-icon" style="background:#FAECE7;color:#993C1D;">&#x25B6;</div>
-              <div class="resource-info">
-                <div class="resource-name">宋浩老师《高等数学》B站系列</div>
-                <div class="resource-desc">讲解极细、幽默风趣，最适合久未碰数学的人系统学习</div>
-              </div>
-              <span class="resource-tag">主视频</span>
-            </a>
-            <a class="resource-item" href="https://space.bilibili.com/52118504" target="_blank">
-              <div class="resource-icon" style="background:#EEEDFE;color:#534AB7;">&#x25B6;</div>
-              <div class="resource-info">
-                <div class="resource-name">张宇考研数学基础班</div>
-                <div class="resource-desc">难度稍高，适合想提升理解深度、检验掌握程度时补充</div>
-              </div>
-              <span class="resource-tag">拔高</span>
-            </a>
-            <a class="resource-item" href="https://www.bilibili.com/video/BV1aW411Q7x1" target="_blank">
-              <div class="resource-icon" style="background:#E1F5EE;color:#0F6E56;">&#x25B6;</div>
-              <div class="resource-info">
-                <div class="resource-name">3Blue1Brown《微积分的本质》</div>
-                <div class="resource-desc">可视化直觉，动画演示极限、导数、积分核心思想（英文+中字）</div>
-              </div>
-              <span class="resource-tag">直觉</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">辅助工具</span>
-          </div>
-          <div class="resource-list">
-            <div class="resource-item">
-              <div class="resource-icon" style="background:#F1EFE8;color:#5F5E5A;">&#x1F4CB;</div>
-              <div class="resource-info">
-                <div class="resource-name">《考研数学公式速查手册》</div>
-                <div class="resource-desc">随手查阅公式，免去翻书查找的时间，建议打印随身携带</div>
-              </div>
-              <span class="resource-tag">工具</span>
-            </div>
-            <div class="resource-item">
-              <div class="resource-icon" style="background:#E6F1FB;color:#185FA5;">&#x1F4BB;</div>
-              <div class="resource-info">
-                <div class="resource-name">GeoGebra / Desmos</div>
-                <div class="resource-desc">免费数学绘图工具，画函数图像、观察极限过程、验证积分结果</div>
-              </div>
-              <span class="resource-tag">工具</span>
-            </div>
-            <div class="resource-item">
-              <div class="resource-icon" style="background:#EAF3DE;color:#3B6D11;">&#x1F4DD;</div>
-              <div class="resource-info">
-                <div class="resource-name">活页笔记本 + 错题本</div>
-                <div class="resource-desc">推荐用活页本整理证明思路，错题本只记录"思路卡壳"的题而非计算错误</div>
-              </div>
-              <span class="resource-tag">方法</span>
-            </div>
-          </div>
-        </div>
+        <p class="page-subtitle">教材、辅导书、视频、在线工具一站式汇总</p>
+        <div id="resources-content"></div>
       </div>
 
       <!-- Games Page -->
@@ -457,10 +370,11 @@
     </div>
   </div>
 
+  <script src="js/resources.js?v=6"></script>
   <script src="js/data.js?v=4"></script>
   <script src="js/exercises.js?v=6"></script>
   <script src="js/audio.js?v=4"></script>
-  <script src="js/app.js?v=6"></script>
+  <script src="js/app.js?v=7"></script>
 </body>
 </html>
 

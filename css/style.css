@@ -958,6 +958,161 @@ body {
   border: 1px solid rgba(229, 230, 235, 0.40);
 }
 
+/* ---- Resource Grid & Cards (New) ---- */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.resource-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 var(--glass-highlight);
+}
+
+.resource-card:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: var(--shadow-md), inset 0 1px 0 var(--glass-highlight);
+  transform: translateY(-2px);
+}
+
+.resource-card-clickable {
+  cursor: pointer;
+}
+
+.resource-card-cover {
+  font-size: 48px;
+  text-align: center;
+  padding: 24px 0 12px;
+  background: var(--bg-active);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.resource-card-body {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resource-card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-title);
+  line-height: 1.4;
+}
+
+.resource-card-meta {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.resource-card-isbn {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'SF Mono', 'Consolas', monospace;
+  letter-spacing: 0.02em;
+}
+
+.resource-card-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.resource-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.resource-card-tags .resource-tag {
+  margin: 0;
+}
+
+.resource-card-usage {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border-light);
+}
+
+.resource-card-buy {
+  display: flex;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+.resource-buy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.resource-buy-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(22, 93, 255, 0.25);
+}
+
+/* Formula cheatsheet item */
+.resource-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.resource-usage-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.formula-icon {
+  background: #FEF3C7 !important;
+  color: #B45309 !important;
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+/* Dark mode adjustments */
+.dark .resource-card {
+  background: rgba(255,255,255,0.03);
+}
+
+.dark .resource-card-cover {
+  background: rgba(255,255,255,0.04);
+}
+
+.dark .resource-tag {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.1);
+}
+
 /* ---------- Settings Form ---------- */
 .form-group { margin-bottom: 24px; }
 
