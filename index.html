@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
   <div class="app-container">
@@ -179,13 +179,23 @@
 
         <!-- Sudoku Game -->
         <div id="sudoku-container">
+          <!-- Mode Switch -->
+          <div class="sudoku-mode-switch">
+            <button class="btn btn-sm btn-primary" id="sudoku-mode-free">自由模式</button>
+            <button class="btn btn-sm btn-secondary" id="sudoku-mode-levels">关卡挑战</button>
+          </div>
+
+          <!-- Level Info (shown in level mode) -->
+          <div class="sudoku-level-info" id="sudoku-level-info" style="display:none"></div>
+
           <div class="sudoku-toolbar">
-            <div class="sudoku-difficulty">
+            <div class="sudoku-difficulty" id="sudoku-difficulty-selector">
               <button class="btn btn-sm btn-secondary active" data-difficulty="easy">简单</button>
               <button class="btn btn-sm btn-secondary" data-difficulty="medium">中等</button>
               <button class="btn btn-sm btn-secondary" data-difficulty="hard">困难</button>
             </div>
             <div class="sudoku-actions">
+              <button class="btn btn-sm btn-secondary" id="sudoku-level-select" style="display:none">选择关卡</button>
               <button class="btn btn-sm btn-secondary" id="sudoku-new">新游戏</button>
               <button class="btn btn-sm btn-secondary" id="sudoku-pause">暂停</button>
               <button class="btn btn-sm btn-secondary" id="sudoku-hint">提示</button>
@@ -370,11 +380,12 @@
     </div>
   </div>
 
-  <script src="js/resources.js?v=7"></script>
+  <script src="js/sudoku-levels.js?v=8"></script>
+  <script src="js/resources.js?v=8"></script>
   <script src="js/data.js?v=4"></script>
   <script src="js/exercises.js?v=6"></script>
   <script src="js/audio.js?v=4"></script>
-  <script src="js/app.js?v=7"></script>
+  <script src="js/app.js?v=8"></script>
 </body>
 </html>
 

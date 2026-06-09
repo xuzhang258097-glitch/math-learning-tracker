@@ -983,13 +983,13 @@ init();
 // ============================================================
 
 const SudokuGame = {
+  // ---- Core Data ----
   board: [],
   solution: [],
   initial: [],
   notes: [],
   history: [],
   selectedCell: null,
-  difficulty: 'easy',
   timer: null,
   seconds: 0,
   errors: 0,
@@ -997,10 +997,68 @@ const SudokuGame = {
   noteMode: false,
   completed: false,
   paused: false,
-  scanNumber: null, // number to highlight all occurrences of
+  scanNumber: null,
+
+  // ---- Level System ----
+  currentLevel: 1,
+  maxLevel: 100,
+  isLevelMode: false, // true when playing levels, false for free play
 
   // ---- Persistence ----
-  storageKey: 'sudokuGameState',
+  storageKey: 'sudokuGameState_v2',
+
+  // ---- Seeded Random for reproducible levels ----
+  _seed: 1,
+  _random() {
+    this._seed = (this._seed * 9301 + 49297) % 233280;
+    return this._seed / 233280;
+  },
+  _shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(this._random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  },
+
+  // ---- Level Management ----
+  getLevelConfig(level) {
+    // 1-20: 入门 (35-40 removed)
+    // 21-40: 简单 (40-45 removed)
+    // 41-60: 中等 (45-50 removed)
+    // 61-80: 困难 (50-55 removed)
+    // 81-95: 专家 (55-58 removed)
+    // 96-100: 大师 (58-60 removed)
+    if (level <= 20) return { name: `第${level}关`, removeCount: 35 + Math.floor((level - 1) * 0.25), difficulty: 'easy' };
+    if (level <= 40) return { name: `第${level}关`, removeCount: 40 + Math.floor((level - 21) * 0.25), difficulty: 'easy' };
+    if (level <= 60) return { name: `第${level}关`, removeCount: 45 + Math.floor((level - 41) * 0.25), difficulty: 'medium' };
+    if (level <= 80) return { name: `第${level}关`, removeCount: 50 + Math.floor((level - 61) * 0.25), difficulty: 'medium' };
+    if (level <= 95) return { name: `第${level}关`, removeCount: 55 + Math.floor((level - 81) * 0.2), difficulty: 'hard' };
+    return { name: `第${level}关`, removeCount: 58 + (level - 96), difficulty: 'hard' };
+  },
+
+  getLevelProgress() {
+    try {
+      const saved = localStorage.getItem('sudokuLevelProgress_v2');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return { unlockedLevel: 1, completedLevels: [], bestTimes: {} };
+  },
+
+  saveLevelProgress(level, timeSeconds) {
+    const progress = this.getLevelProgress();
+    if (!progress.completedLevels.includes(level)) {
+      progress.completedLevels.push(level);
+    }
+    if (!progress.bestTimes[level] || timeSeconds < progress.bestTimes[level]) {
+      progress.bestTimes[level] = timeSeconds;
+    }
+    if (level >= progress.unlockedLevel && level < this.maxLevel) {
+      progress.unlockedLevel = level + 1;
+    }
+    localStorage.setItem('sudokuLevelProgress_v2', JSON.stringify(progress));
+  },
 
   saveGame() {
     const data = {
@@ -1009,7 +1067,8 @@ const SudokuGame = {
       initial: this.initial,
       notes: this.notes.map(row => row.map(set => Array.from(set))),
       history: this.history.map(h => ({...h, prevNotes: Array.from(h.prevNotes)})),
-      difficulty: this.difficulty,
+      currentLevel: this.currentLevel,
+      isLevelMode: this.isLevelMode,
       seconds: this.seconds,
       errors: this.errors,
       hintsUsed: this.hintsUsed,
@@ -1029,7 +1088,8 @@ const SudokuGame = {
       this.initial = data.initial;
       this.notes = data.notes.map(row => row.map(arr => new Set(arr)));
       this.history = data.history.map(h => ({...h, prevNotes: new Set(h.prevNotes)}));
-      this.difficulty = data.difficulty || 'easy';
+      this.currentLevel = data.currentLevel || 1;
+      this.isLevelMode = data.isLevelMode || false;
       this.seconds = data.seconds || 0;
       this.errors = data.errors || 0;
       this.hintsUsed = data.hintsUsed || 0;
@@ -1044,9 +1104,124 @@ const SudokuGame = {
     localStorage.removeItem(this.storageKey);
   },
 
+  // ---- Level Selection UI ----
+  showLevelSelect() {
+    const container = document.getElementById('sudoku-container');
+    const progress = this.getLevelProgress();
+    const currentLevel = this.currentLevel;
+
+    let html = `
+      <div class="sudoku-level-select">
+        <div class="level-select-header">
+          <h3>🎯 选择关卡</h3>
+          <p>共100关，难度逐步递增</p>
+        </div>
+        <div class="level-grid">
+    `;
+
+    for (let i = 1; i <= 100; i++) {
+      const config = this.getLevelConfig(i);
+      const isUnlocked = i <= progress.unlockedLevel;
+      const isCompleted = progress.completedLevels.includes(i);
+      const bestTime = progress.bestTimes[i];
+      const isCurrent = i === currentLevel;
+
+      let statusClass = '';
+      let icon = '';
+      if (isCompleted) {
+        statusClass = 'completed';
+        icon = '★';
+      } else if (isUnlocked) {
+        statusClass = 'unlocked';
+        icon = i;
+      } else {
+        statusClass = 'locked';
+        icon = '🔒';
+      }
+
+      let timeDisplay = '';
+      if (bestTime) {
+        const m = Math.floor(bestTime / 60);
+        const s = bestTime % 60;
+        timeDisplay = `<span class="level-time">${m}:${String(s).padStart(2,'0')}</span>`;
+      }
+
+      html += `
+        <button class="level-btn ${statusClass} ${isCurrent ? 'current' : ''}" data-level="${i}" ${!isUnlocked ? 'disabled' : ''}>
+          <span class="level-num">${icon}</span>
+          <span class="level-diff">${config.difficulty === 'easy' ? '入' : config.difficulty === 'medium' ? '中' : '难'}</span>
+          ${timeDisplay}
+        </button>
+      `;
+    }
+
+    html += `</div>
+      <div class="level-select-footer">
+        <button class="btn btn-secondary" id="level-select-back">返回自由模式</button>
+        <button class="btn btn-primary" id="level-select-continue">继续第${currentLevel}关</button>
+      </div>
+    </div>`;
+
+    container.innerHTML = html;
+
+    // Bind events
+    container.querySelectorAll('.level-btn.unlocked, .level-btn.completed').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const level = parseInt(btn.dataset.level);
+        this.startLevel(level);
+      });
+    });
+
+    const backBtn = document.getElementById('level-select-back');
+    if (backBtn) backBtn.addEventListener('click', () => this.showFreePlay());
+
+    const continueBtn = document.getElementById('level-select-continue');
+    if (continueBtn) continueBtn.addEventListener('click', () => this.startLevel(this.currentLevel));
+  },
+
+  showFreePlay() {
+    this.isLevelMode = false;
+    this.generate('easy');
+    this.render();
+    this.renderNumpad();
+  },
+
+  startLevel(level) {
+    this.currentLevel = level;
+    this.isLevelMode = true;
+    this.generateForLevel(level);
+    this.render();
+    this.renderNumpad();
+    this.updateLevelInfo();
+  },
+
+  updateLevelInfo() {
+    const infoEl = document.getElementById('sudoku-level-info');
+    if (infoEl && this.isLevelMode) {
+      const config = this.getLevelConfig(this.currentLevel);
+      infoEl.innerHTML = `${config.name} <span class="level-badge-${config.difficulty}">${config.difficulty === 'easy' ? '入门' : config.difficulty === 'medium' ? '中等' : '困难'}</span>`;
+    }
+  },
+
   // ---- Sudoku Generator ----
   generate(difficulty) {
+    this.isLevelMode = false;
+    const removeCount = {easy: 35, medium: 45, hard: 55}[difficulty] || 35;
+    this._seed = Date.now(); // Random seed for free play
+    this._generateBoard(removeCount);
     this.difficulty = difficulty;
+    this.saveGame();
+    this.render();
+    this.renderNumpad();
+    this.startTimer();
+    this.updateRemaining();
+  },
+
+  generateForLevel(level) {
+    const config = this.getLevelConfig(level);
+    this._seed = level * 12345; // Fixed seed for reproducible levels
+    this._generateBoard(config.removeCount);
+    this.difficulty = config.difficulty;
     this.completed = false;
     this.errors = 0;
     this.hintsUsed = 0;
@@ -1059,14 +1234,17 @@ const SudokuGame = {
     this.paused = false;
     this.stopTimer();
     this.hidePauseOverlay();
+    this.saveGame();
+    this.startTimer();
+  },
 
+  _generateBoard(removeCount) {
     // Generate a complete valid board
     const board = Array.from({length:9}, () => Array(9).fill(0));
-    this.fillBoard(board);
+    this._fillBoard(board);
     this.solution = board.map(r => [...r]);
 
-    // Remove cells based on difficulty
-    const removeCount = {easy: 35, medium: 45, hard: 55}[difficulty] || 35;
+    // Remove cells
     this.board = board.map(r => [...r]);
     this.initial = Array.from({length:9}, () => Array(9).fill(true));
 
@@ -1075,8 +1253,9 @@ const SudokuGame = {
       for (let c = 0; c < 9; c++)
         positions.push([r, c]);
 
+    // Shuffle positions using seeded random
     for (let i = positions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(this._random() * (i + 1));
       [positions[i], positions[j]] = [positions[j], positions[i]];
     }
 
@@ -1087,30 +1266,24 @@ const SudokuGame = {
       this.initial[r][c] = false;
       removed++;
     }
-
-    this.saveGame();
-    this.render();
-    this.renderNumpad();
-    this.startTimer();
-    this.updateRemaining();
   },
 
-  fillBoard(board) {
-    const empty = this.findEmpty(board);
+  _fillBoard(board) {
+    const empty = this._findEmpty(board);
     if (!empty) return true;
     const [row, col] = empty;
-    const nums = this.shuffle([1,2,3,4,5,6,7,8,9]);
+    const nums = this._shuffle([1,2,3,4,5,6,7,8,9]);
     for (const num of nums) {
       if (this.isValidPlacement(board, row, col, num)) {
         board[row][col] = num;
-        if (this.fillBoard(board)) return true;
+        if (this._fillBoard(board)) return true;
         board[row][col] = 0;
       }
     }
     return false;
   },
 
-  findEmpty(board) {
+  _findEmpty(board) {
     for (let r = 0; r < 9; r++)
       for (let c = 0; c < 9; c++)
         if (board[r][c] === 0) return [r, c];
@@ -1130,13 +1303,42 @@ const SudokuGame = {
     return true;
   },
 
-  shuffle(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
+  // ---- Box Analysis for Smart Hiding ----
+  getSelectedBoxInfo() {
+    if (!this.selectedCell) return null;
+    const {row, col} = this.selectedCell;
+    const br = Math.floor(row / 3) * 3;
+    const bc = Math.floor(col / 3) * 3;
+
+    // Count empty cells in this box
+    let emptyCount = 0;
+    const emptyPositions = [];
+    for (let r = br; r < br + 3; r++) {
+      for (let c = bc; c < bc + 3; c++) {
+        if (this.board[r][c] === 0) {
+          emptyCount++;
+          emptyPositions.push([r, c]);
+        }
+      }
     }
-    return a;
+
+    // Find numbers that must go in this box
+    const possibleNumbers = new Set();
+    for (let n = 1; n <= 9; n++) {
+      for (const [er, ec] of emptyPositions) {
+        if (this.isValidPlacement(this.board, er, ec, n)) {
+          possibleNumbers.add(n);
+          break;
+        }
+      }
+    }
+
+    return {
+      emptyCount,
+      emptyPositions,
+      possibleNumbers: Array.from(possibleNumbers),
+      isLastCell: emptyCount === 1
+    };
   },
 
   // ---- Game Actions ----
@@ -1145,6 +1347,7 @@ const SudokuGame = {
     this.selectedCell = {row, col};
     this.scanNumber = null;
     this.render();
+    this.renderNumpad(); // Re-render numpad to show/hide based on box state
   },
 
   inputNumber(num) {
@@ -1292,6 +1495,7 @@ const SudokuGame = {
     this.scanNumber = num;
     this.selectedCell = null;
     this.render();
+    this.renderNumpad();
   },
 
   // ---- Pause ----
@@ -1309,11 +1513,22 @@ const SudokuGame = {
       this.hidePauseOverlay();
       if (pauseBtn) pauseBtn.textContent = '暂停';
     }
+    this.saveGame();
   },
 
   hidePauseOverlay() {
     const overlay = document.getElementById('sudoku-pause-overlay');
     if (overlay) overlay.style.display = 'none';
+  },
+
+  // ---- Auto-pause when leaving page ----
+  autoPauseOnHide() {
+    const gamesPage = document.getElementById('page-games');
+    if (!gamesPage || !gamesPage.classList.contains('active')) {
+      if (!this.paused && !this.completed) {
+        this.togglePause();
+      }
+    }
   },
 
   // ---- Win ----
@@ -1323,6 +1538,12 @@ const SudokuGame = {
         if (this.board[r][c] !== this.solution[r][c]) return;
     this.completed = true;
     this.stopTimer();
+
+    // Save level progress if in level mode
+    if (this.isLevelMode) {
+      this.saveLevelProgress(this.currentLevel, this.seconds);
+    }
+
     this.clearSavedGame();
     this.showWinModal();
     this.launchConfetti();
@@ -1335,8 +1556,15 @@ const SudokuGame = {
     const mins = Math.floor(this.seconds / 60);
     const secs = this.seconds % 60;
     const timeStr = mins > 0 ? `${mins}分${secs}秒` : `${secs}秒`;
+
+    let levelInfo = '';
+    if (this.isLevelMode) {
+      const config = this.getLevelConfig(this.currentLevel);
+      levelInfo = `<div class="win-stat"><span class="win-stat-label">关卡</span><span class="win-stat-value">${config.name}</span></div>`;
+    }
+
     statsEl.innerHTML = `
-      <div class="win-stat"><span class="win-stat-label">难度</span><span class="win-stat-value">${{easy:'简单',medium:'中等',hard:'困难'}[this.difficulty]}</span></div>
+      ${levelInfo}
       <div class="win-stat"><span class="win-stat-label">用时</span><span class="win-stat-value">${timeStr}</span></div>
       <div class="win-stat"><span class="win-stat-label">错误</span><span class="win-stat-value">${this.errors}</span></div>
       <div class="win-stat"><span class="win-stat-label">提示</span><span class="win-stat-value">${this.hintsUsed}</span></div>
@@ -1388,7 +1616,7 @@ const SudokuGame = {
         alive++;
         p.x += p.vx;
         p.y += p.vy;
-        p.vy += 0.15; // gravity
+        p.vy += 0.15;
         p.rotation += p.rotSpeed;
         p.life -= p.decay;
         ctx.save();
@@ -1512,6 +1740,12 @@ const SudokuGame = {
   renderNumpad() {
     const numpadEl = document.getElementById('sudoku-numpad');
     if (!numpadEl) return;
+
+    // Get box info for smart hiding
+    const boxInfo = this.getSelectedBoxInfo();
+    const hideImpossible = boxInfo && boxInfo.isLastCell;
+    const possibleNumbers = hideImpossible ? new Set(boxInfo.possibleNumbers) : new Set([1,2,3,4,5,6,7,8,9]);
+
     let html = '';
     for (let n = 1; n <= 9; n++) {
       let count = 0;
@@ -1520,7 +1754,11 @@ const SudokuGame = {
           if (this.board[r][c] === n) count++;
       const remaining = 9 - count;
       const done = remaining <= 0;
-      html += `<button class="numpad-btn ${done ? 'completed' : ''}" data-num="${n}">
+
+      // Hide impossible numbers when box has only 1 empty cell
+      const isHidden = hideImpossible && !possibleNumbers.includes(n) && !done;
+
+      html += `<button class="numpad-btn ${done ? 'completed' : ''} ${isHidden ? 'hidden' : ''}" data-num="${n}" ${isHidden ? 'disabled' : ''}>
         <span class="numpad-main">${n}</span>
         ${!done ? `<span class="numpad-count">${remaining}</span>` : ''}
       </button>`;
@@ -1534,7 +1772,6 @@ const SudokuGame = {
         if (num === 0) {
           this.clearCell();
         } else if (btn.classList.contains('completed')) {
-          // Scan mode: highlight all occurrences of this number
           this.scanForNumber(num);
         } else {
           this.inputNumber(num);
@@ -1644,6 +1881,72 @@ function renderGames() {
     if (winCloseBtn) winCloseBtn.addEventListener('click', () => {
       SudokuGame.hideWinModal();
     });
+
+    // Mode switch buttons
+    const freeModeBtn = document.getElementById('sudoku-mode-free');
+    const levelsModeBtn = document.getElementById('sudoku-mode-levels');
+    const levelSelectBtn = document.getElementById('sudoku-level-select');
+    const difficultySelector = document.getElementById('sudoku-difficulty-selector');
+
+    if (freeModeBtn) {
+      freeModeBtn.addEventListener('click', () => {
+        freeModeBtn.classList.add('btn-primary');
+        freeModeBtn.classList.remove('btn-secondary');
+        levelsModeBtn.classList.add('btn-secondary');
+        levelsModeBtn.classList.remove('btn-primary');
+        difficultySelector.style.display = 'flex';
+        if (levelSelectBtn) levelSelectBtn.style.display = 'none';
+        document.getElementById('sudoku-level-info').style.display = 'none';
+        SudokuGame.showFreePlay();
+      });
+    }
+
+    if (levelsModeBtn) {
+      levelsModeBtn.addEventListener('click', () => {
+        levelsModeBtn.classList.add('btn-primary');
+        levelsModeBtn.classList.remove('btn-secondary');
+        freeModeBtn.classList.add('btn-secondary');
+        freeModeBtn.classList.remove('btn-primary');
+        difficultySelector.style.display = 'none';
+        if (levelSelectBtn) levelSelectBtn.style.display = 'inline-flex';
+        SudokuGame.showLevelSelect();
+      });
+    }
+
+    if (levelSelectBtn) {
+      levelSelectBtn.addEventListener('click', () => {
+        SudokuGame.showLevelSelect();
+      });
+    }
+
+    // Page visibility change - auto pause when leaving
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && !SudokuGame.paused && !SudokuGame.completed) {
+        const gamesPage = document.getElementById('page-games');
+        if (gamesPage && gamesPage.classList.contains('active')) {
+          SudokuGame.togglePause();
+        }
+      }
+    });
+
+    // Navigation change - auto pause when leaving games page
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          const gamesPage = document.getElementById('page-games');
+          if (gamesPage && !gamesPage.classList.contains('active')) {
+            if (!SudokuGame.paused && !SudokuGame.completed) {
+              SudokuGame.togglePause();
+            }
+          }
+        }
+      });
+    });
+
+    const gamesPage = document.getElementById('page-games');
+    if (gamesPage) {
+      observer.observe(gamesPage, { attributes: true });
+    }
   }
 
   // Generate and render board only when page is visible
@@ -1655,7 +1958,10 @@ function renderGames() {
       SudokuGame.renderNumpad();
       SudokuGame.updateRemaining();
       SudokuGame.updateTimerDisplay();
-      SudokuGame.startTimer();
+      SudokuGame.updateLevelInfo();
+      if (!SudokuGame.paused && !SudokuGame.completed) {
+        SudokuGame.startTimer();
+      }
     } else {
       SudokuGame.generate('easy');
       SudokuGame.renderNumpad();

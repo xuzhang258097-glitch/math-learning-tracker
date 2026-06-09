@@ -2405,3 +2405,165 @@ body {
   .sudoku-stat-value { font-size: 15px; }
 }
 
+/* ---- Level Mode Styles ---- */
+.sudoku-mode-switch {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.sudoku-level-info {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-title);
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  background: var(--bg-active);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.level-badge-easy {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: #36D399;
+  color: white;
+  border-radius: 12px;
+}
+
+.level-badge-medium {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: #FF9F43;
+  color: white;
+  border-radius: 12px;
+}
+
+.level-badge-hard {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: #F87272;
+  color: white;
+  border-radius: 12px;
+}
+
+/* ---- Level Selection Grid ---- */
+.sudoku-level-select {
+  padding: 20px 0;
+}
+
+.level-select-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.level-select-header h3 {
+  font-size: 18px;
+  color: var(--text-title);
+  margin-bottom: 4px;
+}
+
+.level-select-header p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 8px;
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+
+.level-btn {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  padding: 4px;
+}
+
+.level-btn.unlocked {
+  background: var(--bg-active);
+  color: var(--text-body);
+  border: 1px solid var(--border-light);
+}
+
+.level-btn.unlocked:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.level-btn.completed {
+  background: linear-gradient(135deg, #36D399 0%, #2aa876 100%);
+  color: white;
+}
+
+.level-btn.completed:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(54, 211, 153, 0.3);
+}
+
+.level-btn.locked {
+  background: var(--bg-active);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.level-btn.current {
+  ring: 2px solid var(--primary);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.level-num {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.level-diff {
+  font-size: 9px;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.level-time {
+  font-size: 8px;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.level-select-footer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ---- Numpad hidden state ---- */
+.numpad-btn.hidden {
+  opacity: 0.2;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .level-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
