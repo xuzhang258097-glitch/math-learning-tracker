@@ -372,7 +372,10 @@ function renderToday() {
                 <button class="btn-answer" onclick="toggleTodayAnswer(this, ${idx})">
                   <span>\u67e5\u770b\u7b54\u6848</span>
                 </button>
-                <div class="exercise-answer" id="today-ex-answer-${idx}">${escapeHtml(ex.answer)}</div>
+                <div class="exercise-answer" id="today-ex-answer-${idx}">
+                  <div class="answer-brief">${escapeHtml(ex.answer)}</div>
+                  ${ex.detail ? `<div class="answer-detail">${escapeHtml(ex.detail).replace(/\\n/g, '<br>')}</div>` : ''}
+                </div>
               </div>
             </div>
           `).join('')}
@@ -812,7 +815,10 @@ function renderModalLinksAndExercises(phaseIdx, dayIdx) {
           <button class="btn-answer" onclick="toggleAnswer(this, ${idx})">
             <span>查看答案</span>
           </button>
-          <div class="exercise-answer" id="ex-answer-${idx}">${escapeHtml(ex.answer)}</div>
+          <div class="exercise-answer" id="ex-answer-${idx}">
+            <div class="answer-brief">${escapeHtml(ex.answer)}</div>
+            ${ex.detail ? `<div class="answer-detail">${escapeHtml(ex.detail).replace(/\\n/g, '<br>')}</div>` : ''}
+          </div>
         </div>
       </div>
     `).join('');
