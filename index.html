@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <div class="app-container">
@@ -274,9 +274,11 @@
             </div>
             <div class="sudoku-actions">
               <button class="btn btn-sm btn-secondary" id="sudoku-new">新游戏</button>
+              <button class="btn btn-sm btn-secondary" id="sudoku-pause">暂停</button>
               <button class="btn btn-sm btn-secondary" id="sudoku-hint">提示</button>
               <button class="btn btn-sm btn-secondary" id="sudoku-check">检查</button>
               <button class="btn btn-sm btn-secondary" id="sudoku-undo">撤销</button>
+              <button class="btn btn-sm btn-secondary" id="sudoku-auto">自动候选</button>
             </div>
           </div>
 
@@ -293,10 +295,33 @@
               <span class="sudoku-stat-label">提示</span>
               <span class="sudoku-stat-value" id="sudoku-hints-used">0</span>
             </div>
+            <div class="sudoku-stat">
+              <span class="sudoku-stat-label">剩余</span>
+              <span class="sudoku-stat-value" id="sudoku-remaining">81</span>
+            </div>
           </div>
 
-          <div class="sudoku-board" id="sudoku-board">
-            <!-- Filled by JS -->
+          <div class="sudoku-board-wrap">
+            <div class="sudoku-board" id="sudoku-board">
+              <!-- Filled by JS -->
+            </div>
+            <div class="sudoku-pause-overlay" id="sudoku-pause-overlay" style="display:none">
+              <div class="pause-icon">II</div>
+              <div class="pause-text">游戏暂停</div>
+              <button class="btn btn-primary" id="sudoku-resume">继续游戏</button>
+            </div>
+          </div>
+
+          <div class="sudoku-win-modal" id="sudoku-win-modal" style="display:none">
+            <div class="win-content">
+              <div class="win-trophy">🏆</div>
+              <div class="win-title">恭喜完成！</div>
+              <div class="win-stats" id="sudoku-win-stats"></div>
+              <div class="win-actions">
+                <button class="btn btn-primary" id="sudoku-play-again">再玩一局</button>
+                <button class="btn btn-secondary" id="sudoku-win-close">返回</button>
+              </div>
+            </div>
           </div>
 
           <div class="sudoku-numpad" id="sudoku-numpad">
@@ -435,7 +460,7 @@
   <script src="js/data.js?v=4"></script>
   <script src="js/exercises.js?v=4"></script>
   <script src="js/audio.js?v=4"></script>
-  <script src="js/app.js?v=4"></script>
+  <script src="js/app.js?v=5"></script>
 </body>
 </html>
 

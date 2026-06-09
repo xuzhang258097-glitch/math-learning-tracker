@@ -1946,6 +1946,195 @@ body {
   100% { transform: scale(1); }
 }
 
+/* ---- Numpad count badge ---- */
+.numpad-btn {
+  position: relative;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.numpad-main {
+  line-height: 1;
+}
+
+.numpad-count {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.numpad-btn.completed {
+  opacity: 0.35;
+  pointer-events: auto;
+  cursor: pointer;
+  background: var(--bg-active);
+}
+
+.numpad-btn.completed:hover {
+  opacity: 0.55;
+  transform: translateY(-2px);
+}
+
+/* ---- Board wrap & pause overlay ---- */
+.sudoku-board-wrap {
+  position: relative;
+  max-width: 468px;
+  margin: 0 auto 20px;
+}
+
+.sudoku-board-wrap .sudoku-board {
+  margin-bottom: 0;
+}
+
+.sudoku-pause-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(232, 235, 240, 0.85);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-radius: 12px;
+  z-index: 10;
+}
+
+.dark .sudoku-pause-overlay {
+  background: rgba(30, 33, 40, 0.9);
+}
+
+.pause-icon {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+.pause-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-title);
+}
+
+/* ---- Win Modal ---- */
+.sudoku-win-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.win-content {
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 40px 36px;
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  animation: winBounce 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes winBounce {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.04); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.win-trophy {
+  font-size: 56px;
+  margin-bottom: 12px;
+  animation: trophySpin 0.8s ease;
+}
+
+@keyframes trophySpin {
+  0% { transform: rotateY(0deg) scale(0); }
+  60% { transform: rotateY(360deg) scale(1.15); }
+  100% { transform: rotateY(360deg) scale(1); }
+}
+
+.win-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 20px;
+}
+
+.win-stats {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.win-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.win-stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.win-stat-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-title);
+  font-variant-numeric: tabular-nums;
+}
+
+.win-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ---- Scan match (number highlight) ---- */
+.sudoku-cell.scan-match {
+  background: rgba(250, 176, 5, 0.25) !important;
+  animation: scanPulse 0.6s ease;
+}
+
+.dark .sudoku-cell.scan-match {
+  background: rgba(250, 176, 5, 0.35) !important;
+}
+
+@keyframes scanPulse {
+  0% { background: rgba(250, 176, 5, 0.5); }
+  100% { background: rgba(250, 176, 5, 0.25); }
+}
+
+/* ---- Pop-in for correctly filled numbers ---- */
+.cell-value.pop-in {
+  animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 /* ============================================================
    RESPONSIVE: Mobile & Tablet
    ============================================================ */

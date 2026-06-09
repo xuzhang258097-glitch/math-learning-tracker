@@ -972,16 +972,16 @@ document.addEventListener('keydown', (e) => {
 init();
 
 // ============================================================
-// SUDOKU GAME ENGINE
+// SUDOKU GAME ENGINE v2 - Advanced Edition
 // ============================================================
 
 const SudokuGame = {
-  board: [],          // current board state (0 = empty)
-  solution: [],       // complete solution
-  initial: [],       // which cells are given (true/false)
-  notes: [],         // pencil marks: notes[row][col] = Set of numbers
-  history: [],       // undo stack
-  selectedCell: null, // {row, col}
+  board: [],
+  solution: [],
+  initial: [],
+  notes: [],
+  history: [],
+  selectedCell: null,
   difficulty: 'easy',
   timer: null,
   seconds: 0,
@@ -989,6 +989,53 @@ const SudokuGame = {
   hintsUsed: 0,
   noteMode: false,
   completed: false,
+  paused: false,
+  scanNumber: null, // number to highlight all occurrences of
+
+  // ---- Persistence ----
+  storageKey: 'sudokuGameState',
+
+  saveGame() {
+    const data = {
+      board: this.board,
+      solution: this.solution,
+      initial: this.initial,
+      notes: this.notes.map(row => row.map(set => Array.from(set))),
+      history: this.history.map(h => ({...h, prevNotes: Array.from(h.prevNotes)})),
+      difficulty: this.difficulty,
+      seconds: this.seconds,
+      errors: this.errors,
+      hintsUsed: this.hintsUsed,
+      completed: this.completed
+    };
+    localStorage.setItem(this.storageKey, JSON.stringify(data));
+  },
+
+  loadSavedGame() {
+    try {
+      const saved = localStorage.getItem(this.storageKey);
+      if (!saved) return false;
+      const data = JSON.parse(saved);
+      if (!data.board || !data.solution) return false;
+      this.board = data.board;
+      this.solution = data.solution;
+      this.initial = data.initial;
+      this.notes = data.notes.map(row => row.map(arr => new Set(arr)));
+      this.history = data.history.map(h => ({...h, prevNotes: new Set(h.prevNotes)}));
+      this.difficulty = data.difficulty || 'easy';
+      this.seconds = data.seconds || 0;
+      this.errors = data.errors || 0;
+      this.hintsUsed = data.hintsUsed || 0;
+      this.completed = data.completed || false;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  },
+
+  clearSavedGame() {
+    localStorage.removeItem(this.storageKey);
+  },
 
   // ---- Sudoku Generator ----
   generate(difficulty) {
@@ -1000,8 +1047,11 @@ const SudokuGame = {
     this.notes = Array.from({length:9}, () => Array.from({length:9}, () => new Set()));
     this.selectedCell = null;
     this.noteMode = false;
+    this.scanNumber = null;
     this.seconds = 0;
+    this.paused = false;
     this.stopTimer();
+    this.hidePauseOverlay();
 
     // Generate a complete valid board
     const board = Array.from({length:9}, () => Array(9).fill(0));
@@ -1018,7 +1068,6 @@ const SudokuGame = {
       for (let c = 0; c < 9; c++)
         positions.push([r, c]);
 
-    // Shuffle positions
     for (let i = positions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [positions[i], positions[j]] = [positions[j], positions[i]];
@@ -1027,14 +1076,16 @@ const SudokuGame = {
     let removed = 0;
     for (const [r, c] of positions) {
       if (removed >= removeCount) break;
-      const backup = this.board[r][c];
       this.board[r][c] = 0;
       this.initial[r][c] = false;
       removed++;
     }
 
+    this.saveGame();
     this.render();
+    this.renderNumpad();
     this.startTimer();
+    this.updateRemaining();
   },
 
   fillBoard(board) {
@@ -1060,13 +1111,10 @@ const SudokuGame = {
   },
 
   isValidPlacement(board, row, col, num) {
-    // Check row
     for (let c = 0; c < 9; c++)
       if (board[row][c] === num) return false;
-    // Check col
     for (let r = 0; r < 9; r++)
       if (board[r][col] === num) return false;
-    // Check 3x3 box
     const br = Math.floor(row / 3) * 3;
     const bc = Math.floor(col / 3) * 3;
     for (let r = br; r < br + 3; r++)
@@ -1086,54 +1134,51 @@ const SudokuGame = {
 
   // ---- Game Actions ----
   selectCell(row, col) {
-    if (this.completed) return;
+    if (this.completed || this.paused) return;
     this.selectedCell = {row, col};
+    this.scanNumber = null;
     this.render();
   },
 
   inputNumber(num) {
-    if (!this.selectedCell || this.completed) return;
+    if (!this.selectedCell || this.completed || this.paused) return;
     const {row, col} = this.selectedCell;
-    if (this.initial[row][col]) return; // can't change given cells
+    if (this.initial[row][col]) return;
 
     if (this.noteMode) {
-      // Toggle pencil mark
       const prev = new Set(this.notes[row][col]);
       if (this.notes[row][col].has(num)) {
         this.notes[row][col].delete(num);
       } else {
         this.notes[row][col].add(num);
       }
-      this.board[row][col] = 0; // clear the cell value when adding notes
+      this.board[row][col] = 0;
       this.history.push({type:'note', row, col, prevNotes: prev, prevVal: 0});
     } else {
-      // Place number
       const prevVal = this.board[row][col];
       const prevNotes = new Set(this.notes[row][col]);
       this.history.push({type:'input', row, col, prevVal, prevNotes});
       this.board[row][col] = num;
       this.notes[row][col].clear();
 
-      // Check if wrong
       if (num !== this.solution[row][col]) {
         this.errors++;
         AudioSystem.playClick && AudioSystem.playClick();
       } else {
-        // Remove this number from notes in same row/col/box
         this.removeRelatedNotes(row, col, num);
       }
     }
 
+    this.saveGame();
     this.render();
+    this.renderNumpad();
+    this.updateRemaining();
     this.checkWin();
   },
 
   removeRelatedNotes(row, col, num) {
-    // Same row
     for (let c = 0; c < 9; c++) this.notes[row][c].delete(num);
-    // Same col
     for (let r = 0; r < 9; r++) this.notes[r][col].delete(num);
-    // Same box
     const br = Math.floor(row / 3) * 3;
     const bc = Math.floor(col / 3) * 3;
     for (let r = br; r < br + 3; r++)
@@ -1142,7 +1187,7 @@ const SudokuGame = {
   },
 
   clearCell() {
-    if (!this.selectedCell || this.completed) return;
+    if (!this.selectedCell || this.completed || this.paused) return;
     const {row, col} = this.selectedCell;
     if (this.initial[row][col]) return;
     const prevVal = this.board[row][col];
@@ -1150,11 +1195,14 @@ const SudokuGame = {
     this.history.push({type:'clear', row, col, prevVal, prevNotes});
     this.board[row][col] = 0;
     this.notes[row][col].clear();
+    this.saveGame();
     this.render();
+    this.renderNumpad();
+    this.updateRemaining();
   },
 
   undo() {
-    if (this.history.length === 0 || this.completed) return;
+    if (this.history.length === 0 || this.completed || this.paused) return;
     const action = this.history.pop();
     const {row, col} = action;
     if (action.type === 'input' || action.type === 'clear') {
@@ -1163,12 +1211,14 @@ const SudokuGame = {
     } else if (action.type === 'note') {
       this.notes[row][col] = action.prevNotes;
     }
+    this.saveGame();
     this.render();
+    this.renderNumpad();
+    this.updateRemaining();
   },
 
   giveHint() {
-    if (this.completed) return;
-    // Find an empty cell and fill it
+    if (this.completed || this.paused) return;
     const emptyCells = [];
     for (let r = 0; r < 9; r++)
       for (let c = 0; c < 9; c++)
@@ -1185,12 +1235,15 @@ const SudokuGame = {
     this.removeRelatedNotes(r, c, this.solution[r][c]);
     this.hintsUsed++;
     this.selectedCell = {row: r, col: c};
+    this.saveGame();
     this.render();
+    this.renderNumpad();
+    this.updateRemaining();
     this.checkWin();
   },
 
   checkBoard() {
-    if (this.completed) return;
+    if (this.completed || this.paused) return;
     let wrongCount = 0;
     for (let r = 0; r < 9; r++) {
       for (let c = 0; c < 9; c++) {
@@ -1200,34 +1253,161 @@ const SudokuGame = {
       }
     }
     if (wrongCount === 0) {
-      showToast('✅ 目前没有错误，继续加油！');
+      showToast('目前没有错误，继续加油！');
     } else {
-      showToast(`❌ 发现 ${wrongCount} 个错误，仔细检查一下`);
+      showToast(`发现 ${wrongCount} 个错误，仔细检查一下`);
     }
   },
 
+  autoCandidates() {
+    if (this.completed || this.paused) return;
+    let added = 0;
+    for (let r = 0; r < 9; r++) {
+      for (let c = 0; c < 9; c++) {
+        if (this.board[r][c] !== 0) continue;
+        for (let n = 1; n <= 9; n++) {
+          if (this.isValidPlacement(this.board, r, c, n)) {
+            if (!this.notes[r][c].has(n)) {
+              this.notes[r][c].add(n);
+              added++;
+            }
+          }
+        }
+      }
+    }
+    this.saveGame();
+    this.render();
+    showToast(added > 0 ? `已填充 ${added} 个候选数` : '没有新的候选数可填充');
+  },
+
+  scanForNumber(num) {
+    if (this.completed || this.paused) return;
+    this.scanNumber = num;
+    this.selectedCell = null;
+    this.render();
+  },
+
+  // ---- Pause ----
+  togglePause() {
+    if (this.completed) return;
+    this.paused = !this.paused;
+    const overlay = document.getElementById('sudoku-pause-overlay');
+    const pauseBtn = document.getElementById('sudoku-pause');
+    if (this.paused) {
+      this.stopTimer();
+      if (overlay) overlay.style.display = 'flex';
+      if (pauseBtn) pauseBtn.textContent = '继续';
+    } else {
+      this.startTimer();
+      this.hidePauseOverlay();
+      if (pauseBtn) pauseBtn.textContent = '暂停';
+    }
+  },
+
+  hidePauseOverlay() {
+    const overlay = document.getElementById('sudoku-pause-overlay');
+    if (overlay) overlay.style.display = 'none';
+  },
+
+  // ---- Win ----
   checkWin() {
     for (let r = 0; r < 9; r++)
       for (let c = 0; c < 9; c++)
         if (this.board[r][c] !== this.solution[r][c]) return;
-    // Won!
     this.completed = true;
     this.stopTimer();
+    this.clearSavedGame();
+    this.showWinModal();
+    this.launchConfetti();
+  },
+
+  showWinModal() {
+    const modal = document.getElementById('sudoku-win-modal');
+    const statsEl = document.getElementById('sudoku-win-stats');
+    if (!modal || !statsEl) return;
     const mins = Math.floor(this.seconds / 60);
     const secs = this.seconds % 60;
-    showToast(`🎉 恭喜完成！用时 ${mins}分${secs}秒，错误${this.errors}次，提示${this.hintsUsed}次`);
-    celebrateCheckin && celebrateCheckin();
+    const timeStr = mins > 0 ? `${mins}分${secs}秒` : `${secs}秒`;
+    statsEl.innerHTML = `
+      <div class="win-stat"><span class="win-stat-label">难度</span><span class="win-stat-value">${{easy:'简单',medium:'中等',hard:'困难'}[this.difficulty]}</span></div>
+      <div class="win-stat"><span class="win-stat-label">用时</span><span class="win-stat-value">${timeStr}</span></div>
+      <div class="win-stat"><span class="win-stat-label">错误</span><span class="win-stat-value">${this.errors}</span></div>
+      <div class="win-stat"><span class="win-stat-label">提示</span><span class="win-stat-value">${this.hintsUsed}</span></div>
+    `;
+    modal.style.display = 'flex';
+  },
+
+  hideWinModal() {
+    const modal = document.getElementById('sudoku-win-modal');
+    if (modal) modal.style.display = 'none';
+  },
+
+  launchConfetti() {
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '999';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colors = ['#165DFF', '#36D399', '#FF9F43', '#F87272', '#86909C', '#A855F7', '#06B6D4'];
+    const particles = [];
+    for (let i = 0; i < 150; i++) {
+      particles.push({
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 16,
+        vy: (Math.random() - 0.5) * 16 - 6,
+        size: 4 + Math.random() * 6,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 10,
+        life: 1,
+        decay: 0.005 + Math.random() * 0.01
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let alive = 0;
+      for (const p of particles) {
+        if (p.life <= 0) continue;
+        alive++;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.15; // gravity
+        p.rotation += p.rotSpeed;
+        p.life -= p.decay;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.globalAlpha = p.life;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+      }
+      if (alive > 0) {
+        requestAnimationFrame(animate);
+      } else {
+        canvas.remove();
+      }
+    }
+    requestAnimationFrame(animate);
   },
 
   // ---- Timer ----
   startTimer() {
     this.stopTimer();
     this.timer = setInterval(() => {
+      if (this.paused || this.completed) return;
       this.seconds++;
-      const m = String(Math.floor(this.seconds / 60)).padStart(2, '0');
-      const s = String(this.seconds % 60).padStart(2, '0');
-      const el = document.getElementById('sudoku-timer');
-      if (el) el.textContent = `${m}:${s}`;
+      this.updateTimerDisplay();
     }, 1000);
   },
 
@@ -1236,6 +1416,22 @@ const SudokuGame = {
       clearInterval(this.timer);
       this.timer = null;
     }
+  },
+
+  updateTimerDisplay() {
+    const m = String(Math.floor(this.seconds / 60)).padStart(2, '0');
+    const s = String(this.seconds % 60).padStart(2, '0');
+    const el = document.getElementById('sudoku-timer');
+    if (el) el.textContent = `${m}:${s}`;
+  },
+
+  updateRemaining() {
+    let filled = 0;
+    for (let r = 0; r < 9; r++)
+      for (let c = 0; c < 9; c++)
+        if (this.board[r][c] !== 0) filled++;
+    const el = document.getElementById('sudoku-remaining');
+    if (el) el.textContent = 81 - filled;
   },
 
   // ---- Rendering ----
@@ -1257,6 +1453,7 @@ const SudokuGame = {
         );
         const isSameNum = val !== 0 && this.selectedCell && this.board[this.selectedCell.row][this.selectedCell.col] === val;
         const isWrong = val !== 0 && !isInitial && val !== this.solution[r][c];
+        const isScanMatch = this.scanNumber !== null && val === this.scanNumber;
         const cellNotes = this.notes[r][c];
 
         let cls = 'sudoku-cell';
@@ -1264,14 +1461,14 @@ const SudokuGame = {
         if (isSelected) cls += ' selected';
         else if (isRelated) cls += ' related';
         if (isSameNum && !isSelected) cls += ' same-num';
+        if (isScanMatch && !isSelected) cls += ' scan-match';
         if (isWrong) cls += ' wrong';
-        // Box borders
         if (c % 3 === 0 && c > 0) cls += ' box-left';
         if (r % 3 === 0 && r > 0) cls += ' box-top';
 
         let content = '';
         if (val !== 0) {
-          content = `<span class="cell-value">${val}</span>`;
+          content = `<span class="cell-value ${!isInitial && val === this.solution[r][c] ? 'pop-in' : ''}">${val}</span>`;
         } else if (cellNotes.size > 0) {
           content = '<div class="cell-notes">';
           for (let n = 1; n <= 9; n++) {
@@ -1284,21 +1481,18 @@ const SudokuGame = {
       }
     }
     boardEl.innerHTML = html;
-    console.log('[Sudoku] Board rendered, cells:', boardEl.children.length);
 
-    // Update stats
+    // Update stats display
     const errorsEl = document.getElementById('sudoku-errors');
     if (errorsEl) errorsEl.textContent = this.errors;
     const hintsEl = document.getElementById('sudoku-hints-used');
     if (hintsEl) hintsEl.textContent = this.hintsUsed;
 
-    // Note button state
     const noteBtn = document.getElementById('sudoku-note-btn');
     if (noteBtn) {
       noteBtn.className = `btn btn-sm ${this.noteMode ? 'btn-primary' : 'btn-secondary'}`;
     }
 
-    // Attach cell click handlers
     boardEl.querySelectorAll('.sudoku-cell').forEach(cell => {
       cell.addEventListener('click', () => {
         const row = parseInt(cell.dataset.row);
@@ -1313,15 +1507,18 @@ const SudokuGame = {
     if (!numpadEl) return;
     let html = '';
     for (let n = 1; n <= 9; n++) {
-      // Count remaining
       let count = 0;
       for (let r = 0; r < 9; r++)
         for (let c = 0; c < 9; c++)
           if (this.board[r][c] === n) count++;
-      const done = count >= 9;
-      html += `<button class="numpad-btn ${done ? 'completed' : ''}" data-num="${n}">${n}</button>`;
+      const remaining = 9 - count;
+      const done = remaining <= 0;
+      html += `<button class="numpad-btn ${done ? 'completed' : ''}" data-num="${n}">
+        <span class="numpad-main">${n}</span>
+        ${!done ? `<span class="numpad-count">${remaining}</span>` : ''}
+      </button>`;
     }
-    html += `<button class="numpad-btn numpad-delete" data-num="0">✕</button>`;
+    html += `<button class="numpad-btn numpad-delete" data-num="0"><span class="numpad-main">✕</span></button>`;
     numpadEl.innerHTML = html;
 
     numpadEl.querySelectorAll('.numpad-btn').forEach(btn => {
@@ -1329,6 +1526,9 @@ const SudokuGame = {
         const num = parseInt(btn.dataset.num);
         if (num === 0) {
           this.clearCell();
+        } else if (btn.classList.contains('completed')) {
+          // Scan mode: highlight all occurrences of this number
+          this.scanForNumber(num);
         } else {
           this.inputNumber(num);
         }
@@ -1340,6 +1540,7 @@ const SudokuGame = {
 // ---- Keyboard support for Sudoku ----
 document.addEventListener('keydown', (e) => {
   if (!SudokuGame.selectedCell) return;
+  if (SudokuGame.completed || SudokuGame.paused) return;
   // Only when on games page
   const gamesPage = document.getElementById('page-games');
   if (!gamesPage || !gamesPage.classList.contains('active')) return;
@@ -1410,13 +1611,48 @@ function renderGames() {
       SudokuGame.noteMode = !SudokuGame.noteMode;
       SudokuGame.render();
     });
+
+    // Pause / Resume
+    const pauseBtn = document.getElementById('sudoku-pause');
+    if (pauseBtn) pauseBtn.addEventListener('click', () => SudokuGame.togglePause());
+
+    const resumeBtn = document.getElementById('sudoku-resume');
+    if (resumeBtn) resumeBtn.addEventListener('click', () => SudokuGame.togglePause());
+
+    // Auto candidates
+    const autoBtn = document.getElementById('sudoku-auto');
+    if (autoBtn) autoBtn.addEventListener('click', () => SudokuGame.autoCandidates());
+
+    // Win modal
+    const playAgainBtn = document.getElementById('sudoku-play-again');
+    if (playAgainBtn) playAgainBtn.addEventListener('click', () => {
+      SudokuGame.hideWinModal();
+      const activeDiff = document.querySelector('.sudoku-difficulty .btn.active');
+      const diff = activeDiff ? activeDiff.dataset.difficulty : 'easy';
+      SudokuGame.generate(diff);
+      SudokuGame.renderNumpad();
+    });
+
+    const winCloseBtn = document.getElementById('sudoku-win-close');
+    if (winCloseBtn) winCloseBtn.addEventListener('click', () => {
+      SudokuGame.hideWinModal();
+    });
   }
 
   // Generate and render board only when page is visible
   const boardEl = document.getElementById('sudoku-board');
   if (boardEl && boardEl.children.length === 0) {
-    SudokuGame.generate('easy');
-    SudokuGame.renderNumpad();
+    // Try to restore a saved game first
+    if (SudokuGame.loadSavedGame()) {
+      SudokuGame.render();
+      SudokuGame.renderNumpad();
+      SudokuGame.updateRemaining();
+      SudokuGame.updateTimerDisplay();
+      SudokuGame.startTimer();
+    } else {
+      SudokuGame.generate('easy');
+      SudokuGame.renderNumpad();
+    }
   }
 }
 
