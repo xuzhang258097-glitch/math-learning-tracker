@@ -7,8 +7,8 @@
 const EXERCISES_DB = {
   "0-0": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "求 f(x)=√(5-x)+ln(x+1) 的定义域。", answer: "x+1>0 且 5-x≥0，即 -1<x≤5。定义域 (-1,5]。" , detail: "【解题思路】求定义域需要满足所有表达式的约束条件。\n【步骤1】根号内非负：5−x ≥ 0 → x ≤ 5\n【步骤2】对数真数大于0：x+1 > 0 → x > −1\n【步骤3】取交集：−1 < x ≤ 5\n【答案】定义域为 (−1, 5]\n【知识点】√u 的定义域要求 u≥0；ln(u) 的定义域要求 u>0；多个条件的交集。" },
@@ -25,8 +25,8 @@ const EXERCISES_DB = {
   },
   "0-1": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "解方程 cosx=1/2，x∈[0,2π]。", answer: "x=π/3 或 5π/3。" , detail: "【解题思路】在 [0, 2π] 内解 cos x = 1/2。\n【步骤1】cos x = 1/2 的基本解：x = π/3（第一象限）\n【步骤2】cos 在第四象限也为正：x = 2π − π/3 = 5π/3\n【步骤3】验证：cos(π/3) = 1/2 ✓；cos(5π/3) = cos(−π/3) = 1/2 ✓\n【答案】x = π/3 或 5π/3\n【知识点】cos x = a (|a|≤1) 在 [0,2π] 上有两个解。" },
@@ -43,8 +43,8 @@ const EXERCISES_DB = {
   },
   "0-2": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "求 f(x)=√(5-x)+ln(x+1) 的定义域。", answer: "x+1>0 且 5-x≥0，即 -1<x≤5。定义域 (-1,5]。" , detail: "【解题思路】求定义域需要满足所有表达式的约束条件。\n【步骤1】根号内非负：5−x ≥ 0 → x ≤ 5\n【步骤2】对数真数大于0：x+1 > 0 → x > −1\n【步骤3】取交集：−1 < x ≤ 5\n【答案】定义域为 (−1, 5]\n【知识点】√u 的定义域要求 u≥0；ln(u) 的定义域要求 u>0；多个条件的交集。" },
@@ -61,8 +61,8 @@ const EXERCISES_DB = {
   },
   "0-3": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "解方程 cosx=1/2，x∈[0,2π]。", answer: "x=π/3 或 5π/3。" , detail: "【解题思路】在 [0, 2π] 内解 cos x = 1/2。\n【步骤1】cos x = 1/2 的基本解：x = π/3（第一象限）\n【步骤2】cos 在第四象限也为正：x = 2π − π/3 = 5π/3\n【步骤3】验证：cos(π/3) = 1/2 ✓；cos(5π/3) = cos(−π/3) = 1/2 ✓\n【答案】x = π/3 或 5π/3\n【知识点】cos x = a (|a|≤1) 在 [0,2π] 上有两个解。" },
@@ -79,8 +79,8 @@ const EXERCISES_DB = {
   },
   "0-4": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "求 f(x)=√(5-x)+ln(x+1) 的定义域。", answer: "x+1>0 且 5-x≥0，即 -1<x≤5。定义域 (-1,5]。" , detail: "【解题思路】求定义域需要满足所有表达式的约束条件。\n【步骤1】根号内非负：5−x ≥ 0 → x ≤ 5\n【步骤2】对数真数大于0：x+1 > 0 → x > −1\n【步骤3】取交集：−1 < x ≤ 5\n【答案】定义域为 (−1, 5]\n【知识点】√u 的定义域要求 u≥0；ln(u) 的定义域要求 u>0；多个条件的交集。" },
@@ -97,8 +97,8 @@ const EXERCISES_DB = {
   },
   "0-5": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "解方程 cosx=1/2，x∈[0,2π]。", answer: "x=π/3 或 5π/3。" , detail: "【解题思路】在 [0, 2π] 内解 cos x = 1/2。\n【步骤1】cos x = 1/2 的基本解：x = π/3（第一象限）\n【步骤2】cos 在第四象限也为正：x = 2π − π/3 = 5π/3\n【步骤3】验证：cos(π/3) = 1/2 ✓；cos(5π/3) = cos(−π/3) = 1/2 ✓\n【答案】x = π/3 或 5π/3\n【知识点】cos x = a (|a|≤1) 在 [0,2π] 上有两个解。" },
@@ -115,8 +115,8 @@ const EXERCISES_DB = {
   },
   "0-6": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "【复习】求 f(x)=√(5-x)+ln(x+1) 的定义域。", answer: "x+1>0 且 5-x≥0，即 -1<x≤5。定义域 (-1,5]。" , detail: "【解题思路】求定义域需要满足所有表达式的约束条件。\n【步骤1】根号内非负：5−x ≥ 0 → x ≤ 5\n【步骤2】对数真数大于0：x+1 > 0 → x > −1\n【步骤3】取交集：−1 < x ≤ 5\n【答案】定义域为 (−1, 5]\n【知识点】√u 的定义域要求 u≥0；ln(u) 的定义域要求 u>0；多个条件的交集。" },
@@ -133,8 +133,8 @@ const EXERCISES_DB = {
   },
   "0-7": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "解方程 cosx=1/2，x∈[0,2π]。", answer: "x=π/3 或 5π/3。" , detail: "【解题思路】在 [0, 2π] 内解 cos x = 1/2。\n【步骤1】cos x = 1/2 的基本解：x = π/3（第一象限）\n【步骤2】cos 在第四象限也为正：x = 2π − π/3 = 5π/3\n【步骤3】验证：cos(π/3) = 1/2 ✓；cos(5π/3) = cos(−π/3) = 1/2 ✓\n【答案】x = π/3 或 5π/3\n【知识点】cos x = a (|a|≤1) 在 [0,2π] 上有两个解。" },
@@ -151,8 +151,8 @@ const EXERCISES_DB = {
   },
   "0-8": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "求 f(x)=√(5-x)+ln(x+1) 的定义域。", answer: "x+1>0 且 5-x≥0，即 -1<x≤5。定义域 (-1,5]。" , detail: "【解题思路】求定义域需要满足所有表达式的约束条件。\n【步骤1】根号内非负：5−x ≥ 0 → x ≤ 5\n【步骤2】对数真数大于0：x+1 > 0 → x > −1\n【步骤3】取交集：−1 < x ≤ 5\n【答案】定义域为 (−1, 5]\n【知识点】√u 的定义域要求 u≥0；ln(u) 的定义域要求 u>0；多个条件的交集。" },
@@ -169,8 +169,8 @@ const EXERCISES_DB = {
   },
   "0-9": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "解方程 cosx=1/2，x∈[0,2π]。", answer: "x=π/3 或 5π/3。" , detail: "【解题思路】在 [0, 2π] 内解 cos x = 1/2。\n【步骤1】cos x = 1/2 的基本解：x = π/3（第一象限）\n【步骤2】cos 在第四象限也为正：x = 2π − π/3 = 5π/3\n【步骤3】验证：cos(π/3) = 1/2 ✓；cos(5π/3) = cos(−π/3) = 1/2 ✓\n【答案】x = π/3 或 5π/3\n【知识点】cos x = a (|a|≤1) 在 [0,2π] 上有两个解。" },
@@ -187,8 +187,8 @@ const EXERCISES_DB = {
   },
   "0-10": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "求 f(x)=√(5-x)+ln(x+1) 的定义域。", answer: "x+1>0 且 5-x≥0，即 -1<x≤5。定义域 (-1,5]。" , detail: "【解题思路】求定义域需要满足所有表达式的约束条件。\n【步骤1】根号内非负：5−x ≥ 0 → x ≤ 5\n【步骤2】对数真数大于0：x+1 > 0 → x > −1\n【步骤3】取交集：−1 < x ≤ 5\n【答案】定义域为 (−1, 5]\n【知识点】√u 的定义域要求 u≥0；ln(u) 的定义域要求 u>0；多个条件的交集。" },
@@ -205,8 +205,8 @@ const EXERCISES_DB = {
   },
   "0-11": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "解方程 cosx=1/2，x∈[0,2π]。", answer: "x=π/3 或 5π/3。" , detail: "【解题思路】在 [0, 2π] 内解 cos x = 1/2。\n【步骤1】cos x = 1/2 的基本解：x = π/3（第一象限）\n【步骤2】cos 在第四象限也为正：x = 2π − π/3 = 5π/3\n【步骤3】验证：cos(π/3) = 1/2 ✓；cos(5π/3) = cos(−π/3) = 1/2 ✓\n【答案】x = π/3 或 5π/3\n【知识点】cos x = a (|a|≤1) 在 [0,2π] 上有两个解。" },
@@ -223,8 +223,8 @@ const EXERCISES_DB = {
   },
   "0-12": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "求 f(x)=√(5-x)+ln(x+1) 的定义域。", answer: "x+1>0 且 5-x≥0，即 -1<x≤5。定义域 (-1,5]。" , detail: "【解题思路】求定义域需要满足所有表达式的约束条件。\n【步骤1】根号内非负：5−x ≥ 0 → x ≤ 5\n【步骤2】对数真数大于0：x+1 > 0 → x > −1\n【步骤3】取交集：−1 < x ≤ 5\n【答案】定义域为 (−1, 5]\n【知识点】√u 的定义域要求 u≥0；ln(u) 的定义域要求 u>0；多个条件的交集。" },
@@ -241,8 +241,8 @@ const EXERCISES_DB = {
   },
   "0-13": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "【复习】解方程 cosx=1/2，x∈[0,2π]。", answer: "x=π/3 或 5π/3。" , detail: "【解题思路】在 [0, 2π] 内解 cos x = 1/2。\n【步骤1】cos x = 1/2 的基本解：x = π/3（第一象限）\n【步骤2】cos 在第四象限也为正：x = 2π − π/3 = 5π/3\n【步骤3】验证：cos(π/3) = 1/2 ✓；cos(5π/3) = cos(−π/3) = 1/2 ✓\n【答案】x = π/3 或 5π/3\n【知识点】cos x = a (|a|≤1) 在 [0,2π] 上有两个解。" },
@@ -259,8 +259,8 @@ const EXERCISES_DB = {
   },
   "1-0": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.2 函数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=2" }
     ],
     exercises: [
       { question: "求 lim(x→0) (arcsinx-x)/x³。", answer: "arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。\n【知识点】极限计算的基本方法。" },
@@ -277,8 +277,8 @@ const EXERCISES_DB = {
   },
   "1-1": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.2 函数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=2" }
     ],
     exercises: [
       { question: "求 lim(x→0) sin(5x)/x。", answer: "=5·lim sin(5x)/(5x)=5×1=5。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】=5·lim sin(5x)/(5x)=5×1=5。\n【知识点】极限计算的基本方法。" },
@@ -295,8 +295,8 @@ const EXERCISES_DB = {
   },
   "1-2": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.4 数列极限（一）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=3" }
     ],
     exercises: [
       { question: "求 lim(x→0) (arcsinx-x)/x³。", answer: "arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。\n【知识点】极限计算的基本方法。" },
@@ -313,8 +313,9 @@ const EXERCISES_DB = {
   },
   "1-3": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.4 数列极限（一）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=3" },
+      { name: "📺 1.4 数列极限（二）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=4" }
     ],
     exercises: [
       { question: "求 lim(x→0) sin(5x)/x。", answer: "=5·lim sin(5x)/(5x)=5×1=5。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】=5·lim sin(5x)/(5x)=5×1=5。\n【知识点】极限计算的基本方法。" },
@@ -331,8 +332,9 @@ const EXERCISES_DB = {
   },
   "1-4": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.4 数列极限（一）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=3" },
+      { name: "📺 1.4 数列极限（二）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=4" }
     ],
     exercises: [
       { question: "求 lim(x→0) (arcsinx-x)/x³。", answer: "arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。\n【知识点】极限计算的基本方法。" },
@@ -349,8 +351,9 @@ const EXERCISES_DB = {
   },
   "1-5": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.4 数列极限（一）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=3" },
+      { name: "📺 1.4 数列极限（二）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=4" }
     ],
     exercises: [
       { question: "求 lim(x→0) sin(5x)/x。", answer: "=5·lim sin(5x)/(5x)=5×1=5。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】=5·lim sin(5x)/(5x)=5×1=5。\n【知识点】极限计算的基本方法。" },
@@ -367,8 +370,9 @@ const EXERCISES_DB = {
   },
   "1-6": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.5 函数极限（一）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=5" },
+      { name: "📺 1.5 函数极限（二）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=6" }
     ],
     exercises: [
       { question: "【复习】求 lim(x→0) (arcsinx-x)/x³。", answer: "arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。\n【知识点】极限计算的基本方法。" },
@@ -385,8 +389,9 @@ const EXERCISES_DB = {
   },
   "1-7": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.5 函数极限（一）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=5" },
+      { name: "📺 1.5 函数极限（二）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=6" }
     ],
     exercises: [
       { question: "求 lim(x→0) sin(5x)/x。", answer: "=5·lim sin(5x)/(5x)=5×1=5。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】=5·lim sin(5x)/(5x)=5×1=5。\n【知识点】极限计算的基本方法。" },
@@ -403,8 +408,9 @@ const EXERCISES_DB = {
   },
   "1-8": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.5 函数极限（一）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=5" },
+      { name: "📺 1.5 函数极限（二）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=6" }
     ],
     exercises: [
       { question: "求 lim(x→0) (arcsinx-x)/x³。", answer: "arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。\n【知识点】极限计算的基本方法。" },
@@ -421,8 +427,8 @@ const EXERCISES_DB = {
   },
   "1-9": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.6 无穷小和无穷大", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=7" }
     ],
     exercises: [
       { question: "求 lim(x→0) sin(5x)/x。", answer: "=5·lim sin(5x)/(5x)=5×1=5。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】=5·lim sin(5x)/(5x)=5×1=5。\n【知识点】极限计算的基本方法。" },
@@ -439,8 +445,8 @@ const EXERCISES_DB = {
   },
   "1-10": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.7 极限的运算法则", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=8" }
     ],
     exercises: [
       { question: "求 lim(x→0) (arcsinx-x)/x³。", answer: "arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。\n【知识点】极限计算的基本方法。" },
@@ -457,8 +463,8 @@ const EXERCISES_DB = {
   },
   "1-11": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.8 极限存在准则", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=9" }
     ],
     exercises: [
       { question: "求 lim(x→0) sin(5x)/x。", answer: "=5·lim sin(5x)/(5x)=5×1=5。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】=5·lim sin(5x)/(5x)=5×1=5。\n【知识点】极限计算的基本方法。" },
@@ -475,8 +481,8 @@ const EXERCISES_DB = {
   },
   "1-12": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.8 两个重要极限", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=10" }
     ],
     exercises: [
       { question: "求 lim(x→0) (arcsinx-x)/x³。", answer: "arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。\n【知识点】极限计算的基本方法。" },
@@ -493,8 +499,8 @@ const EXERCISES_DB = {
   },
   "1-13": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.8 两个重要极限", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=10" }
     ],
     exercises: [
       { question: "【复习】求 lim(x→0) sin(5x)/x。", answer: "=5·lim sin(5x)/(5x)=5×1=5。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】=5·lim sin(5x)/(5x)=5×1=5。\n【知识点】极限计算的基本方法。" },
@@ -511,8 +517,9 @@ const EXERCISES_DB = {
   },
   "1-14": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.7 极限的运算法则", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=8" },
+      { name: "📺 1.8 两个重要极限", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=10" }
     ],
     exercises: [
       { question: "求 lim(x→0) (arcsinx-x)/x³。", answer: "arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。\n【知识点】极限计算的基本方法。" },
@@ -529,8 +536,9 @@ const EXERCISES_DB = {
   },
   "1-15": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.10 函数的连续（一）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=12" },
+      { name: "📺 1.10 函数的连续（二）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=13" }
     ],
     exercises: [
       { question: "求 lim(x→0) sin(5x)/x。", answer: "=5·lim sin(5x)/(5x)=5×1=5。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】=5·lim sin(5x)/(5x)=5×1=5。\n【知识点】极限计算的基本方法。" },
@@ -547,8 +555,9 @@ const EXERCISES_DB = {
   },
   "1-16": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.10 函数的连续（一）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=12" },
+      { name: "📺 1.10 函数的连续（二）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=13" }
     ],
     exercises: [
       { question: "求 lim(x→0) (arcsinx-x)/x³。", answer: "arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。" , detail: "【解题思路】利用重要极限 lim(x→0) sin x/x = 1。\n【详细步骤】arcsinx=x+x³/6+o(x³)，所以 arcsinx-x~x³/6，极限=1/6。\n【知识点】极限计算的基本方法。" },
@@ -565,8 +574,9 @@ const EXERCISES_DB = {
   },
   "1-17": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 2.1 导数的定义", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=14" },
+      { name: "📺 2.1 导数的定义（二）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=15" }
     ],
     exercises: [
       { question: "求 y=x⁴-3x²+2x-1 的导数。", answer: "y'=4x³-6x+2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】y'=4x³-6x+2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -583,8 +593,8 @@ const EXERCISES_DB = {
   },
   "1-18": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 2.2 求导法则", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=16" }
     ],
     exercises: [
       { question: "求 y=x·e^(-x) 的二阶导数。", answer: "y'=e^(-x)-xe^(-x)=(1-x)e^(-x)；y''=-e^(-x)-(1-x)e^(-x)=(x-2)e^(-x)。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】y'=e^(-x)-xe^(-x)=(1-x)e^(-x)；y''=-e^(-x)-(1-x)e^(-x)=(x-2)e^(-x)。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -601,8 +611,8 @@ const EXERCISES_DB = {
   },
   "1-19": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 2.2 求导法则", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=16" }
     ],
     exercises: [
       { question: "求 y=x⁴-3x²+2x-1 的导数。", answer: "y'=4x³-6x+2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】y'=4x³-6x+2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -619,8 +629,8 @@ const EXERCISES_DB = {
   },
   "1-20": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 2.2 求导法则", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=16" }
     ],
     exercises: [
       { question: "【复习】求 y=x·e^(-x) 的二阶导数。", answer: "y'=e^(-x)-xe^(-x)=(1-x)e^(-x)；y''=-e^(-x)-(1-x)e^(-x)=(x-2)e^(-x)。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】y'=e^(-x)-xe^(-x)=(1-x)e^(-x)；y''=-e^(-x)-(1-x)e^(-x)=(x-2)e^(-x)。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -637,8 +647,8 @@ const EXERCISES_DB = {
   },
   "1-21": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 2.2 求导法则", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=16" }
     ],
     exercises: [
       { question: "求 y=x⁴-3x²+2x-1 的导数。", answer: "y'=4x³-6x+2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】y'=4x³-6x+2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -655,8 +665,8 @@ const EXERCISES_DB = {
   },
   "1-22": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 2.4 高阶导数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=17" }
     ],
     exercises: [
       { question: "求 y=x·e^(-x) 的二阶导数。", answer: "y'=e^(-x)-xe^(-x)=(1-x)e^(-x)；y''=-e^(-x)-(1-x)e^(-x)=(x-2)e^(-x)。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】y'=e^(-x)-xe^(-x)=(1-x)e^(-x)；y''=-e^(-x)-(1-x)e^(-x)=(x-2)e^(-x)。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -673,8 +683,9 @@ const EXERCISES_DB = {
   },
   "1-23": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 2.5 微分（一）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=18" },
+      { name: "📺 2.5 微分（二）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=19" }
     ],
     exercises: [
       { question: "求 y=x⁴-3x²+2x-1 的导数。", answer: "y'=4x³-6x+2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】y'=4x³-6x+2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -691,8 +702,8 @@ const EXERCISES_DB = {
   },
   "1-24": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 3.1 微分中值定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=20" }
     ],
     exercises: [
       { question: "证明 f(x)=x³ 在 [0,1] 上满足罗尔定理的条件吗？", answer: "不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -709,8 +720,8 @@ const EXERCISES_DB = {
   },
   "1-25": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 3.1 微分中值定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=20" }
     ],
     exercises: [
       { question: "验证 f(x)=x²-2x+3 在 [0,3] 上满足拉格朗日中值定理，并求 ξ。", answer: "f(3)=6, f(0)=3，(f(3)-f(0))/(3-0)=1。f'(x)=2x-2=1，x=3/2∈(0,3)。所以 ξ=3/2。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】f(3)=6, f(0)=3，(f(3)-f(0))/(3-0)=1。f'(x)=2x-2=1，x=3/2∈(0,3)。所以 ξ=3/2。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -727,8 +738,8 @@ const EXERCISES_DB = {
   },
   "1-26": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 3.1 柯西中值定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=21" }
     ],
     exercises: [
       { question: "证明 f(x)=x³ 在 [0,1] 上满足罗尔定理的条件吗？", answer: "不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -745,8 +756,8 @@ const EXERCISES_DB = {
   },
   "1-27": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 3.2 洛必达法则", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=23" }
     ],
     exercises: [
       { question: "【复习】验证 f(x)=x²-2x+3 在 [0,3] 上满足拉格朗日中值定理，并求 ξ。", answer: "f(3)=6, f(0)=3，(f(3)-f(0))/(3-0)=1。f'(x)=2x-2=1，x=3/2∈(0,3)。所以 ξ=3/2。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】f(3)=6, f(0)=3，(f(3)-f(0))/(3-0)=1。f'(x)=2x-2=1，x=3/2∈(0,3)。所以 ξ=3/2。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -763,8 +774,8 @@ const EXERCISES_DB = {
   },
   "1-28": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 3.1 泰勒定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=22" }
     ],
     exercises: [
       { question: "证明 f(x)=x³ 在 [0,1] 上满足罗尔定理的条件吗？", answer: "不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -781,8 +792,8 @@ const EXERCISES_DB = {
   },
   "1-29": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 3.3 函数单调性与凸凹性", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=24" }
     ],
     exercises: [
       { question: "验证 f(x)=x²-2x+3 在 [0,3] 上满足拉格朗日中值定理，并求 ξ。", answer: "f(3)=6, f(0)=3，(f(3)-f(0))/(3-0)=1。f'(x)=2x-2=1，x=3/2∈(0,3)。所以 ξ=3/2。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】f(3)=6, f(0)=3，(f(3)-f(0))/(3-0)=1。f'(x)=2x-2=1，x=3/2∈(0,3)。所以 ξ=3/2。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -799,8 +810,8 @@ const EXERCISES_DB = {
   },
   "1-30": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 3.3 函数单调性与凸凹性", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=24" }
     ],
     exercises: [
       { question: "证明 f(x)=x³ 在 [0,1] 上满足罗尔定理的条件吗？", answer: "不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -817,8 +828,8 @@ const EXERCISES_DB = {
   },
   "1-31": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 3.5 函数作图", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=26" }
     ],
     exercises: [
       { question: "验证 f(x)=x²-2x+3 在 [0,3] 上满足拉格朗日中值定理，并求 ξ。", answer: "f(3)=6, f(0)=3，(f(3)-f(0))/(3-0)=1。f'(x)=2x-2=1，x=3/2∈(0,3)。所以 ξ=3/2。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】f(3)=6, f(0)=3，(f(3)-f(0))/(3-0)=1。f'(x)=2x-2=1，x=3/2∈(0,3)。所以 ξ=3/2。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -835,8 +846,9 @@ const EXERCISES_DB = {
   },
   "1-32": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 3.3 函数单调性与凸凹性", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=24" },
+      { name: "📺 3.4 极值与最值", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=25" }
     ],
     exercises: [
       { question: "证明 f(x)=x³ 在 [0,1] 上满足罗尔定理的条件吗？", answer: "不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -853,8 +865,10 @@ const EXERCISES_DB = {
   },
   "1-33": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 2.1 导数的定义", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=14" },
+      { name: "📺 3.1 微分中值定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=20" },
+      { name: "📺 3.1 泰勒定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=22" }
     ],
     exercises: [
       { question: "验证 f(x)=x²-2x+3 在 [0,3] 上满足拉格朗日中值定理，并求 ξ。", answer: "f(3)=6, f(0)=3，(f(3)-f(0))/(3-0)=1。f'(x)=2x-2=1，x=3/2∈(0,3)。所以 ξ=3/2。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】f(3)=6, f(0)=3，(f(3)-f(0))/(3-0)=1。f'(x)=2x-2=1，x=3/2∈(0,3)。所以 ξ=3/2。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -871,8 +885,11 @@ const EXERCISES_DB = {
   },
   "1-34": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 1.8 两个重要极限", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=10" },
+      { name: "📺 2.2 求导法则", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=16" },
+      { name: "📺 3.1 微分中值定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=20" },
+      { name: "📺 3.2 洛必达法则", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=23" }
     ],
     exercises: [
       { question: "【复习】证明 f(x)=x³ 在 [0,1] 上满足罗尔定理的条件吗？", answer: "不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】不满足。f(0)=0, f(1)=1≠0，不满足端点值相等的条件。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -889,8 +906,8 @@ const EXERCISES_DB = {
   },
   "2-0": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.1 不定积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=27" }
     ],
     exercises: [
       { question: "求 ∫x³dx。", answer: "=x⁴/4+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=x⁴/4+C。\n【知识点】积分的基本方法与技巧。" },
@@ -907,8 +924,8 @@ const EXERCISES_DB = {
   },
   "2-1": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.1 不定积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=27" }
     ],
     exercises: [
       { question: "求 ∫dx/√(a²-x²) (a>0)。", answer: "=arcsin(x/a)+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=arcsin(x/a)+C。\n【知识点】积分的基本方法与技巧。" },
@@ -925,8 +942,8 @@ const EXERCISES_DB = {
   },
   "2-2": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.1 不定积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=27" }
     ],
     exercises: [
       { question: "求 ∫x³dx。", answer: "=x⁴/4+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=x⁴/4+C。\n【知识点】积分的基本方法与技巧。" },
@@ -943,8 +960,8 @@ const EXERCISES_DB = {
   },
   "2-3": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.2 第一换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=28" }
     ],
     exercises: [
       { question: "求 ∫dx/√(a²-x²) (a>0)。", answer: "=arcsin(x/a)+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=arcsin(x/a)+C。\n【知识点】积分的基本方法与技巧。" },
@@ -961,8 +978,8 @@ const EXERCISES_DB = {
   },
   "2-4": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.2 第一换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=28" }
     ],
     exercises: [
       { question: "求 ∫x³dx。", answer: "=x⁴/4+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=x⁴/4+C。\n【知识点】积分的基本方法与技巧。" },
@@ -979,8 +996,8 @@ const EXERCISES_DB = {
   },
   "2-5": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.2 第二换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=29" }
     ],
     exercises: [
       { question: "求 ∫dx/√(a²-x²) (a>0)。", answer: "=arcsin(x/a)+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=arcsin(x/a)+C。\n【知识点】积分的基本方法与技巧。" },
@@ -997,8 +1014,8 @@ const EXERCISES_DB = {
   },
   "2-6": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.2 第二换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=29" }
     ],
     exercises: [
       { question: "【复习】求 ∫x³dx。", answer: "=x⁴/4+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=x⁴/4+C。\n【知识点】积分的基本方法与技巧。" },
@@ -1015,8 +1032,8 @@ const EXERCISES_DB = {
   },
   "2-7": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.2 分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=30" }
     ],
     exercises: [
       { question: "求 ∫dx/√(a²-x²) (a>0)。", answer: "=arcsin(x/a)+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=arcsin(x/a)+C。\n【知识点】积分的基本方法与技巧。" },
@@ -1033,8 +1050,8 @@ const EXERCISES_DB = {
   },
   "2-8": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.2 分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=30" }
     ],
     exercises: [
       { question: "求 ∫x³dx。", answer: "=x⁴/4+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=x⁴/4+C。\n【知识点】积分的基本方法与技巧。" },
@@ -1051,8 +1068,8 @@ const EXERCISES_DB = {
   },
   "2-9": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.3 有理函数的积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=31" }
     ],
     exercises: [
       { question: "求 ∫dx/√(a²-x²) (a>0)。", answer: "=arcsin(x/a)+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=arcsin(x/a)+C。\n【知识点】积分的基本方法与技巧。" },
@@ -1069,8 +1086,8 @@ const EXERCISES_DB = {
   },
   "2-10": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.3 有理函数的积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=31" }
     ],
     exercises: [
       { question: "求 ∫x³dx。", answer: "=x⁴/4+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=x⁴/4+C。\n【知识点】积分的基本方法与技巧。" },
@@ -1087,8 +1104,10 @@ const EXERCISES_DB = {
   },
   "2-11": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.2 第一换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=28" },
+      { name: "📺 4.2 第二换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=29" },
+      { name: "📺 4.2 分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=30" }
     ],
     exercises: [
       { question: "求 ∫dx/√(a²-x²) (a>0)。", answer: "=arcsin(x/a)+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=arcsin(x/a)+C。\n【知识点】积分的基本方法与技巧。" },
@@ -1105,8 +1124,11 @@ const EXERCISES_DB = {
   },
   "2-12": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.2 第一换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=28" },
+      { name: "📺 4.2 第二换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=29" },
+      { name: "📺 4.2 分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=30" },
+      { name: "📺 4.3 有理函数的积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=31" }
     ],
     exercises: [
       { question: "求 ∫x³dx。", answer: "=x⁴/4+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=x⁴/4+C。\n【知识点】积分的基本方法与技巧。" },
@@ -1123,8 +1145,8 @@ const EXERCISES_DB = {
   },
   "2-13": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.1 定积分的概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=32" }
     ],
     exercises: [
       { question: "【复习】求 ∫dx/√(a²-x²) (a>0)。", answer: "=arcsin(x/a)+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=arcsin(x/a)+C。\n【知识点】积分的基本方法与技巧。" },
@@ -1141,8 +1163,8 @@ const EXERCISES_DB = {
   },
   "2-14": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.2 定积分的性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=33" }
     ],
     exercises: [
       { question: "求 ∫x³dx。", answer: "=x⁴/4+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=x⁴/4+C。\n【知识点】积分的基本方法与技巧。" },
@@ -1159,8 +1181,8 @@ const EXERCISES_DB = {
   },
   "2-15": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.2 微积分基本定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=34" }
     ],
     exercises: [
       { question: "求 ∫dx/√(a²-x²) (a>0)。", answer: "=arcsin(x/a)+C。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=arcsin(x/a)+C。\n【知识点】积分的基本方法与技巧。" },
@@ -1177,8 +1199,8 @@ const EXERCISES_DB = {
   },
   "2-16": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.3 定积分的换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=35" }
     ],
     exercises: [
       { question: "求 ∫₀¹ x² dx。", answer: "=[x³/3]₀¹=1/3。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[x³/3]₀¹=1/3。\n【知识点】积分的基本方法与技巧。" },
@@ -1195,8 +1217,8 @@ const EXERCISES_DB = {
   },
   "2-17": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.3 定积分的分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=36" }
     ],
     exercises: [
       { question: "求 ∫₀^(π/4) tanx dx。", answer: "=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。\n【知识点】积分的基本方法与技巧。" },
@@ -1213,8 +1235,9 @@ const EXERCISES_DB = {
   },
   "2-18": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.3 定积分的换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=35" },
+      { name: "📺 5.3 定积分的分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=36" }
     ],
     exercises: [
       { question: "求 ∫₀¹ x² dx。", answer: "=[x³/3]₀¹=1/3。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[x³/3]₀¹=1/3。\n【知识点】积分的基本方法与技巧。" },
@@ -1231,8 +1254,9 @@ const EXERCISES_DB = {
   },
   "2-19": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.3 定积分的换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=35" },
+      { name: "📺 5.3 定积分的分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=36" }
     ],
     exercises: [
       { question: "求 ∫₀^(π/4) tanx dx。", answer: "=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。\n【知识点】积分的基本方法与技巧。" },
@@ -1249,8 +1273,8 @@ const EXERCISES_DB = {
   },
   "2-20": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.5 广义积分-无穷限积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=40" }
     ],
     exercises: [
       { question: "【复习】求 ∫₀¹ x² dx。", answer: "=[x³/3]₀¹=1/3。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[x³/3]₀¹=1/3。\n【知识点】积分的基本方法与技巧。" },
@@ -1267,8 +1291,8 @@ const EXERCISES_DB = {
   },
   "2-21": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.5 广义积分-暇积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=41" }
     ],
     exercises: [
       { question: "求 ∫₀^(π/4) tanx dx。", answer: "=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。\n【知识点】积分的基本方法与技巧。" },
@@ -1285,8 +1309,9 @@ const EXERCISES_DB = {
   },
   "2-22": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.5 广义积分-无穷限积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=40" },
+      { name: "📺 5.5 广义积分-暇积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=41" }
     ],
     exercises: [
       { question: "求 ∫₀¹ x² dx。", answer: "=[x³/3]₀¹=1/3。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[x³/3]₀¹=1/3。\n【知识点】积分的基本方法与技巧。" },
@@ -1303,8 +1328,8 @@ const EXERCISES_DB = {
   },
   "2-23": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "求 ∫₀^(π/4) tanx dx。", answer: "=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。\n【知识点】积分的基本方法与技巧。" },
@@ -1321,8 +1346,8 @@ const EXERCISES_DB = {
   },
   "2-24": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.4 定积分应用-求面积", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=37" }
     ],
     exercises: [
       { question: "求 ∫₀¹ x² dx。", answer: "=[x³/3]₀¹=1/3。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[x³/3]₀¹=1/3。\n【知识点】积分的基本方法与技巧。" },
@@ -1339,8 +1364,8 @@ const EXERCISES_DB = {
   },
   "2-25": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.4 定积分应用-求体积", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=38" }
     ],
     exercises: [
       { question: "求 ∫₀^(π/4) tanx dx。", answer: "=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。\n【知识点】积分的基本方法与技巧。" },
@@ -1357,8 +1382,9 @@ const EXERCISES_DB = {
   },
   "2-26": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.4 定积分应用-求面积", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=37" },
+      { name: "📺 5.4 定积分应用-求体积", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=38" }
     ],
     exercises: [
       { question: "求 ∫₀¹ x² dx。", answer: "=[x³/3]₀¹=1/3。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[x³/3]₀¹=1/3。\n【知识点】积分的基本方法与技巧。" },
@@ -1375,8 +1401,8 @@ const EXERCISES_DB = {
   },
   "2-27": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.4 定积分应用-经济问题", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=39" }
     ],
     exercises: [
       { question: "【复习】求 ∫₀^(π/4) tanx dx。", answer: "=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。\n【知识点】积分的基本方法与技巧。" },
@@ -1393,8 +1419,12 @@ const EXERCISES_DB = {
   },
   "2-28": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.2 第一换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=28" },
+      { name: "📺 4.2 第二换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=29" },
+      { name: "📺 4.2 分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=30" },
+      { name: "📺 5.3 定积分的换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=35" },
+      { name: "📺 5.3 定积分的分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=36" }
     ],
     exercises: [
       { question: "求 ∫₀¹ x² dx。", answer: "=[x³/3]₀¹=1/3。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[x³/3]₀¹=1/3。\n【知识点】积分的基本方法与技巧。" },
@@ -1411,8 +1441,10 @@ const EXERCISES_DB = {
   },
   "2-29": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.2 微积分基本定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=34" },
+      { name: "📺 5.3 定积分的换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=35" },
+      { name: "📺 5.3 定积分的分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=36" }
     ],
     exercises: [
       { question: "求 ∫₀^(π/4) tanx dx。", answer: "=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。\n【知识点】积分的基本方法与技巧。" },
@@ -1429,8 +1461,10 @@ const EXERCISES_DB = {
   },
   "2-30": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 5.2 微积分基本定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=34" },
+      { name: "📺 5.3 定积分的换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=35" },
+      { name: "📺 5.3 定积分的分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=36" }
     ],
     exercises: [
       { question: "求 ∫₀¹ x² dx。", answer: "=[x³/3]₀¹=1/3。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[x³/3]₀¹=1/3。\n【知识点】积分的基本方法与技巧。" },
@@ -1447,8 +1481,13 @@ const EXERCISES_DB = {
   },
   "2-31": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.2 第一换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=28" },
+      { name: "📺 4.2 第二换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=29" },
+      { name: "📺 4.2 分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=30" },
+      { name: "📺 4.3 有理函数的积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=31" },
+      { name: "📺 5.3 定积分的换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=35" },
+      { name: "📺 5.3 定积分的分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=36" }
     ],
     exercises: [
       { question: "求 ∫₀^(π/4) tanx dx。", answer: "=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。\n【知识点】积分的基本方法与技巧。" },
@@ -1465,8 +1504,15 @@ const EXERCISES_DB = {
   },
   "2-32": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.1 不定积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=27" },
+      { name: "📺 4.2 第一换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=28" },
+      { name: "📺 4.2 第二换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=29" },
+      { name: "📺 4.2 分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=30" },
+      { name: "📺 4.3 有理函数的积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=31" },
+      { name: "📺 5.1 定积分的概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=32" },
+      { name: "📺 5.2 定积分的性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=33" },
+      { name: "📺 5.2 微积分基本定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=34" }
     ],
     exercises: [
       { question: "求 ∫₀¹ x² dx。", answer: "=[x³/3]₀¹=1/3。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[x³/3]₀¹=1/3。\n【知识点】积分的基本方法与技巧。" },
@@ -1483,8 +1529,17 @@ const EXERCISES_DB = {
   },
   "2-33": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.1 不定积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=27" },
+      { name: "📺 4.2 第一换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=28" },
+      { name: "📺 4.2 第二换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=29" },
+      { name: "📺 4.2 分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=30" },
+      { name: "📺 4.3 有理函数的积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=31" },
+      { name: "📺 5.1 定积分的概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=32" },
+      { name: "📺 5.2 定积分的性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=33" },
+      { name: "📺 5.2 微积分基本定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=34" },
+      { name: "📺 5.3 定积分的换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=35" },
+      { name: "📺 5.3 定积分的分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=36" }
     ],
     exercises: [
       { question: "求 ∫₀^(π/4) tanx dx。", answer: "=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[-ln|cosx|]₀^(π/4)=-ln(√2/2)+ln1=ln√2=1/2·ln2。\n【知识点】积分的基本方法与技巧。" },
@@ -1501,8 +1556,19 @@ const EXERCISES_DB = {
   },
   "2-34": {
     links: [
-      { name: "📖 同济《高等数学》第七版（上册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 4.1 不定积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=27" },
+      { name: "📺 4.2 第一换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=28" },
+      { name: "📺 4.2 第二换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=29" },
+      { name: "📺 4.2 分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=30" },
+      { name: "📺 4.3 有理函数的积分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=31" },
+      { name: "📺 5.1 定积分的概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=32" },
+      { name: "📺 5.2 定积分的性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=33" },
+      { name: "📺 5.2 微积分基本定理", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=34" },
+      { name: "📺 5.3 定积分的换元积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=35" },
+      { name: "📺 5.3 定积分的分部积分法", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=36" },
+      { name: "📺 5.4 定积分应用-求面积", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=37" },
+      { name: "📺 5.4 定积分应用-求体积", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=38" }
     ],
     exercises: [
       { question: "【复习】求 ∫₀¹ x² dx。", answer: "=[x³/3]₀¹=1/3。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=[x³/3]₀¹=1/3。\n【知识点】积分的基本方法与技巧。" },
@@ -1519,8 +1585,8 @@ const EXERCISES_DB = {
   },
   "3-0": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.1 空间解析几何", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=42" }
     ],
     exercises: [
       { question: "求函数 u=xyz 在点 (1,2,3) 沿方向 (1,1,1) 的方向导数。", answer: "∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -1537,8 +1603,8 @@ const EXERCISES_DB = {
   },
   "3-1": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.1 空间解析几何", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=42" }
     ],
     exercises: [
       { question: "设 z=x²y+xy²，求 ∂z/∂x 和 ∂z/∂y。", answer: "∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1555,8 +1621,8 @@ const EXERCISES_DB = {
   },
   "3-2": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.1 空间解析几何", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=42" }
     ],
     exercises: [
       { question: "求函数 u=xyz 在点 (1,2,3) 沿方向 (1,1,1) 的方向导数。", answer: "∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -1573,8 +1639,8 @@ const EXERCISES_DB = {
   },
   "3-3": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.2 多元函数的基本概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=43" }
     ],
     exercises: [
       { question: "设 z=x²y+xy²，求 ∂z/∂x 和 ∂z/∂y。", answer: "∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1591,8 +1657,8 @@ const EXERCISES_DB = {
   },
   "3-4": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.3 偏导数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=44" }
     ],
     exercises: [
       { question: "求函数 u=xyz 在点 (1,2,3) 沿方向 (1,1,1) 的方向导数。", answer: "∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -1609,8 +1675,8 @@ const EXERCISES_DB = {
   },
   "3-5": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.4 全微分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=45" }
     ],
     exercises: [
       { question: "设 z=x²y+xy²，求 ∂z/∂x 和 ∂z/∂y。", answer: "∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1627,8 +1693,8 @@ const EXERCISES_DB = {
   },
   "3-6": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.5 多元复合函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=46" }
     ],
     exercises: [
       { question: "【复习】求函数 u=xyz 在点 (1,2,3) 沿方向 (1,1,1) 的方向导数。", answer: "∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -1645,8 +1711,8 @@ const EXERCISES_DB = {
   },
   "3-7": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.5 隐函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=47" }
     ],
     exercises: [
       { question: "设 z=x²y+xy²，求 ∂z/∂x 和 ∂z/∂y。", answer: "∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1663,8 +1729,11 @@ const EXERCISES_DB = {
   },
   "3-8": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.3 偏导数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=44" },
+      { name: "📺 6.4 全微分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=45" },
+      { name: "📺 6.5 多元复合函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=46" },
+      { name: "📺 6.5 隐函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=47" }
     ],
     exercises: [
       { question: "求函数 u=xyz 在点 (1,2,3) 沿方向 (1,1,1) 的方向导数。", answer: "∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -1681,8 +1750,9 @@ const EXERCISES_DB = {
   },
   "3-9": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.3 偏导数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=44" },
+      { name: "📺 6.4 全微分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=45" }
     ],
     exercises: [
       { question: "设 z=x²y+xy²，求 ∂z/∂x 和 ∂z/∂y。", answer: "∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1699,8 +1769,8 @@ const EXERCISES_DB = {
   },
   "3-10": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.6 二元函数的极值", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=48" }
     ],
     exercises: [
       { question: "求函数 u=xyz 在点 (1,2,3) 沿方向 (1,1,1) 的方向导数。", answer: "∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -1717,8 +1787,8 @@ const EXERCISES_DB = {
   },
   "3-11": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.6 二元函数的极值", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=48" }
     ],
     exercises: [
       { question: "设 z=x²y+xy²，求 ∂z/∂x 和 ∂z/∂y。", answer: "∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1735,8 +1805,8 @@ const EXERCISES_DB = {
   },
   "3-12": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.6 二元函数的极值", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=48" }
     ],
     exercises: [
       { question: "求函数 u=xyz 在点 (1,2,3) 沿方向 (1,1,1) 的方向导数。", answer: "∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -1753,8 +1823,8 @@ const EXERCISES_DB = {
   },
   "3-13": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.7 二重积分的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=49" }
     ],
     exercises: [
       { question: "【复习】设 z=x²y+xy²，求 ∂z/∂x 和 ∂z/∂y。", answer: "∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1771,8 +1841,8 @@ const EXERCISES_DB = {
   },
   "3-14": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" }
     ],
     exercises: [
       { question: "求函数 u=xyz 在点 (1,2,3) 沿方向 (1,1,1) 的方向导数。", answer: "∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -1789,8 +1859,8 @@ const EXERCISES_DB = {
   },
   "3-15": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "设 z=x²y+xy²，求 ∂z/∂x 和 ∂z/∂y。", answer: "∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】∂z/∂x=2xy+y²；∂z/∂y=x²+2xy。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1807,8 +1877,9 @@ const EXERCISES_DB = {
   },
   "3-16": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求函数 u=xyz 在点 (1,2,3) 沿方向 (1,1,1) 的方向导数。", answer: "∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】∇u=(yz,xz,xy)=(6,3,2)。方向余弦 l=(1,1,1)/√3。∂u/∂l=(6+3+2)/√3=11/√3。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -1825,8 +1896,9 @@ const EXERCISES_DB = {
   },
   "3-17": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∬_D |y-x²|dσ，D=[0,1]×[0,1]。", answer: "分区域：y<x² 时积分 -(y-x²)，y>x² 时积分 (y-x²)。=∫₀¹[∫₀^x²(x²-y)dy+∫_x²¹(y-x²)dy]dx=11/30。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】分区域：y<x² 时积分 -(y-x²)，y>x² 时积分 (y-x²)。=∫₀¹[∫₀^x²(x²-y)dy+∫_x²¹(y-x²)dy]dx=11/30。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1843,8 +1915,9 @@ const EXERCISES_DB = {
   },
   "3-18": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∭_Ω √(x²+y²+z²)dV，Ω: x²+y²+z²≤R²。", answer: "球坐标：=∫₀^(2π)∫₀^π∫₀^R r·r²sinφ dr dφ dθ=2π·2·R⁴/4=πR⁴。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】球坐标：=∫₀^(2π)∫₀^π∫₀^R r·r²sinφ dr dφ dθ=2π·2·R⁴/4=πR⁴。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1861,8 +1934,9 @@ const EXERCISES_DB = {
   },
   "3-19": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∭_Ω (x²+y²)dV，Ω: x²+y²≤z≤1。", answer: "柱坐标：=∫₀^(2π)∫₀¹∫_r²¹ r²·r dz dr dθ=2π∫₀¹r³(1-r²)dr=2π(1/4-1/6)=π/6。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】柱坐标：=∫₀^(2π)∫₀¹∫_r²¹ r²·r dz dr dθ=2π∫₀¹r³(1-r²)dr=2π(1/4-1/6)=π/6。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1879,8 +1953,9 @@ const EXERCISES_DB = {
   },
   "3-20": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "【复习】证明 ∬_D f(x+y)dσ=∫₋₁¹ f(u)du，D: |x|+|y|≤1。", answer: "令 u=x+y，v=x-y，|J|=1/2。区域变为 |u|≤1,|v|≤1。=1/2∫₋₁¹∫₋₁¹f(u)dvdu=∫₋₁¹f(u)du。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】令 u=x+y，v=x-y，|J|=1/2。区域变为 |u|≤1,|v|≤1。=1/2∫₋₁¹∫₋₁¹f(u)dvdu=∫₋₁¹f(u)du。\n【知识点】积分的基本方法与技巧。" },
@@ -1897,8 +1972,9 @@ const EXERCISES_DB = {
   },
   "3-21": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∬_D x dσ，D 由 y=x, y=2x, x=1 围成。", answer: "=∫₀¹∫_x^(2x) x dy dx=∫₀¹x²dx=1/3。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】=∫₀¹∫_x^(2x) x dy dx=∫₀¹x²dx=1/3。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1915,8 +1991,9 @@ const EXERCISES_DB = {
   },
   "3-22": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∬_D (x+y)dσ，D=[0,1]×[0,1]。", answer: "=∫₀¹∫₀¹(x+y)dxdy=∫₀¹(1/2+y)dy=1/2+1/2=1。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】=∫₀¹∫₀¹(x+y)dxdy=∫₀¹(1/2+y)dy=1/2+1/2=1。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1933,8 +2010,9 @@ const EXERCISES_DB = {
   },
   "3-23": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "用格林公式求 ∮_L (x²-y)dx+(y²+x)dy，L: x²+y²=1（逆时针）。", answer: "P=x²-y，Q=y²+x，∂Q/∂x-∂P/∂y=1-(-1)=2。=∬_D 2dσ=2π。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】P=x²-y，Q=y²+x，∂Q/∂x-∂P/∂y=1-(-1)=2。=∬_D 2dσ=2π。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1951,8 +2029,9 @@ const EXERCISES_DB = {
   },
   "3-24": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∬_D xydσ，D 由 x=0,y=0,x+y=1 围成。", answer: "=∫₀¹∫₀^(1-x)xy dy dx=∫₀¹x·(1-x)²/2 dx=1/24。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】=∫₀¹∫₀^(1-x)xy dy dx=∫₀¹x·(1-x)²/2 dx=1/24。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1969,8 +2048,9 @@ const EXERCISES_DB = {
   },
   "3-25": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "用格林公式求 ∮_L xdy-ydx，L 为三角形 O(0,0),A(1,0),B(0,1) 边界（逆时针）。", answer: "P=-y，Q=x，∂Q/∂x-∂P/∂y=2。=∬_D 2dσ=2×(1/2)=1。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】P=-y，Q=x，∂Q/∂x-∂P/∂y=2。=∬_D 2dσ=2×(1/2)=1。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -1987,8 +2067,9 @@ const EXERCISES_DB = {
   },
   "3-26": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∬_D √(x²+y²)dσ，D: x²+y²≤1。", answer: "极坐标：=∫₀^(2π)∫₀¹ r·r dr dθ=2π·[r³/3]₀¹=2π/3。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】极坐标：=∫₀^(2π)∫₀¹ r·r dr dθ=2π·[r³/3]₀¹=2π/3。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2005,8 +2086,9 @@ const EXERCISES_DB = {
   },
   "3-27": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "【复习】求 ∬_D e^(-x²-y²)sin(x²+y²)dσ，D: x²+y²≤4。", answer: "极坐标：=∫₀^(2π)∫₀² e^(-r²)sin(r²)·r dr dθ。令 u=r²，=π∫₀⁴ e^(-u)sinu du=π(1-e⁻⁴(cos4+sin4))/2。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】极坐标：=∫₀^(2π)∫₀² e^(-r²)sin(r²)·r dr dθ。令 u=r²，=π∫₀⁴ e^(-u)sinu du=π(1-e⁻⁴(cos4+sin4))/2。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2023,8 +2105,9 @@ const EXERCISES_DB = {
   },
   "3-28": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∬_D e^(x²+y²)dσ，D: x²+y²≤R²。", answer: "极坐标：=∫₀^(2π)∫₀^R e^(r²)·r dr dθ=2π·[e^(r²)/2]₀^R=π(e^(R²)-1)。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】极坐标：=∫₀^(2π)∫₀^R e^(r²)·r dr dθ=2π·[e^(r²)/2]₀^R=π(e^(R²)-1)。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2041,8 +2124,9 @@ const EXERCISES_DB = {
   },
   "3-29": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∭_Ω xdV，Ω 由 x+y+z≤1, x,y,z≥0 围成。", answer: "=∫₀¹∫₀^(1-x)∫₀^(1-x-y) x dz dy dx=1/24。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】=∫₀¹∫₀^(1-x)∫₀^(1-x-y) x dz dy dx=1/24。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2059,8 +2143,9 @@ const EXERCISES_DB = {
   },
   "3-30": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∭_Ω z dV，Ω 由 x²+y²+z²≤1, z≥0 围成。", answer: "球坐标：=∫₀^(2π)∫₀^(π/2)∫₀¹ rcosφ·r²sinφ dr dφ dθ=2π·[sin²φ/2]₀^(π/2)·[r⁴/4]₀¹=π/4。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】球坐标：=∫₀^(2π)∫₀^(π/2)∫₀¹ rcosφ·r²sinφ dr dφ dθ=2π·[sin²φ/2]₀^(π/2)·[r⁴/4]₀¹=π/4。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2077,8 +2162,14 @@ const EXERCISES_DB = {
   },
   "3-31": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.1 空间解析几何", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=42" },
+      { name: "📺 6.2 多元函数的基本概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=43" },
+      { name: "📺 6.3 偏导数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=44" },
+      { name: "📺 6.4 全微分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=45" },
+      { name: "📺 6.5 多元复合函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=46" },
+      { name: "📺 6.5 隐函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=47" },
+      { name: "📺 6.6 二元函数的极值", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=48" }
     ],
     exercises: [
       { question: "求 ∬_D (x+y)dσ，D: (x-1)²+(y-1)²≤1。", answer: "平移：令 u=x-1,v=y-1。=∬_(u²+v²≤1)(u+v+2)dudv=0+0+2π=2π。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】平移：令 u=x-1,v=y-1。=∬_(u²+v²≤1)(u+v+2)dudv=0+0+2π=2π。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2095,8 +2186,17 @@ const EXERCISES_DB = {
   },
   "3-32": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.1 空间解析几何", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=42" },
+      { name: "📺 6.2 多元函数的基本概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=43" },
+      { name: "📺 6.3 偏导数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=44" },
+      { name: "📺 6.4 全微分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=45" },
+      { name: "📺 6.5 多元复合函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=46" },
+      { name: "📺 6.5 隐函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=47" },
+      { name: "📺 6.6 二元函数的极值", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=48" },
+      { name: "📺 6.7 二重积分的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=49" },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "求 ∬_D (x²+y²)dσ，D: x²+y²≤2x。", answer: "极坐标：x²+y²=2x → r=2cosθ，θ∈[-π/2,π/2]。=∫₋π/2^π/2∫₀^(2cosθ) r²·r dr dθ=...=3π/2。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】极坐标：x²+y²=2x → r=2cosθ，θ∈[-π/2,π/2]。=∫₋π/2^π/2∫₀^(2cosθ) r²·r dr dθ=...=3π/2。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2113,8 +2213,17 @@ const EXERCISES_DB = {
   },
   "3-33": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.1 空间解析几何", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=42" },
+      { name: "📺 6.2 多元函数的基本概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=43" },
+      { name: "📺 6.3 偏导数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=44" },
+      { name: "📺 6.4 全微分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=45" },
+      { name: "📺 6.5 多元复合函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=46" },
+      { name: "📺 6.5 隐函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=47" },
+      { name: "📺 6.6 二元函数的极值", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=48" },
+      { name: "📺 6.7 二重积分的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=49" },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "改变积分次序：∫₀^π∫₀^sinx f(x,y)dydx。", answer: "=∫₀¹∫_arcsiny^(π-arcsiny) f(x,y)dxdy。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】=∫₀¹∫_arcsiny^(π-arcsiny) f(x,y)dxdy。\n【知识点】积分的基本方法与技巧。" },
@@ -2131,8 +2240,17 @@ const EXERCISES_DB = {
   },
   "3-34": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 6.1 空间解析几何", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=42" },
+      { name: "📺 6.2 多元函数的基本概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=43" },
+      { name: "📺 6.3 偏导数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=44" },
+      { name: "📺 6.4 全微分", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=45" },
+      { name: "📺 6.5 多元复合函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=46" },
+      { name: "📺 6.5 隐函数求导", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=47" },
+      { name: "📺 6.6 二元函数的极值", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=48" },
+      { name: "📺 6.7 二重积分的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=49" },
+      { name: "📺 6.8 二重积分的计算（直角坐标系）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=50" },
+      { name: "📺 6.8 二重积分的计算（极坐标）", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=51" }
     ],
     exercises: [
       { question: "【复习】改变积分次序：∫₀¹∫_x^1 f(x,y)dydx。", answer: "原区域：0≤x≤1，x≤y≤1。交换后：0≤y≤1，0≤x≤y。=∫₀¹∫₀^y f(x,y)dxdy。" , detail: "【解题思路】选择合适的积分方法（换元法、分部积分法等）。\n【详细步骤】原区域：0≤x≤1，x≤y≤1。交换后：0≤y≤1，0≤x≤y。=∫₀¹∫₀^y f(x,y)dxdy。\n【知识点】积分的基本方法与技巧。" },
@@ -2149,8 +2267,8 @@ const EXERCISES_DB = {
   },
   "4-0": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.1 无穷级数的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=52" }
     ],
     exercises: [
       { question: "判断 Σ 1/n² 的敛散性。", answer: "收敛。p-级数，p=2>1。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】收敛。p-级数，p=2>1。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2167,8 +2285,8 @@ const EXERCISES_DB = {
   },
   "4-1": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.1 无穷级数的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=52" }
     ],
     exercises: [
       { question: "将 f(x)=1/(1-x) 展开为幂级数。", answer: "=Σ xⁿ (n=0 到 ∞)，|x|<1。" , detail: "【解题思路】利用级数审敛法判断。\n【详细步骤】=Σ xⁿ (n=0 到 ∞)，|x|<1。\n【知识点】级数收敛的判别法（比较、比值、根值、莱布尼茨等）。" },
@@ -2185,8 +2303,8 @@ const EXERCISES_DB = {
   },
   "4-2": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.2 正项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=53" }
     ],
     exercises: [
       { question: "判断 Σ 1/n² 的敛散性。", answer: "收敛。p-级数，p=2>1。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】收敛。p-级数，p=2>1。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2203,8 +2321,8 @@ const EXERCISES_DB = {
   },
   "4-3": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.2 正项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=53" }
     ],
     exercises: [
       { question: "将 f(x)=1/(1-x) 展开为幂级数。", answer: "=Σ xⁿ (n=0 到 ∞)，|x|<1。" , detail: "【解题思路】利用级数审敛法判断。\n【详细步骤】=Σ xⁿ (n=0 到 ∞)，|x|<1。\n【知识点】级数收敛的判别法（比较、比值、根值、莱布尼茨等）。" },
@@ -2221,8 +2339,8 @@ const EXERCISES_DB = {
   },
   "4-4": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.3 任意项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=54" }
     ],
     exercises: [
       { question: "判断 Σ 1/n² 的敛散性。", answer: "收敛。p-级数，p=2>1。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】收敛。p-级数，p=2>1。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2239,8 +2357,8 @@ const EXERCISES_DB = {
   },
   "4-5": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.3 任意项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=54" }
     ],
     exercises: [
       { question: "将 f(x)=1/(1-x) 展开为幂级数。", answer: "=Σ xⁿ (n=0 到 ∞)，|x|<1。" , detail: "【解题思路】利用级数审敛法判断。\n【详细步骤】=Σ xⁿ (n=0 到 ∞)，|x|<1。\n【知识点】级数收敛的判别法（比较、比值、根值、莱布尼茨等）。" },
@@ -2257,8 +2375,10 @@ const EXERCISES_DB = {
   },
   "4-6": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.1 无穷级数的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=52" },
+      { name: "📺 7.2 正项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=53" },
+      { name: "📺 7.3 任意项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=54" }
     ],
     exercises: [
       { question: "【复习】判断 Σ 1/n² 的敛散性。", answer: "收敛。p-级数，p=2>1。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】收敛。p-级数，p=2>1。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2275,8 +2395,8 @@ const EXERCISES_DB = {
   },
   "4-7": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.4 幂级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=55" }
     ],
     exercises: [
       { question: "将 f(x)=1/(1-x) 展开为幂级数。", answer: "=Σ xⁿ (n=0 到 ∞)，|x|<1。" , detail: "【解题思路】利用级数审敛法判断。\n【详细步骤】=Σ xⁿ (n=0 到 ∞)，|x|<1。\n【知识点】级数收敛的判别法（比较、比值、根值、莱布尼茨等）。" },
@@ -2293,8 +2413,8 @@ const EXERCISES_DB = {
   },
   "4-8": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.4 幂级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=55" }
     ],
     exercises: [
       { question: "判断 Σ 1/n² 的敛散性。", answer: "收敛。p-级数，p=2>1。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】收敛。p-级数，p=2>1。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2311,8 +2431,8 @@ const EXERCISES_DB = {
   },
   "4-9": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.4 幂级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=55" }
     ],
     exercises: [
       { question: "将 f(x)=1/(1-x) 展开为幂级数。", answer: "=Σ xⁿ (n=0 到 ∞)，|x|<1。" , detail: "【解题思路】利用级数审敛法判断。\n【详细步骤】=Σ xⁿ (n=0 到 ∞)，|x|<1。\n【知识点】级数收敛的判别法（比较、比值、根值、莱布尼茨等）。" },
@@ -2329,8 +2449,8 @@ const EXERCISES_DB = {
   },
   "4-10": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.4 幂级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=55" }
     ],
     exercises: [
       { question: "判断 Σ 1/n² 的敛散性。", answer: "收敛。p-级数，p=2>1。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】收敛。p-级数，p=2>1。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2347,8 +2467,8 @@ const EXERCISES_DB = {
   },
   "4-11": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.4 幂级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=55" }
     ],
     exercises: [
       { question: "将 f(x)=1/(1-x) 展开为幂级数。", answer: "=Σ xⁿ (n=0 到 ∞)，|x|<1。" , detail: "【解题思路】利用级数审敛法判断。\n【详细步骤】=Σ xⁿ (n=0 到 ∞)，|x|<1。\n【知识点】级数收敛的判别法（比较、比值、根值、莱布尼茨等）。" },
@@ -2365,8 +2485,8 @@ const EXERCISES_DB = {
   },
   "4-12": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 宋浩《高等数学》全程教学", url: "https://www.bilibili.com/video/BV1UW411k7Jv/" }
     ],
     exercises: [
       { question: "解方程 dy/dx=2x。", answer: "y=x²+C。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】y=x²+C。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2383,8 +2503,11 @@ const EXERCISES_DB = {
   },
   "4-13": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.1 无穷级数的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=52" },
+      { name: "📺 7.2 正项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=53" },
+      { name: "📺 7.3 任意项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=54" },
+      { name: "📺 7.4 幂级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=55" }
     ],
     exercises: [
       { question: "【复习】解方程 y''-y=e^x。", answer: "齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -2401,8 +2524,8 @@ const EXERCISES_DB = {
   },
   "4-14": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 8.1 微分方程的概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=56" }
     ],
     exercises: [
       { question: "解方程 dy/dx=2x。", answer: "y=x²+C。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】y=x²+C。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2419,8 +2542,8 @@ const EXERCISES_DB = {
   },
   "4-15": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 8.2 一阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=57" }
     ],
     exercises: [
       { question: "解方程 y''-y=e^x。", answer: "齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -2437,8 +2560,8 @@ const EXERCISES_DB = {
   },
   "4-16": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 8.2 一阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=57" }
     ],
     exercises: [
       { question: "解方程 dy/dx=2x。", answer: "y=x²+C。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】y=x²+C。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2455,8 +2578,8 @@ const EXERCISES_DB = {
   },
   "4-17": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 8.2 一阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=57" }
     ],
     exercises: [
       { question: "解方程 y''-y=e^x。", answer: "齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -2473,8 +2596,8 @@ const EXERCISES_DB = {
   },
   "4-18": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 8.2 一阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=57" }
     ],
     exercises: [
       { question: "解方程 dy/dx=2x。", answer: "y=x²+C。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】y=x²+C。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2491,8 +2614,8 @@ const EXERCISES_DB = {
   },
   "4-19": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 8.3 高阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=58" }
     ],
     exercises: [
       { question: "解方程 y''-y=e^x。", answer: "齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -2509,8 +2632,8 @@ const EXERCISES_DB = {
   },
   "4-20": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 8.3 高阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=58" }
     ],
     exercises: [
       { question: "【复习】解方程 dy/dx=2x。", answer: "y=x²+C。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】y=x²+C。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2527,8 +2650,8 @@ const EXERCISES_DB = {
   },
   "4-21": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 8.3 高阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=58" }
     ],
     exercises: [
       { question: "解方程 y''-y=e^x。", answer: "齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -2545,8 +2668,8 @@ const EXERCISES_DB = {
   },
   "4-22": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 8.3 高阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=58" }
     ],
     exercises: [
       { question: "解方程 dy/dx=2x。", answer: "y=x²+C。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】y=x²+C。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2563,8 +2686,10 @@ const EXERCISES_DB = {
   },
   "4-23": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 8.1 微分方程的概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=56" },
+      { name: "📺 8.2 一阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=57" },
+      { name: "📺 8.3 高阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=58" }
     ],
     exercises: [
       { question: "解方程 y''-y=e^x。", answer: "齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -2581,8 +2706,14 @@ const EXERCISES_DB = {
   },
   "4-24": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.1 无穷级数的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=52" },
+      { name: "📺 7.2 正项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=53" },
+      { name: "📺 7.3 任意项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=54" },
+      { name: "📺 7.4 幂级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=55" },
+      { name: "📺 8.1 微分方程的概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=56" },
+      { name: "📺 8.2 一阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=57" },
+      { name: "📺 8.3 高阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=58" }
     ],
     exercises: [
       { question: "解方程 dy/dx=2x。", answer: "y=x²+C。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】y=x²+C。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2599,8 +2730,14 @@ const EXERCISES_DB = {
   },
   "4-25": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.1 无穷级数的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=52" },
+      { name: "📺 7.2 正项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=53" },
+      { name: "📺 7.3 任意项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=54" },
+      { name: "📺 7.4 幂级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=55" },
+      { name: "📺 8.1 微分方程的概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=56" },
+      { name: "📺 8.2 一阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=57" },
+      { name: "📺 8.3 高阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=58" }
     ],
     exercises: [
       { question: "解方程 y''-y=e^x。", answer: "齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -2617,8 +2754,14 @@ const EXERCISES_DB = {
   },
   "4-26": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.1 无穷级数的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=52" },
+      { name: "📺 7.2 正项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=53" },
+      { name: "📺 7.3 任意项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=54" },
+      { name: "📺 7.4 幂级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=55" },
+      { name: "📺 8.1 微分方程的概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=56" },
+      { name: "📺 8.2 一阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=57" },
+      { name: "📺 8.3 高阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=58" }
     ],
     exercises: [
       { question: "解方程 dy/dx=2x。", answer: "y=x²+C。" , detail: "【解题思路】分析题目要求，运用相关数学知识逐步推导。\n【详细步骤】y=x²+C。\n【知识点】本题涉及的相关数学概念与公式。" },
@@ -2635,8 +2778,14 @@ const EXERCISES_DB = {
   },
   "4-27": {
     links: [
-      { name: "📖 同济《高等数学》第七版（下册）", url: null },
-      { name: "📺 宋浩《高等数学》B站合集", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14369" },
+      { name: "📖 同济《高等数学》第七版", url: null },
+      { name: "📺 7.1 无穷级数的定义和性质", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=52" },
+      { name: "📺 7.2 正项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=53" },
+      { name: "📺 7.3 任意项级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=54" },
+      { name: "📺 7.4 幂级数", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=55" },
+      { name: "📺 8.1 微分方程的概念", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=56" },
+      { name: "📺 8.2 一阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=57" },
+      { name: "📺 8.3 高阶微分方程", url: "https://www.bilibili.com/video/BV1UW411k7Jv/?p=58" }
     ],
     exercises: [
       { question: "【复习】解方程 y''-y=e^x。", answer: "齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。" , detail: "【解题思路】根据函数类型选择合适的求导法则。\n【详细步骤】齐次解：y_h=C₁e^x+C₂e^(-x)。特解：由于 e^x 是齐次解，设 y_p=Axe^x，代入得 A=1/2。y=C₁e^x+C₂e^(-x)+xe^x/2。\n【知识点】基本求导公式与求导法则（四则运算、链式法则）。" },
@@ -2654,7 +2803,7 @@ const EXERCISES_DB = {
   "5-0": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 二阶三阶行列式的定义", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=1" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2672,7 +2821,7 @@ const EXERCISES_DB = {
   "5-1": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 排列与逆序", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=2" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2690,7 +2839,7 @@ const EXERCISES_DB = {
   "5-2": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 n阶行列式", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=3" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2708,7 +2857,7 @@ const EXERCISES_DB = {
   "5-3": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 行列式的性质", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=4" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2726,7 +2875,7 @@ const EXERCISES_DB = {
   "5-4": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 行列式按一行（列）展开", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=5" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2744,7 +2893,8 @@ const EXERCISES_DB = {
   "5-5": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 行列式按一行（列）展开", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=5" },
+      { name: "📺 行列式按多行展开", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=6" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2762,7 +2912,7 @@ const EXERCISES_DB = {
   "5-6": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 克莱姆法则", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=8" }
     ],
     exercises: [
       { question: "【复习】求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2780,7 +2930,7 @@ const EXERCISES_DB = {
   "5-7": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 矩阵概念与运算", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=9" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2798,7 +2948,7 @@ const EXERCISES_DB = {
   "5-8": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 矩阵的乘法", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=10" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2816,7 +2966,7 @@ const EXERCISES_DB = {
   "5-9": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 矩阵的转置与逆", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=11" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2834,7 +2984,8 @@ const EXERCISES_DB = {
   "5-10": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 矩阵的转置与逆", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=11" },
+      { name: "📺 逆矩阵与矩阵方程", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=12" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2852,7 +3003,7 @@ const EXERCISES_DB = {
   "5-11": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 初等变换与初等矩阵", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=13" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2870,7 +3021,7 @@ const EXERCISES_DB = {
   "5-12": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 初等变换与初等矩阵", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=13" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2888,7 +3039,7 @@ const EXERCISES_DB = {
   "5-13": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 初等变换与初等矩阵", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=13" }
     ],
     exercises: [
       { question: "【复习】计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2906,7 +3057,7 @@ const EXERCISES_DB = {
   "5-14": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 初等变换与初等矩阵", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=13" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2924,7 +3075,7 @@ const EXERCISES_DB = {
   "5-15": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 初等变换与初等矩阵", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=13" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2942,7 +3093,7 @@ const EXERCISES_DB = {
   "5-16": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 n维向量及其运算", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=33" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2960,7 +3111,8 @@ const EXERCISES_DB = {
   "5-17": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 向量间的线性关系（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=34" },
+      { name: "📺 线性相关线性无关", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=36" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2978,7 +3130,7 @@ const EXERCISES_DB = {
   "5-18": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 向量组的秩（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=37" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -2996,7 +3148,8 @@ const EXERCISES_DB = {
   "5-19": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 方程组解的结构（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=42" },
+      { name: "📺 方程组解的结构（二）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=43" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3014,7 +3167,7 @@ const EXERCISES_DB = {
   "5-20": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 宋浩《线性代数》全程教学", url: "https://www.bilibili.com/video/BV1aW411Q7x1/" }
     ],
     exercises: [
       { question: "【复习】求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3032,7 +3185,7 @@ const EXERCISES_DB = {
   "5-21": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 施密特正交化", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=51" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3050,7 +3203,7 @@ const EXERCISES_DB = {
   "5-22": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 特征值与特征向量（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=45" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3068,7 +3221,8 @@ const EXERCISES_DB = {
   "5-23": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 特征值与特征向量（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=45" },
+      { name: "📺 特征值与特征向量（二）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=46" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3086,7 +3240,7 @@ const EXERCISES_DB = {
   "5-24": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 正交矩阵与实对称矩阵对角化", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=52" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3104,7 +3258,10 @@ const EXERCISES_DB = {
   "5-25": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 特征值与特征向量（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=45" },
+      { name: "📺 特征值与特征向量（二）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=46" },
+      { name: "📺 相似矩阵和矩阵可对角化", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=49" },
+      { name: "📺 正交矩阵与实对称矩阵对角化", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=52" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3122,7 +3279,7 @@ const EXERCISES_DB = {
   "5-26": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 二次型定义", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=53" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3140,7 +3297,8 @@ const EXERCISES_DB = {
   "5-27": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 二次型化标准型（配方法）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=54" },
+      { name: "📺 二次型化标准型（正交变换法）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=55" }
     ],
     exercises: [
       { question: "【复习】计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3158,7 +3316,8 @@ const EXERCISES_DB = {
   "5-28": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 有定性", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=56" },
+      { name: "📺 有定性的判别", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=57" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3176,7 +3335,11 @@ const EXERCISES_DB = {
   "5-29": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 二次型定义", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=53" },
+      { name: "📺 二次型化标准型（配方法）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=54" },
+      { name: "📺 二次型化标准型（正交变换法）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=55" },
+      { name: "📺 有定性", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=56" },
+      { name: "📺 有定性的判别", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=57" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3194,7 +3357,17 @@ const EXERCISES_DB = {
   "5-30": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 二阶三阶行列式的定义", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=1" },
+      { name: "📺 排列与逆序", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=2" },
+      { name: "📺 n阶行列式", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=3" },
+      { name: "📺 行列式的性质", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=4" },
+      { name: "📺 行列式按一行（列）展开", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=5" },
+      { name: "📺 克莱姆法则", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=8" },
+      { name: "📺 矩阵概念与运算", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=9" },
+      { name: "📺 矩阵的乘法", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=10" },
+      { name: "📺 矩阵的转置与逆", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=11" },
+      { name: "📺 逆矩阵与矩阵方程", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=12" },
+      { name: "📺 初等变换与初等矩阵", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=13" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3212,7 +3385,18 @@ const EXERCISES_DB = {
   "5-31": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 二阶三阶行列式的定义", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=1" },
+      { name: "📺 排列与逆序", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=2" },
+      { name: "📺 n阶行列式", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=3" },
+      { name: "📺 行列式的性质", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=4" },
+      { name: "📺 行列式按一行（列）展开", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=5" },
+      { name: "📺 行列式按多行展开", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=6" },
+      { name: "📺 克莱姆法则", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=8" },
+      { name: "📺 矩阵概念与运算", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=9" },
+      { name: "📺 矩阵的乘法", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=10" },
+      { name: "📺 矩阵的转置与逆", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=11" },
+      { name: "📺 逆矩阵与矩阵方程", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=12" },
+      { name: "📺 初等变换与初等矩阵", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=13" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3230,7 +3414,21 @@ const EXERCISES_DB = {
   "5-32": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 二阶三阶行列式的定义", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=1" },
+      { name: "📺 排列与逆序", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=2" },
+      { name: "📺 n阶行列式", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=3" },
+      { name: "📺 行列式的性质", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=4" },
+      { name: "📺 行列式按一行（列）展开", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=5" },
+      { name: "📺 克莱姆法则", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=8" },
+      { name: "📺 矩阵概念与运算", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=9" },
+      { name: "📺 矩阵的乘法", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=10" },
+      { name: "📺 矩阵的转置与逆", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=11" },
+      { name: "📺 逆矩阵与矩阵方程", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=12" },
+      { name: "📺 初等变换与初等矩阵", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=13" },
+      { name: "📺 n维向量及其运算", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=33" },
+      { name: "📺 向量间的线性关系（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=34" },
+      { name: "📺 线性相关线性无关", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=36" },
+      { name: "📺 向量组的秩（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=37" }
     ],
     exercises: [
       { question: "求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3248,7 +3446,25 @@ const EXERCISES_DB = {
   "5-33": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 二阶三阶行列式的定义", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=1" },
+      { name: "📺 排列与逆序", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=2" },
+      { name: "📺 n阶行列式", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=3" },
+      { name: "📺 行列式的性质", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=4" },
+      { name: "📺 行列式按一行（列）展开", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=5" },
+      { name: "📺 克莱姆法则", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=8" },
+      { name: "📺 矩阵概念与运算", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=9" },
+      { name: "📺 矩阵的乘法", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=10" },
+      { name: "📺 矩阵的转置与逆", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=11" },
+      { name: "📺 逆矩阵与矩阵方程", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=12" },
+      { name: "📺 初等变换与初等矩阵", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=13" },
+      { name: "📺 n维向量及其运算", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=33" },
+      { name: "📺 向量间的线性关系（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=34" },
+      { name: "📺 线性相关线性无关", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=36" },
+      { name: "📺 向量组的秩（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=37" },
+      { name: "📺 特征值与特征向量（一）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=45" },
+      { name: "📺 特征值与特征向量（二）", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=46" },
+      { name: "📺 相似矩阵和矩阵可对角化", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=49" },
+      { name: "📺 正交矩阵与实对称矩阵对角化", url: "https://www.bilibili.com/video/BV1aW411Q7x1/?p=52" }
     ],
     exercises: [
       { question: "计算行列式 |1 2; 3 4|。", answer: "=1×4-2×3=-2。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】=1×4-2×3=-2。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
@@ -3266,7 +3482,7 @@ const EXERCISES_DB = {
   "5-34": {
     links: [
       { name: "📖 同济《线性代数》第六版", url: null },
-      { name: "📺 宋浩《线性代数》", url: "https://space.bilibili.com/66607740/channel/collectiondetail?sid=14370" },
+      { name: "📺 宋浩《线性代数》全程教学", url: "https://www.bilibili.com/video/BV1aW411Q7x1/" }
     ],
     exercises: [
       { question: "【复习】求矩阵 [1 2; 2 1] 的特征值。", answer: "|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。" , detail: "【解题思路】利用线性代数的基本运算法则。\n【详细步骤】|A-λI|=(1-λ)²-4=λ²-2λ-3=0，λ=3 或 λ=-1。\n【知识点】矩阵运算、行列式性质、特征值求法。" },
