@@ -181,6 +181,7 @@ function switchPage(page) {
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
   renderAll();
+  if (page === 'games' && typeof Games !== 'undefined') Games.init();
 }
 
 // ---------- Render All ----------
