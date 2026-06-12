@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    高等数学学习追踪 - 清新柔和高级UI
    Glass Morphism + 动态交互 + 低饱和配色
    ============================================================ */
@@ -473,20 +473,6 @@ body {
   margin-bottom: 20px;
 }
 
-.today-proof-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  padding: 10px 16px;
-  background: rgba(22, 93, 255, 0.04);
-  border: 1px solid rgba(22, 93, 255, 0.12);
-  border-radius: var(--radius-sm);
-  color: var(--primary);
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
 .today-meta {
   display: flex;
   gap: 12px;
@@ -778,9 +764,10 @@ body {
 
 .task-item:hover {
   background: rgba(245, 246, 248, 0.60);
+  margin: 0 -12px;
+  padding: 12px;
   border-radius: var(--radius-xs);
   backdrop-filter: blur(4px);
-  box-shadow: 0 2px 8px rgba(29, 33, 41, 0.04);
 }
 
 .task-day {
@@ -971,6 +958,161 @@ body {
   border: 1px solid rgba(229, 230, 235, 0.40);
 }
 
+/* ---- Resource Grid & Cards (New) ---- */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.resource-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 var(--glass-highlight);
+}
+
+.resource-card:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: var(--shadow-md), inset 0 1px 0 var(--glass-highlight);
+  transform: translateY(-2px);
+}
+
+.resource-card-clickable {
+  cursor: pointer;
+}
+
+.resource-card-cover {
+  font-size: 48px;
+  text-align: center;
+  padding: 24px 0 12px;
+  background: var(--bg-active);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.resource-card-body {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resource-card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-title);
+  line-height: 1.4;
+}
+
+.resource-card-meta {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.resource-card-isbn {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'SF Mono', 'Consolas', monospace;
+  letter-spacing: 0.02em;
+}
+
+.resource-card-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.resource-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.resource-card-tags .resource-tag {
+  margin: 0;
+}
+
+.resource-card-usage {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border-light);
+}
+
+.resource-card-buy {
+  display: flex;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+.resource-buy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.resource-buy-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(22, 93, 255, 0.25);
+}
+
+/* Formula cheatsheet item */
+.resource-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.resource-usage-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.formula-icon {
+  background: #FEF3C7 !important;
+  color: #B45309 !important;
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+/* Dark mode adjustments */
+.dark .resource-card {
+  background: rgba(255,255,255,0.03);
+}
+
+.dark .resource-card-cover {
+  background: rgba(255,255,255,0.04);
+}
+
+.dark .resource-tag {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.1);
+}
+
 /* ---------- Settings Form ---------- */
 .form-group { margin-bottom: 24px; }
 
@@ -1009,50 +1151,6 @@ body {
   color: var(--text-muted);
   margin-top: 6px;
   line-height: 1.5;
-}
-
-/* ---------- Today Checkin Area ---------- */
-.today-checkin-area {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 8px;
-  margin-bottom: 24px;
-}
-
-.today-schedule-list {
-  margin-left: 20px;
-  list-style: none;
-}
-
-.today-schedule-list li {
-  font-size: 14px;
-  color: var(--text-body);
-  line-height: 1.8;
-  padding: 6px 0;
-  border-bottom: 1px solid var(--border-light);
-  position: relative;
-  padding-left: 16px;
-}
-
-.today-schedule-list li:last-child {
-  border-bottom: none;
-}
-
-.today-schedule-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 14px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--primary-20);
-}
-
-.today-schedule-list li strong {
-  color: var(--text-title);
-  font-weight: 500;
 }
 
 /* ---------- Streak ---------- */
@@ -1606,6 +1704,30 @@ body {
   flex-shrink: 0;
 }
 
+.answer-brief {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.7;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border-light);
+  margin-bottom: 10px;
+}
+
+.answer-detail {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.answer-detail br + br {
+  display: none;
+}
+
+/* highlight section headers in detail */
+.answer-detail {
+  /* Style "【xxx】" markers */
+}
+
 .btn-answer {
   display: inline-flex;
   align-items: center;
@@ -1642,650 +1764,554 @@ body {
   border-radius: var(--radius-xs);
 }
 
+/* ---------- Today Page Sections (Inline Learning Content) ---------- */
+.today-section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm), inset 0 1px 0 var(--glass-highlight);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.today-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  pointer-events: none;
+}
+
+.today-section:hover {
+  box-shadow: var(--shadow-md), inset 0 1px 0 var(--glass-highlight);
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.today-section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-title);
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
 /* ============================================================
-   GAMES PAGE
+   GAMES / SUDOKU
    ============================================================ */
 
-/* ---------- Games Tabs ---------- */
-.games-tabs {
+.game-tabs {
   display: flex;
   gap: 8px;
   margin-bottom: 24px;
-  flex-wrap: wrap;
 }
 
 .game-tab {
-  flex: 1;
-  min-width: 100px;
-  padding: 12px 16px;
+  padding: 10px 24px;
+  border: none;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-secondary);
-  background: var(--bg-white);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-sm);
+  color: var(--text-muted);
   cursor: pointer;
-  transition: all var(--transition-fast);
-  text-align: center;
-  white-space: nowrap;
-}
-
-.game-tab:hover {
-  background: var(--primary-soft);
-  color: var(--primary);
+  transition: all var(--transition-base);
 }
 
 .game-tab.active {
   background: var(--primary);
   color: #fff;
   border-color: var(--primary);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
 }
 
-.game-panel { display: none; }
-.game-panel.active { display: block; }
+.game-tab:hover:not(.active) {
+  border-color: rgba(255, 255, 255, 0.65);
+  color: var(--text-title);
+  transform: translateY(-1px);
+}
 
-/* ---------- Game Subtabs ---------- */
-.game-subtabs {
+/* Sudoku Toolbar */
+.sudoku-toolbar {
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
-.game-subtab {
-  padding: 8px 20px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  background: transparent;
-  border: 1px solid var(--border-light);
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.game-subtab:hover {
-  border-color: var(--primary-40);
-  color: var(--primary);
-}
-
-.game-subtab.active {
-  background: var(--primary-soft);
-  border-color: var(--primary-40);
-  color: var(--primary);
-}
-
-.game-subpanel { display: none; }
-.game-subpanel.active { display: block; }
-
-.game-select {
-  padding: 8px 12px;
-  font-size: 13px;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-xs);
-  background: var(--bg-white);
-  color: var(--text-body);
-  cursor: pointer;
-  outline: none;
-}
-
-.game-select:focus {
-  border-color: var(--primary-40);
+.sudoku-difficulty,
+.sudoku-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .btn-sm {
-  padding: 8px 16px !important;
-  font-size: 13px !important;
-}
-
-/* ============================================================
-   SUDOKU
-   ============================================================ */
-
-.sudoku-toolbar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.sudoku-status {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-left: auto;
-}
-
-.sudoku-status.success {
-  color: var(--success);
-  font-weight: 500;
-}
-
-.sudoku-status.error {
-  color: var(--accent-coral);
-  font-weight: 500;
-}
-
-.sudoku-grid {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  max-width: 450px;
-  margin: 0 auto 16px;
-  border: 2px solid var(--text-title);
-  border-radius: 4px;
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
-}
-
-.sudoku-cell {
-  aspect-ratio: 1 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--text-title);
-  background: var(--bg-white);
-  border: 1px solid var(--border-light);
-  cursor: pointer;
-  transition: background 0.15s;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.sudoku-cell:hover {
-  background: var(--primary-soft);
-}
-
-.sudoku-cell.selected {
-  background: rgba(22, 93, 255, 0.12);
-  box-shadow: inset 0 0 0 2px var(--primary);
-}
-
-.sudoku-cell.given {
-  color: var(--text-title);
-  font-weight: 600;
-  background: rgba(29, 33, 41, 0.03);
-  cursor: default;
-}
-
-.sudoku-cell.given:hover {
-  background: rgba(29, 33, 41, 0.03);
-}
-
-.sudoku-cell.same-number {
-  background: rgba(22, 93, 255, 0.06);
-}
-
-.sudoku-cell.error-cell {
-  color: var(--accent-coral);
-  background: rgba(248, 114, 114, 0.08);
-}
-
-/* Bold borders for 3x3 boxes */
-.sudoku-cell.box-right {
-  border-right: 2px solid var(--text-title);
-}
-
-.sudoku-cell.box-bottom {
-  border-bottom: 2px solid var(--text-title);
-}
-
-.sudoku-numpad {
-  display: flex;
-  gap: 6px;
-  max-width: 450px;
-  margin: 0 auto;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.sudoku-num-btn {
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-body);
-  background: var(--bg-white);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-xs);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.sudoku-num-btn:hover {
-  background: var(--primary-soft);
-  border-color: var(--primary-40);
-  color: var(--primary);
-}
-
-.sudoku-num-btn.erase {
-  width: auto;
-  padding: 0 14px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-/* ============================================================
-   24-POINT GAME
-   ============================================================ */
-
-.tf-cards {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.tf-card {
-  width: 70px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--primary);
-  background: linear-gradient(135deg, rgba(22,93,255,0.06), rgba(22,93,255,0.10));
-  border: 2px solid rgba(22,93,255,0.20);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.tf-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(22, 93, 255, 0.15);
-  border-color: var(--primary);
-}
-
-.tf-card.used {
-  opacity: 0.3;
-  pointer-events: none;
-  transform: scale(0.95);
-}
-
-.tf-expression {
-  min-height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 4px;
-  padding: 12px 16px;
-  background: rgba(29, 33, 41, 0.02);
-  border: 1px dashed var(--border-light);
+  padding: 6px 14px;
+  font-size: 12px;
   border-radius: var(--radius-sm);
-  margin-bottom: 12px;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--text-title);
-  letter-spacing: 1px;
 }
 
-.tf-controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.tf-operators {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.tf-op-btn {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text-body);
-  background: var(--bg-white);
-  border: 1px solid var(--border-light);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.tf-op-btn:hover {
-  background: var(--primary-soft);
-  border-color: var(--primary-40);
-  color: var(--primary);
-}
-
-.tf-op-btn.tf-paren {
-  width: 42px;
-  font-size: 18px;
-  color: var(--text-muted);
-}
-
-.tf-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.tf-message {
-  text-align: center;
-  margin-top: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  min-height: 24px;
-}
-
-.tf-message.success {
-  color: var(--success);
-}
-
-.tf-message.error {
-  color: var(--accent-coral);
-}
-
-.tf-message.hint {
-  color: var(--accent-orange);
-}
-
-/* ============================================================
-   SPEED MATH
-   ============================================================ */
-
-.sm-setup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  padding: 32px 0;
-}
-
-.sm-difficulty {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-
-.sm-diff-btn {
-  padding: 8px 18px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-body);
-  background: var(--bg-white);
-  border: 1px solid var(--border-light);
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.sm-diff-btn:hover {
-  border-color: var(--primary-40);
-  color: var(--primary);
-}
-
-.sm-diff-btn.active {
+.sudoku-difficulty .btn.active {
   background: var(--primary);
   color: #fff;
   border-color: var(--primary);
 }
 
-.sm-header {
+/* Sudoku Stats */
+.sudoku-stats {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-  gap: 12px;
+  gap: 24px;
+  margin-bottom: 20px;
+  padding: 16px 24px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
 }
 
-.sm-timer {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--primary);
+.sudoku-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.sudoku-stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sudoku-stat-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-title);
   font-variant-numeric: tabular-nums;
 }
 
-.sm-timer.warning {
-  color: var(--accent-orange);
-  animation: pulse 0.6s infinite alternate;
-}
-
-.sm-timer.danger {
-  color: var(--accent-coral);
-  animation: pulse 0.4s infinite alternate;
-}
-
-.sm-score {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--success);
-}
-
-.sm-score span {
-  font-size: 22px;
-}
-
-.sm-progress {
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.sm-question {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--text-title);
-  padding: 24px;
-  background: rgba(29, 33, 41, 0.02);
-  border-radius: var(--radius-lg);
-  margin-bottom: 16px;
-  letter-spacing: 1px;
-}
-
-.sm-input {
-  width: 100%;
-  max-width: 280px;
-  display: block;
-  margin: 0 auto 16px;
-  padding: 14px 18px;
-  font-size: 22px;
-  font-weight: 600;
-  text-align: center;
-  border: 2px solid var(--border-light);
-  border-radius: var(--radius-sm);
-  outline: none;
-  transition: border-color var(--transition-fast);
-  background: var(--bg-white);
-  color: var(--text-title);
-}
-
-.sm-input:focus {
-  border-color: var(--primary);
-}
-
-.sm-submit-btn {
-  display: block;
-  margin: 0 auto;
-  min-width: 160px;
-}
-
-.sm-feedback {
-  text-align: center;
-  margin-top: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  min-height: 22px;
-}
-
-.sm-feedback.correct {
-  color: var(--success);
-}
-
-.sm-feedback.wrong {
-  color: var(--accent-coral);
-}
-
-.sm-result {
-  text-align: center;
-  padding: 32px 0;
-}
-
-.sm-result h3 {
-  font-size: 22px;
-  margin-bottom: 12px;
-}
-
-.sm-result-stats {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin: 20px 0;
-  flex-wrap: wrap;
-}
-
-.sm-result-stat {
-  text-align: center;
-}
-
-.sm-result-stat .val {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.sm-result-stat .lbl {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: 4px;
-}
-
-/* ============================================================
-   MEMORY MATCH
-   ============================================================ */
-
-.mem-header {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-
-.mem-stat {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  padding: 8px 16px;
-  background: rgba(29, 33, 41, 0.03);
-  border-radius: 20px;
-}
-
-.mem-stat span {
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.mem-grid {
+/* Sudoku Board */
+.sudoku-board {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  max-width: 480px;
-  margin: 0 auto 20px;
-}
-
-.mem-card {
-  aspect-ratio: 3 / 4;
-  perspective: 600px;
-  cursor: pointer;
-}
-
-.mem-card-inner {
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
   width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.4s ease;
-}
-
-.mem-card.flipped .mem-card-inner {
-  transform: rotateY(180deg);
-}
-
-.mem-card.matched .mem-card-inner {
-  transform: rotateY(180deg);
-}
-
-.mem-card-front,
-.mem-card-back {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  max-width: 468px;
+  min-height: 468px;
+  margin: 0 auto 20px;
+  background: #e8ebf0;
   border-radius: 12px;
+  border: 2px solid #b0b5be;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.dark .sudoku-board {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.sudoku-cell {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.3;
-  word-break: break-all;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #d0d4dc;
+  transition: background 0.15s ease, transform 0.1s ease;
+  position: relative;
+  user-select: none;
+  background: #ffffff;
+  color: #1D2129;
 }
 
-.mem-card-front {
-  background: linear-gradient(135deg, var(--primary), #3c7cf6);
-  color: #fff;
-  font-size: 28px;
+.dark .sudoku-cell {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #e8ecf0;
 }
 
-.mem-card-back {
-  background: var(--bg-white);
-  border: 2px solid var(--primary-40);
-  color: var(--text-title);
-  transform: rotateY(180deg);
-  font-size: 13px;
+.sudoku-cell:hover {
+  background: rgba(59, 130, 246, 0.08);
 }
 
-.mem-card.matched .mem-card-back {
-  background: var(--success-bg);
-  border-color: rgba(54, 211, 153, 0.3);
-  color: #2aa876;
+.dark .sudoku-cell:hover {
+  background: rgba(59, 130, 246, 0.12);
 }
 
-.mem-restart {
-  display: block;
-  margin: 0 auto;
+.sudoku-cell.given {
+  font-weight: 700;
+  color: #1D2129;
 }
 
-.mem-complete {
-  text-align: center;
-  padding: 24px;
-  margin-top: 16px;
+.dark .sudoku-cell.given {
+  color: #f0f2f5;
 }
 
-.mem-complete h3 {
-  font-size: 20px;
-  color: var(--success);
-  margin-bottom: 8px;
+.sudoku-cell.selected {
+  background: rgba(59, 130, 246, 0.22) !important;
+  z-index: 2;
 }
 
-.mem-complete p {
-  font-size: 14px;
+.dark .sudoku-cell.selected {
+  background: rgba(59, 130, 246, 0.35) !important;
+}
+
+.sudoku-cell.related {
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.dark .sudoku-cell.related {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.sudoku-cell.same-num {
+  background: rgba(59, 130, 246, 0.14);
+}
+
+.dark .sudoku-cell.same-num {
+  background: rgba(59, 130, 246, 0.22);
+}
+
+.sudoku-cell.wrong {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.dark .sudoku-cell.wrong {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.sudoku-cell.wrong .cell-value {
+  animation: shake 0.3s ease;
+}
+
+.sudoku-cell.box-left {
+  border-left: 2.5px solid #86909C;
+}
+
+.sudoku-cell.box-top {
+  border-top: 2.5px solid #86909C;
+}
+
+.dark .sudoku-cell.box-left,
+.dark .sudoku-cell.box-top {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.cell-value {
+  line-height: 1;
+}
+
+.cell-notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+}
+
+.note-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 400;
   color: var(--text-muted);
+  line-height: 1;
+}
+
+/* Sudoku Numpad */
+.sudoku-numpad {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  max-width: 468px;
+  margin: 0 auto 16px;
+}
+
+.numpad-btn {
+  aspect-ratio: 1.4;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  color: var(--text-title);
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.numpad-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.numpad-btn:active {
+  transform: translateY(0);
+}
+
+.numpad-btn.completed {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.numpad-delete {
+  font-size: 14px;
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.numpad-delete:hover {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+/* Sudoku Note Toggle */
+.sudoku-note-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+#sudoku-note-btn {
+  font-size: 13px;
+  padding: 8px 20px;
+  border-radius: var(--radius-md);
+}
+
+/* Sudoku Complete State */
+.sudoku-cell.completed-correct {
+  animation: sudokuPop 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+
+@keyframes sudokuPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* ---- Numpad count badge ---- */
+.numpad-btn {
+  position: relative;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.numpad-main {
+  line-height: 1;
+}
+
+.numpad-count {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.numpad-btn.completed {
+  opacity: 0.35;
+  pointer-events: auto;
+  cursor: pointer;
+  background: var(--bg-active);
+}
+
+.numpad-btn.completed:hover {
+  opacity: 0.55;
+  transform: translateY(-2px);
+}
+
+/* ---- Board wrap & pause overlay ---- */
+.sudoku-board-wrap {
+  position: relative;
+  max-width: 468px;
+  margin: 0 auto 20px;
+}
+
+.sudoku-board-wrap .sudoku-board {
+  margin-bottom: 0;
+}
+
+.sudoku-pause-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(232, 235, 240, 0.85);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-radius: 12px;
+  z-index: 10;
+}
+
+.dark .sudoku-pause-overlay {
+  background: rgba(30, 33, 40, 0.9);
+}
+
+.pause-icon {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+.pause-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-title);
+}
+
+/* ---- Win Modal ---- */
+.sudoku-win-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.win-content {
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 40px 36px;
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  animation: winBounce 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes winBounce {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.04); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.win-trophy {
+  font-size: 56px;
+  margin-bottom: 12px;
+  animation: trophySpin 0.8s ease;
+}
+
+@keyframes trophySpin {
+  0% { transform: rotateY(0deg) scale(0); }
+  60% { transform: rotateY(360deg) scale(1.15); }
+  100% { transform: rotateY(360deg) scale(1); }
+}
+
+.win-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 20px;
+}
+
+.win-stats {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.win-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.win-stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.win-stat-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-title);
+  font-variant-numeric: tabular-nums;
+}
+
+.win-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ---- Scan match (number highlight) ---- */
+.sudoku-cell.scan-match {
+  background: rgba(250, 176, 5, 0.25) !important;
+  animation: scanPulse 0.6s ease;
+}
+
+.dark .sudoku-cell.scan-match {
+  background: rgba(250, 176, 5, 0.35) !important;
+}
+
+@keyframes scanPulse {
+  0% { background: rgba(250, 176, 5, 0.5); }
+  100% { background: rgba(250, 176, 5, 0.25); }
+}
+
+/* ---- Pop-in for correctly filled numbers ---- */
+.cell-value.pop-in {
+  animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* ============================================================
@@ -2320,6 +2346,15 @@ body {
   .today-card { padding: 24px; }
   .today-card::before { height: 2px; }
   .today-title { font-size: 18px; }
+  .today-section { padding: 22px; }
+
+  /* Sudoku Mobile */
+  .sudoku-toolbar { flex-direction: column; align-items: stretch; }
+  .sudoku-difficulty, .sudoku-actions { justify-content: center; }
+  .sudoku-stats { padding: 12px 16px; gap: 16px; }
+  .sudoku-cell { font-size: 15px; }
+  .note-num { font-size: 7px; }
+  .numpad-btn { font-size: 16px; aspect-ratio: 1.3; }
 
   .page-title { font-size: 22px; }
   .page-subtitle { margin-bottom: 24px; }
@@ -2354,20 +2389,6 @@ body {
   .task-modal-body { padding: 18px 20px; }
   .task-modal-footer { padding: 14px 20px; }
   .task-modal-title { font-size: 17px; }
-
-  .today-checkin-area { flex-direction: column; }
-  .today-checkin-area .btn { width: 100%; }
-  .today-schedule-list { margin-left: 14px; }
-  .today-proof-tag { font-size: 12px; padding: 8px 14px; }
-
-  .games-tabs { gap: 6px; }
-  .game-tab { padding: 10px 12px; font-size: 13px; }
-  .sudoku-grid { max-width: 100%; }
-  .sudoku-cell { font-size: 15px; }
-  .sudoku-num-btn { width: 36px; height: 36px; font-size: 14px; }
-  .tf-card { width: 60px; height: 76px; font-size: 24px; }
-  .sm-question { font-size: 26px; }
-  .mem-grid { max-width: 100%; gap: 8px; }
 }
 
 @media (max-width: 480px) {
@@ -2375,13 +2396,174 @@ body {
   .today-meta { gap: 8px; }
   .meta-tag { padding: 5px 10px; font-size: 12px; }
   .phase-status { font-size: 11px; padding: 3px 8px; }
-  .today-proof-tag { font-size: 11px; padding: 6px 10px; }
 
-  .game-tab { padding: 8px 10px; font-size: 12px; }
-  .tf-cards { gap: 10px; }
-  .tf-card { width: 52px; height: 66px; font-size: 20px; }
-  .tf-op-btn { width: 42px; height: 42px; font-size: 18px; }
-  .sm-question { font-size: 22px; padding: 18px; }
-  .mem-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
-  .mem-card-back { font-size: 11px; }
+  /* Sudoku extra small */
+  .sudoku-board { max-width: 100%; }
+  .sudoku-cell { font-size: 14px; }
+  .sudoku-numpad { gap: 5px; }
+  .numpad-btn { font-size: 15px; }
+  .sudoku-stat-value { font-size: 15px; }
 }
+
+/* ---- Level Mode Styles ---- */
+.sudoku-mode-switch {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.sudoku-level-info {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-title);
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  background: var(--bg-active);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.level-badge-easy {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: #36D399;
+  color: white;
+  border-radius: 12px;
+}
+
+.level-badge-medium {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: #FF9F43;
+  color: white;
+  border-radius: 12px;
+}
+
+.level-badge-hard {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: #F87272;
+  color: white;
+  border-radius: 12px;
+}
+
+/* ---- Level Selection Grid ---- */
+.sudoku-level-select {
+  padding: 20px 0;
+}
+
+.level-select-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.level-select-header h3 {
+  font-size: 18px;
+  color: var(--text-title);
+  margin-bottom: 4px;
+}
+
+.level-select-header p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 8px;
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+
+.level-btn {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  padding: 4px;
+}
+
+.level-btn.unlocked {
+  background: var(--bg-active);
+  color: var(--text-body);
+  border: 1px solid var(--border-light);
+}
+
+.level-btn.unlocked:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.level-btn.completed {
+  background: linear-gradient(135deg, #36D399 0%, #2aa876 100%);
+  color: white;
+}
+
+.level-btn.completed:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(54, 211, 153, 0.3);
+}
+
+.level-btn.locked {
+  background: var(--bg-active);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.level-btn.current {
+  ring: 2px solid var(--primary);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.level-num {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.level-diff {
+  font-size: 9px;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.level-time {
+  font-size: 8px;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.level-select-footer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ---- Numpad hidden state ---- */
+.numpad-btn.hidden {
+  opacity: 0.2;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .level-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
