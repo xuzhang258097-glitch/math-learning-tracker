@@ -50,6 +50,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" data-page="games">
+            <span class="nav-icon">&#x1F3AE;</span>
+            <span>智力游戏</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" data-page="settings">
             <span class="nav-icon">&#x2699;</span>
             <span>设置</span>
@@ -249,6 +255,102 @@
         </div>
       </div>
 
+      <!-- Games Page -->
+      <div class="page" id="page-games">
+        <h1 class="page-title">智力游戏</h1>
+        <p class="page-subtitle">数学谜题、速算挑战与记忆翻牌</p>
+
+        <div class="games-tabs">
+          <button class="game-tab active" data-game="puzzle">&#x1F9E9; 数学谜题</button>
+          <button class="game-tab" data-game="speedmath">&#x26A1; 速算挑战</button>
+          <button class="game-tab" data-game="memory">&#x1F0CF; 记忆翻牌</button>
+        </div>
+
+        <!-- Puzzle Games (Sudoku + 24-Point) -->
+        <div class="game-panel active" id="game-puzzle">
+          <div class="game-subtabs">
+            <button class="game-subtab active" data-subgame="sudoku">数独</button>
+            <button class="game-subtab" data-subgame="twentyfour">24点</button>
+          </div>
+
+          <!-- Sudoku -->
+          <div class="game-subpanel active" id="sudoku-panel">
+            <div class="sudoku-toolbar">
+              <select class="game-select" id="sudoku-difficulty">
+                <option value="easy">简单</option>
+                <option value="medium" selected>中等</option>
+                <option value="hard">困难</option>
+              </select>
+              <button class="btn btn-primary btn-sm" id="sudoku-new">新游戏</button>
+              <button class="btn btn-secondary btn-sm" id="sudoku-check">检查</button>
+              <span class="sudoku-status" id="sudoku-status"></span>
+            </div>
+            <div class="sudoku-grid" id="sudoku-grid"></div>
+            <div class="sudoku-numpad" id="sudoku-numpad"></div>
+          </div>
+
+          <!-- 24-Point -->
+          <div class="game-subpanel" id="twentyfour-panel">
+            <div class="tf-cards" id="tf-cards"></div>
+            <div class="tf-expression" id="tf-expression"></div>
+            <div class="tf-controls">
+              <div class="tf-operators">
+                <button class="tf-op-btn" data-op="+">+</button>
+                <button class="tf-op-btn" data-op="-">−</button>
+                <button class="tf-op-btn" data-op="*">×</button>
+                <button class="tf-op-btn" data-op="/">÷</button>
+                <button class="tf-op-btn tf-paren" data-op="(">(</button>
+                <button class="tf-op-btn tf-paren" data-op=")">)</button>
+              </div>
+              <div class="tf-actions">
+                <button class="btn btn-primary btn-sm" id="tf-submit">验证</button>
+                <button class="btn btn-secondary btn-sm" id="tf-clear">清除</button>
+                <button class="btn btn-secondary btn-sm" id="tf-new">新题</button>
+                <button class="btn btn-secondary btn-sm" id="tf-hint">提示</button>
+              </div>
+            </div>
+            <div class="tf-message" id="tf-message"></div>
+          </div>
+        </div>
+
+        <!-- Speed Math -->
+        <div class="game-panel" id="game-speedmath">
+          <div class="sm-setup" id="sm-setup">
+            <div class="sm-difficulty">
+              <span>难度：</span>
+              <button class="sm-diff-btn active" data-diff="easy">简单</button>
+              <button class="sm-diff-btn" data-diff="medium">中等</button>
+              <button class="sm-diff-btn" data-diff="hard">困难</button>
+            </div>
+            <button class="btn btn-primary" id="sm-start">开始挑战</button>
+          </div>
+          <div class="sm-game" id="sm-game" style="display:none;">
+            <div class="sm-header">
+              <div class="sm-timer" id="sm-timer">60</div>
+              <div class="sm-score">得分：<span id="sm-score">0</span></div>
+              <div class="sm-progress"><span id="sm-correct">0</span> / <span id="sm-total">0</span></div>
+            </div>
+            <div class="sm-question" id="sm-question"></div>
+            <input type="number" class="sm-input" id="sm-input" placeholder="输入答案..." autocomplete="off">
+            <button class="btn btn-primary sm-submit-btn" id="sm-submit">确定</button>
+            <div class="sm-feedback" id="sm-feedback"></div>
+          </div>
+          <div class="sm-result" id="sm-result" style="display:none;"></div>
+        </div>
+
+        <!-- Memory Match -->
+        <div class="game-panel" id="game-memory">
+          <div class="mem-header">
+            <div class="mem-stat">步数：<span id="mem-moves">0</span></div>
+            <div class="mem-stat">时间：<span id="mem-time">00:00</span></div>
+            <div class="mem-stat">配对：<span id="mem-pairs">0</span> / 8</div>
+          </div>
+          <div class="mem-grid" id="mem-grid"></div>
+          <button class="btn btn-primary mem-restart" id="mem-restart">重新开始</button>
+          <div class="mem-complete" id="mem-complete" style="display:none;"></div>
+        </div>
+      </div>
+
       <!-- Settings Page -->
       <div class="page" id="page-settings">
         <h1 class="page-title">设置</h1>
@@ -313,6 +415,10 @@
       <span class="mobile-nav-icon">&#x1F4C6;</span>
       <span>日历</span>
     </button>
+    <button class="mobile-nav-link" data-page="games">
+      <span class="mobile-nav-icon">&#x1F3AE;</span>
+      <span>游戏</span>
+    </button>
     <button class="mobile-nav-link" data-page="settings">
       <span class="mobile-nav-icon">&#x2699;</span>
       <span>设置</span>
@@ -372,5 +478,6 @@
   <script src="js/exercises.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/games.js"></script>
 </body>
 </html>
