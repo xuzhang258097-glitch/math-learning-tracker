@@ -56,12 +56,6 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-page="vocab">
-            <span class="nav-icon">&#x1F4D6;</span>
-            <span>背单词</span>
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" data-page="settings">
             <span class="nav-icon">&#x2699;</span>
             <span>设置</span>
@@ -181,9 +175,6 @@
 
         <div class="game-tabs">
           <button class="game-tab active" data-game="sudoku">数独</button>
-          <button class="game-tab" data-game="twentyfour">24点</button>
-          <button class="game-tab" data-game="speedmath">速算挑战</button>
-          <button class="game-tab" data-game="memory">记忆翻牌</button>
         </div>
 
         <!-- Sudoku Game -->
@@ -264,82 +255,6 @@
             <button class="btn btn-sm" id="sudoku-note-btn">✏️ 笔记模式</button>
           </div>
         </div>
-
-        <!-- 24-Point Game -->
-        <div class="game-panel" id="panel-twentyfour" style="display:none;">
-          <div class="tf-cards" id="tf-cards"></div>
-          <div class="tf-expression" id="tf-expression"></div>
-          <div class="tf-controls">
-            <div class="tf-operators">
-              <button class="tf-op-btn" data-op="+">+</button>
-              <button class="tf-op-btn" data-op="-">−</button>
-              <button class="tf-op-btn" data-op="*">×</button>
-              <button class="tf-op-btn" data-op="/">÷</button>
-              <button class="tf-op-btn tf-paren" data-op="(">(</button>
-              <button class="tf-op-btn tf-paren" data-op=")">)</button>
-            </div>
-            <div class="tf-actions">
-              <button class="btn btn-primary btn-sm" id="tf-submit">验证</button>
-              <button class="btn btn-secondary btn-sm" id="tf-clear">清除</button>
-              <button class="btn btn-secondary btn-sm" id="tf-new">新题</button>
-              <button class="btn btn-secondary btn-sm" id="tf-hint">提示</button>
-            </div>
-          </div>
-          <div class="tf-message" id="tf-message"></div>
-        </div>
-
-        <!-- Speed Math -->
-        <div class="game-panel" id="panel-speedmath" style="display:none;">
-          <div class="sm-setup" id="sm-setup">
-            <div class="sm-difficulty">
-              <span>难度：</span>
-              <button class="sm-diff-btn active" data-diff="easy">简单</button>
-              <button class="sm-diff-btn" data-diff="medium">中等</button>
-              <button class="sm-diff-btn" data-diff="hard">困难</button>
-            </div>
-            <button class="btn btn-primary" id="sm-start">开始挑战</button>
-          </div>
-          <div class="sm-game" id="sm-game" style="display:none;">
-            <div class="sm-header">
-              <div class="sm-timer" id="sm-timer">60</div>
-              <div class="sm-score">得分：<span id="sm-score">0</span></div>
-              <div class="sm-progress"><span id="sm-correct">0</span> / <span id="sm-total">0</span></div>
-            </div>
-            <div class="sm-question" id="sm-question"></div>
-            <input type="number" class="sm-input" id="sm-input" placeholder="输入答案..." autocomplete="off">
-            <button class="btn btn-primary sm-submit-btn" id="sm-submit">确定</button>
-            <div class="sm-feedback" id="sm-feedback"></div>
-          </div>
-          <div class="sm-result" id="sm-result" style="display:none;"></div>
-        </div>
-
-        <!-- Memory Match -->
-        <div class="game-panel" id="panel-memory" style="display:none;">
-          <div class="mem-header">
-            <div class="mem-stat">步数：<span id="mem-moves">0</span></div>
-            <div class="mem-stat">时间：<span id="mem-time">00:00</span></div>
-            <div class="mem-stat">配对：<span id="mem-pairs">0</span> / 8</div>
-          </div>
-          <div class="mem-grid" id="mem-grid"></div>
-          <button class="btn btn-primary mem-restart" id="mem-restart">重新开始</button>
-          <div class="mem-complete" id="mem-complete" style="display:none;"></div>
-        </div>
-      </div>
-
-      <!-- Vocab Page -->
-      <div class="page" id="page-vocab">
-        <h1 class="page-title">背单词</h1>
-        <p class="page-subtitle">Qwerty Learner — 键盘单词肌肉记忆训练</p>
-        <div class="vocab-frame-wrap">
-          <iframe
-            src="https://qwerty.kaiyi.cool"
-            class="vocab-iframe"
-            allow="clipboard-write"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-            loading="lazy"
-            title="背单词">
-          </iframe>
-        </div>
       </div>
 
       <!-- Settings Page -->
@@ -410,10 +325,6 @@
       <span class="mobile-nav-icon">&#x1F9E0;</span>
       <span>游戏</span>
     </button>
-    <button class="mobile-nav-link" data-page="vocab">
-      <span class="mobile-nav-icon">&#x1F4D6;</span>
-      <span>单词</span>
-    </button>
     <button class="mobile-nav-link" data-page="settings">
       <span class="mobile-nav-icon">&#x2699;</span>
       <span>设置</span>
@@ -474,8 +385,7 @@
   <script src="js/data.js?v=4"></script>
   <script src="js/exercises.js?v=6"></script>
   <script src="js/audio.js?v=4"></script>
-  <script src="js/app.js?v=12"></script>
-  <script src="js/games.js?v=2"></script>
+  <script src="js/app.js?v=11"></script>
 </body>
 </html>
 
