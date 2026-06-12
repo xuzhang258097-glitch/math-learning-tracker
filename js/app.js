@@ -1558,6 +1558,22 @@ const SudokuGame = {
     }
   },
 
+  togglePause() {
+    if (this.completed) return;
+    this.paused = !this.paused;
+    const overlay = document.getElementById('sudoku-pause-overlay');
+    const pauseBtn = document.getElementById('sudoku-pause');
+    if (this.paused) {
+      this.stopTimer();
+      if (overlay) overlay.style.display = 'flex';
+      if (pauseBtn) pauseBtn.textContent = '继续';
+    } else {
+      this.startTimer();
+      if (overlay) overlay.style.display = 'none';
+      if (pauseBtn) pauseBtn.textContent = '暂停';
+    }
+  },
+
   // ---- Rendering ----
   render() {
     const boardEl = document.getElementById('sudoku-board');
