@@ -56,7 +56,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://qwerty.kaiyi.cool" target="_blank" rel="noopener">
+          <a class="nav-link" data-page="vocab">
             <span class="nav-icon">&#x1F4D6;</span>
             <span>背单词</span>
           </a>
@@ -326,6 +326,22 @@
         </div>
       </div>
 
+      <!-- Vocab Page -->
+      <div class="page" id="page-vocab">
+        <h1 class="page-title">背单词</h1>
+        <p class="page-subtitle">Qwerty Learner — 键盘单词肌肉记忆训练</p>
+        <div class="vocab-frame-wrap">
+          <iframe
+            src="https://qwerty.kaiyi.cool"
+            class="vocab-iframe"
+            allow="clipboard-write"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            loading="lazy"
+            title="背单词">
+          </iframe>
+        </div>
+      </div>
+
       <!-- Settings Page -->
       <div class="page" id="page-settings">
         <h1 class="page-title">设置</h1>
@@ -394,10 +410,10 @@
       <span class="mobile-nav-icon">&#x1F9E0;</span>
       <span>游戏</span>
     </button>
-    <a class="mobile-nav-link" href="http://qwerty.kaiyi.cool" target="_blank" rel="noopener">
+    <button class="mobile-nav-link" data-page="vocab">
       <span class="mobile-nav-icon">&#x1F4D6;</span>
       <span>单词</span>
-    </a>
+    </button>
     <button class="mobile-nav-link" data-page="settings">
       <span class="mobile-nav-icon">&#x2699;</span>
       <span>设置</span>
