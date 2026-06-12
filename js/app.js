@@ -1955,6 +1955,9 @@ function renderGames() {
 
     // Setup auto-pause
     setupSudokuAutoPause();
+
+    // Init other games (24-point, speed math, memory)
+    if (typeof Games !== 'undefined') Games.init();
   }
 }
 
