@@ -1865,7 +1865,7 @@ document.addEventListener('keydown', (e) => {
 
 // ---- Games Page Render ----
 function renderGames() {
-  // Init sudoku event listeners once
+  // Init sudoku event listeners & first game once
   if (!renderGames._initialized) {
     renderGames._initialized = true;
 

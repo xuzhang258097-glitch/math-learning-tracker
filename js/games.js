@@ -22,8 +22,17 @@ const Games = (() => {
 
         if (game === 'sudoku') {
           if (sudokuContainer) sudokuContainer.style.display = '';
-          // Re-trigger Sudoku render if needed (app.js manages this)
-          if (typeof SudokuGame !== 'undefined' && SudokuGame.renderBoard) SudokuGame.renderBoard();
+          // Restore game board if it was destroyed (e.g. by level select)
+          if (typeof SudokuGame !== 'undefined') {
+            const board = document.getElementById('sudoku-board');
+            if (board) {
+              SudokuGame.render();
+              SudokuGame.renderNumpad();
+            } else {
+              // Board was destroyed — fully restore game UI
+              SudokuGame.showFreePlay();
+            }
+          }
         } else {
           const panel = document.getElementById('panel-' + game);
           if (panel) panel.style.display = 'block';
