@@ -7,7 +7,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    // Detect if running in iframe
+    if (window.self !== window.top) {
+      document.documentElement.classList.add('in-iframe');
+    }
+  </script>
   <style>
+    /* ... keep existing styles ... */
+  </style>
+    html.in-iframe .back-link { display: none !important; }
+
     /* ============================================================
        数据分析学习路径 - 专属侧边导航
        继承原站 Glass Morphism + 低饱和配色风格
