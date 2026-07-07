@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    高等数学学习追踪 - 清新柔和高级UI
    Glass Morphism + 动态交互 + 低饱和配色
    ============================================================ */
@@ -2993,5 +2993,31 @@ body {
 @media (max-width: 480px) {
   .mem-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
   .mem-card-back { font-size: 11px; }
+}
+
+/* ---------- Data Analysis iframe ---------- */
+#page-data-analysis {
+  height: calc(100vh - 80px);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: transparent;
+}
+
+#page-data-analysis iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 768px) {
+  #page-data-analysis {
+    height: calc(100vh - 60px);
+    border-radius: var(--radius-sm);
+  }
+  #page-data-analysis iframe {
+    border-radius: var(--radius-sm);
+  }
 }
 
