@@ -339,7 +339,7 @@
     }
 
     .page { display: none; }
-    .page.active { display: block; animation: pageEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .page.active { display: block !important; animation: pageEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     @keyframes pageEnter {
       from { opacity: 0; transform: translateY(12px) scale(0.995); }
       to { opacity: 1; transform: translateY(0) scale(1); }
@@ -4757,6 +4757,12 @@
       const firstGroup = document.querySelector('.nav-group-header');
       if (firstGroup && !firstGroup.classList.contains('expanded')) {
         firstGroup.click();
+      }
+      // Ensure first page is visible
+      const firstPage = document.getElementById('page-stat-beginner');
+      if (firstPage) {
+        firstPage.classList.add('active');
+        firstPage.style.display = 'block';
       }
     });
   </script>
