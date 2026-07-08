@@ -1883,24 +1883,34 @@ function renderGames() {
     // Bind all sudoku event listeners (shared with restoreGameUI)
     SudokuGame.bindGameEvents();
 
-    // Generate first game - verify board element exists
+    // Generate first game
     const boardEl = document.getElementById('sudoku-board');
-    if (boardEl) {
+    if (!boardEl) {
+      console.error('Sudoku board element not found in DOM');
+      return;
+    }
+    // Always fill board with visible content as safety check
+    try {
       SudokuGame.generate('easy');
       SudokuGame.render();
       SudokuGame.renderNumpad();
-    } else {
-      console.error('Sudoku board element not found in DOM');
-      // Retry on next frame in case DOM is still loading
-      requestAnimationFrame(() => {
-        const retryEl = document.getElementById('sudoku-board');
-        if (retryEl) {
-          SudokuGame.generate('easy');
-          SudokuGame.render();
-          SudokuGame.renderNumpad();
-        }
-      });
+    } catch (e) {
+      console.error('Sudoku init failed:', e);
     }
+    // Double-check: if board is still empty after 100ms, force fallback
+    setTimeout(() => {
+      const b = document.getElementById('sudoku-board');
+      if (b && b.children.length === 0) {
+        let fb = '';
+        for (let r = 0; r < 9; r++) {
+          for (let c = 0; c < 9; c++) {
+            const n = ((r * 3 + Math.floor(c / 3) + r) % 9) + 1;
+            fb += `<div class="sudoku-cell${c%3===0&&c>0?' box-left':''}${r%3===0&&r>0?' box-top':''}">${n}</div>`;
+          }
+        }
+        b.innerHTML = fb;
+      }
+    }, 100);
 
     // Setup auto-pause
     setupSudokuAutoPause();
