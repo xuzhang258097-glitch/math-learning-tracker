@@ -1234,21 +1234,21 @@ const SudokuGame = {
     container.innerHTML = `
       <!-- Mode Switch -->
       <div class="sudoku-mode-switch">
-        <button class="btn btn-sm btn-secondary" id="sudoku-mode-free">自由模式</button>
-        <button class="btn btn-sm btn-primary" id="sudoku-mode-levels">关卡挑战</button>
+        <button class="btn btn-sm btn-primary" id="sudoku-mode-free">自由模式</button>
+        <button class="btn btn-sm btn-secondary" id="sudoku-mode-levels">关卡挑战</button>
       </div>
 
       <!-- Level Info (shown in level mode) -->
-      <div class="sudoku-level-info" id="sudoku-level-info" style="display:block"></div>
+      <div class="sudoku-level-info" id="sudoku-level-info" style="display:none"></div>
 
       <div class="sudoku-toolbar">
-        <div class="sudoku-difficulty" id="sudoku-difficulty-selector" style="display:none">
+        <div class="sudoku-difficulty" id="sudoku-difficulty-selector">
           <button class="btn btn-sm btn-secondary active" data-difficulty="easy">简单</button>
           <button class="btn btn-sm btn-secondary" data-difficulty="medium">中等</button>
           <button class="btn btn-sm btn-secondary" data-difficulty="hard">困难</button>
         </div>
         <div class="sudoku-actions">
-          <button class="btn btn-sm btn-secondary" id="sudoku-level-select">选择关卡</button>
+          <button class="btn btn-sm btn-secondary" id="sudoku-level-select" style="display:none">选择关卡</button>
           <button class="btn btn-sm btn-secondary" id="sudoku-new">新游戏</button>
           <button class="btn btn-sm btn-secondary" id="sudoku-pause">暂停</button>
           <button class="btn btn-sm btn-secondary" id="sudoku-hint">提示</button>
@@ -1288,21 +1288,19 @@ const SudokuGame = {
 
       <div class="sudoku-win-modal" id="sudoku-win-modal" style="display:none">
         <div class="win-content">
-          <div class="win-icon">&#127942;</div>
-          <h3 class="win-title">恭喜完成！</h3>
+          <div class="win-trophy">&#127942;</div>
+          <div class="win-title">恭喜完成！</div>
           <div class="win-stats" id="sudoku-win-stats"></div>
           <div class="win-actions">
             <button class="btn btn-primary" id="sudoku-play-again">再玩一局</button>
-            <button class="btn btn-secondary" id="sudoku-win-close">关闭</button>
+            <button class="btn btn-secondary" id="sudoku-win-close">返回</button>
           </div>
         </div>
       </div>
 
-      <div class="sudoku-controls">
-        <div class="sudoku-numpad" id="sudoku-numpad"></div>
-        <div class="sudoku-actions-row">
-          <button class="btn btn-sm btn-secondary" id="sudoku-note-btn">笔记模式</button>
-        </div>
+      <div class="sudoku-numpad" id="sudoku-numpad"></div>
+      <div class="sudoku-note-toggle">
+        <button class="btn btn-sm" id="sudoku-note-btn">&#x270F;&#xFE0F; 笔记模式</button>
       </div>
     `;
 
@@ -1868,86 +1866,8 @@ function renderGames() {
   if (!renderGames._initialized) {
     renderGames._initialized = true;
 
-    // Mode switch buttons
-    const freeModeBtn = document.getElementById('sudoku-mode-free');
-    const levelsModeBtn = document.getElementById('sudoku-mode-levels');
-    const levelSelectBtn = document.getElementById('sudoku-level-select');
-
-    if (freeModeBtn) {
-      freeModeBtn.addEventListener('click', () => {
-        freeModeBtn.classList.add('btn-primary');
-        freeModeBtn.classList.remove('btn-secondary');
-        if (levelsModeBtn) {
-          levelsModeBtn.classList.add('btn-secondary');
-          levelsModeBtn.classList.remove('btn-primary');
-        }
-        document.getElementById('sudoku-difficulty-selector').style.display = 'flex';
-        if (levelSelectBtn) levelSelectBtn.style.display = 'none';
-        document.getElementById('sudoku-level-info').style.display = 'none';
-        SudokuGame.showFreePlay();
-      });
-    }
-
-    if (levelsModeBtn) {
-      levelsModeBtn.addEventListener('click', () => {
-        levelsModeBtn.classList.add('btn-primary');
-        levelsModeBtn.classList.remove('btn-secondary');
-        if (freeModeBtn) {
-          freeModeBtn.classList.add('btn-secondary');
-          freeModeBtn.classList.remove('btn-primary');
-        }
-        document.getElementById('sudoku-difficulty-selector').style.display = 'none';
-        if (levelSelectBtn) levelSelectBtn.style.display = 'inline-flex';
-        SudokuGame.showLevelSelect();
-      });
-    }
-
-    if (levelSelectBtn) {
-      levelSelectBtn.addEventListener('click', () => {
-        SudokuGame.showLevelSelect();
-      });
-    }
-
-    // Difficulty buttons
-    document.querySelectorAll('.sudoku-difficulty .btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.sudoku-difficulty .btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const diff = btn.dataset.difficulty;
-        SudokuGame.generate(diff);
-        SudokuGame.renderNumpad();
-      });
-    });
-
-    // Action buttons
-    const newBtn = document.getElementById('sudoku-new');
-    if (newBtn) newBtn.addEventListener('click', () => {
-      if (SudokuGame.isLevelMode) {
-        SudokuGame.generateForLevel(SudokuGame.currentLevel);
-        SudokuGame.render();
-        SudokuGame.renderNumpad();
-      } else {
-        const activeDiff = document.querySelector('.sudoku-difficulty .btn.active');
-        const diff = activeDiff ? activeDiff.dataset.difficulty : 'easy';
-        SudokuGame.generate(diff);
-        SudokuGame.renderNumpad();
-      }
-    });
-
-    const hintBtn = document.getElementById('sudoku-hint');
-    if (hintBtn) hintBtn.addEventListener('click', () => SudokuGame.giveHint());
-
-    const checkBtn = document.getElementById('sudoku-check');
-    if (checkBtn) checkBtn.addEventListener('click', () => SudokuGame.checkBoard());
-
-    const undoBtn = document.getElementById('sudoku-undo');
-    if (undoBtn) undoBtn.addEventListener('click', () => SudokuGame.undo());
-
-    const noteBtn = document.getElementById('sudoku-note-btn');
-    if (noteBtn) noteBtn.addEventListener('click', () => {
-      SudokuGame.noteMode = !SudokuGame.noteMode;
-      SudokuGame.render();
-    });
+    // Bind all sudoku event listeners (shared with restoreGameUI)
+    SudokuGame.bindGameEvents();
 
     // Generate first game
     SudokuGame.generate('easy');
