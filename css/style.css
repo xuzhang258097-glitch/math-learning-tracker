@@ -1933,11 +1933,11 @@ body {
   grid-template-rows: repeat(9, 1fr);
   width: 100%;
   max-width: 468px;
-  min-height: 468px;
+  aspect-ratio: 1 / 1;
   margin: 0 auto 20px;
   background: rgba(245, 243, 250, 0.55);
   border-radius: var(--radius-lg);
-  border: 1.5px solid rgba(180, 175, 210, 0.50);
+  border: 2px solid rgba(160, 155, 195, 0.70);
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(107, 124, 255, 0.08), inset 0 1px 1px rgba(255,255,255,0.5);
 }
@@ -1955,11 +1955,11 @@ body {
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
-  border: 1px solid rgba(160, 155, 195, 0.55);
+  border: 1px solid rgba(140, 135, 180, 0.70);
   transition: background 0.15s ease, transform 0.1s ease;
   position: relative;
   user-select: none;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.85);
   color: #2D2B55;
 }
 
