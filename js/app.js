@@ -1072,6 +1072,19 @@ const SudokuGame = {
   },
 
   // ---- Sudoku Generator ----
+  // Pre-built valid solution (avoid backtracking recursion issues)
+  _SOLUTION: [
+    [5,3,4,6,7,8,9,1,2],
+    [6,7,2,1,9,5,3,4,8],
+    [1,9,8,3,4,2,5,6,7],
+    [8,5,9,7,6,1,4,2,3],
+    [4,2,6,8,5,3,7,9,1],
+    [7,1,3,9,2,4,8,5,6],
+    [9,6,1,5,3,7,2,8,4],
+    [2,8,7,4,1,9,6,3,5],
+    [3,4,5,2,8,6,1,7,9]
+  ],
+
   generate(difficulty) {
     this.difficulty = difficulty;
     this.completed = false;
@@ -1084,31 +1097,26 @@ const SudokuGame = {
     this.seconds = 0;
     this.stopTimer();
 
-    // Generate a complete valid board
-    const board = Array.from({length:9}, () => Array(9).fill(0));
-    this.fillBoard(board);
-    this.solution = board.map(r => [...r]);
+    // Use pre-built solution (shuffle by rotating/reflecting for variety)
+    const sol = this._SOLUTION.map(r => [...r]);
+    this._shuffleSolution(sol);
+    this.solution = sol;
+    this.board = sol.map(r => [...r]);
+    this.initial = Array.from({length:9}, () => Array(9).fill(true));
 
     // Remove cells based on difficulty
     const removeCount = {easy: 35, medium: 45, hard: 55}[difficulty] || 35;
-    this.board = board.map(r => [...r]);
-    this.initial = Array.from({length:9}, () => Array(9).fill(true));
-
     const positions = [];
     for (let r = 0; r < 9; r++)
       for (let c = 0; c < 9; c++)
         positions.push([r, c]);
-
-    // Shuffle positions
     for (let i = positions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [positions[i], positions[j]] = [positions[j], positions[i]];
     }
-
     let removed = 0;
     for (const [r, c] of positions) {
       if (removed >= removeCount) break;
-      const backup = this.board[r][c];
       this.board[r][c] = 0;
       this.initial[r][c] = false;
       removed++;
@@ -1116,6 +1124,35 @@ const SudokuGame = {
 
     this.render();
     this.startTimer();
+  },
+
+  _shuffleSolution(board) {
+    // Randomly apply: row/col swap within bands, transpose, horizontal/vertical reflection
+    const r = Math.random;
+    // Swap rows within each 3-row band
+    for (let band = 0; band < 3; band++) {
+      const rows = [band*3, band*3+1, band*3+2];
+      for (let i = rows.length-1; i > 0; i--) {
+        const j = Math.floor(r() * (i+1));
+        [board[rows[i]], board[rows[j]]] = [board[rows[j]], board[rows[i]]];
+      }
+    }
+    // Swap columns within each 3-col band
+    for (let band = 0; band < 3; band++) {
+      const cols = [band*3, band*3+1, band*3+2];
+      for (let i = cols.length-1; i > 0; i--) {
+        const j = Math.floor(r() * (i+1));
+        for (let row = 0; row < 9; row++) {
+          [board[row][cols[i]], board[row][cols[j]]] = [board[row][cols[j]], board[row][cols[i]]];
+        }
+      }
+    }
+    // Maybe transpose
+    if (r() > 0.5) {
+      for (let i = 0; i < 9; i++)
+        for (let j = i+1; j < 9; j++)
+          [board[i][j], board[j][i]] = [board[j][i], board[i][j]];
+    }
   },
 
   // ---- Level Selection UI ----
@@ -1329,22 +1366,40 @@ const SudokuGame = {
   },
 
   _generateBoard(removeCount) {
-    const board = Array.from({length:9}, () => Array(9).fill(0));
-    this.fillBoard(board);
-    this.solution = board.map(r => [...r]);
-    this.board = board.map(r => [...r]);
+    // Use the same pre-built solution (seeded shuffle for reproducible levels)
+    const sol = this._SOLUTION.map(r => [...r]);
+    // For levels, use a deterministic shuffle based on seed
+    const rng = () => this._random();
+    // Swap rows within bands deterministically
+    for (let band = 0; band < 3; band++) {
+      const rows = [band*3, band*3+1, band*3+2];
+      for (let i = rows.length-1; i > 0; i--) {
+        const j = Math.floor(rng() * (i+1));
+        [sol[rows[i]], sol[rows[j]]] = [sol[rows[j]], sol[rows[i]]];
+      }
+    }
+    // Swap columns within bands
+    for (let band = 0; band < 3; band++) {
+      const cols = [band*3, band*3+1, band*3+2];
+      for (let i = cols.length-1; i > 0; i--) {
+        const j = Math.floor(rng() * (i+1));
+        for (let row = 0; row < 9; row++) {
+          [sol[row][cols[i]], sol[row][cols[j]]] = [sol[row][cols[j]], sol[row][cols[i]]];
+        }
+      }
+    }
+    this.solution = sol;
+    this.board = sol.map(r => [...r]);
     this.initial = Array.from({length:9}, () => Array(9).fill(true));
 
     const positions = [];
     for (let r = 0; r < 9; r++)
       for (let c = 0; c < 9; c++)
         positions.push([r, c]);
-
     for (let i = positions.length - 1; i > 0; i--) {
-      const j = Math.floor(this._random() * (i + 1));
+      const j = Math.floor(rng() * (i + 1));
       [positions[i], positions[j]] = [positions[j], positions[i]];
     }
-
     let removed = 0;
     for (const [r, c] of positions) {
       if (removed >= removeCount) break;
@@ -1883,34 +1938,10 @@ function renderGames() {
     // Bind all sudoku event listeners (shared with restoreGameUI)
     SudokuGame.bindGameEvents();
 
-    // Generate first game
-    const boardEl = document.getElementById('sudoku-board');
-    if (!boardEl) {
-      console.error('Sudoku board element not found in DOM');
-      return;
-    }
-    // Always fill board with visible content as safety check
-    try {
-      SudokuGame.generate('easy');
-      SudokuGame.render();
-      SudokuGame.renderNumpad();
-    } catch (e) {
-      console.error('Sudoku init failed:', e);
-    }
-    // Double-check: if board is still empty after 100ms, force fallback
-    setTimeout(() => {
-      const b = document.getElementById('sudoku-board');
-      if (b && b.children.length === 0) {
-        let fb = '';
-        for (let r = 0; r < 9; r++) {
-          for (let c = 0; c < 9; c++) {
-            const n = ((r * 3 + Math.floor(c / 3) + r) % 9) + 1;
-            fb += `<div class="sudoku-cell${c%3===0&&c>0?' box-left':''}${r%3===0&&r>0?' box-top':''}">${n}</div>`;
-          }
-        }
-        b.innerHTML = fb;
-      }
-    }, 100);
+    // Generate the first game board
+    SudokuGame.generate('easy');
+    // Note: generate() already calls render() internally, and startTimer()
+    SudokuGame.renderNumpad();
 
     // Setup auto-pause
     setupSudokuAutoPause();
