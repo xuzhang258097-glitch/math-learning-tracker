@@ -1871,10 +1871,24 @@ function renderGames() {
     // Bind all sudoku event listeners (shared with restoreGameUI)
     SudokuGame.bindGameEvents();
 
-    // Generate first game
-    SudokuGame.generate('easy');
-    SudokuGame.render();
-    SudokuGame.renderNumpad();
+    // Generate first game - verify board element exists
+    const boardEl = document.getElementById('sudoku-board');
+    if (boardEl) {
+      SudokuGame.generate('easy');
+      SudokuGame.render();
+      SudokuGame.renderNumpad();
+    } else {
+      console.error('Sudoku board element not found in DOM');
+      // Retry on next frame in case DOM is still loading
+      requestAnimationFrame(() => {
+        const retryEl = document.getElementById('sudoku-board');
+        if (retryEl) {
+          SudokuGame.generate('easy');
+          SudokuGame.render();
+          SudokuGame.renderNumpad();
+        }
+      });
+    }
 
     // Setup auto-pause
     setupSudokuAutoPause();
