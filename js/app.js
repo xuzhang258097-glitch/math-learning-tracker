@@ -1765,6 +1765,7 @@ const SudokuGame = {
         btn.classList.add('active');
         const diff = btn.dataset.difficulty;
         SudokuGame.generate(diff);
+        SudokuGame.render();
         SudokuGame.renderNumpad();
       });
     });
@@ -1780,6 +1781,7 @@ const SudokuGame = {
         const activeDiff = document.querySelector('.sudoku-difficulty .btn.active');
         const diff = activeDiff ? activeDiff.dataset.difficulty : 'easy';
         SudokuGame.generate(diff);
+        SudokuGame.render();
         SudokuGame.renderNumpad();
       }
     });
