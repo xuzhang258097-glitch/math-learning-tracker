@@ -1871,6 +1871,7 @@ function renderGames() {
 
     // Generate first game
     SudokuGame.generate('easy');
+    SudokuGame.render();
     SudokuGame.renderNumpad();
 
     // Setup auto-pause
