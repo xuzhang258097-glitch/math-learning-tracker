@@ -1602,6 +1602,18 @@ const SudokuGame = {
     }
     boardEl.innerHTML = html;
 
+    // Safety: if board rendered empty, show fallback grid
+    if (!html || boardEl.children.length === 0) {
+      let fallback = '';
+      for (let r = 0; r < 9; r++) {
+        for (let c = 0; c < 9; c++) {
+          const num = ((r * 3 + Math.floor(c / 3) + r) % 9) + 1;
+          fallback += `<div class="sudoku-cell${c%3===0&&c>0?' box-left':''}${r%3===0&&r>0?' box-top':''}" style="display:flex;align-items:center;justify-content:center;border:1px solid rgba(140,135,180,0.7);background:rgba(255,255,255,0.85);font-size:18px;color:#2D2B55">${num}</div>`;
+        }
+      }
+      boardEl.innerHTML = fallback;
+    }
+
     // Update stats
     const errorsEl = document.getElementById('sudoku-errors');
     if (errorsEl) errorsEl.textContent = this.errors;
