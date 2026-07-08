@@ -815,7 +815,7 @@
       <ul class="nav-menu" id="nav-menu">
         <!-- 一级目录 1：理论知识层 -->
         <li class="nav-group">
-          <button class="nav-group-header expanded" onclick="toggleGroup(this)">
+          <button class="nav-group-header expanded" onclick="toggleGroup(this, event)">
             <span class="group-icon">&#x1F4D6;</span>
             <span class="group-text">理论知识层</span>
             <span class="expand-icon">&#x25BC;</span>
@@ -823,7 +823,7 @@
           <div class="nav-group-children open">
             <!-- 二级：统计学与数学 -->
             <div class="nav-group">
-              <button class="nav-group-header expanded" onclick="toggleGroup(this)">
+              <button class="nav-group-header expanded" onclick="toggleGroup(this, event)">
                 <span class="group-text" style="font-weight:500;">&#x1F4C8; 统计学与数学</span>
                 <span class="expand-icon">&#x25BC;</span>
               </button>
@@ -844,7 +844,7 @@
             </div>
             <!-- 二级：数据分析完整基础流程 -->
             <div class="nav-group">
-              <button class="nav-group-header expanded" onclick="toggleGroup(this)">
+              <button class="nav-group-header expanded" onclick="toggleGroup(this, event)">
                 <span class="group-text" style="font-weight:500;">&#x1F50D; 数据分析完整流程</span>
                 <span class="expand-icon">&#x25BC;</span>
               </button>
@@ -868,7 +868,7 @@
 
         <!-- 一级目录 2：工具实操层 -->
         <li class="nav-group">
-          <button class="nav-group-header expanded" onclick="toggleGroup(this)">
+          <button class="nav-group-header expanded" onclick="toggleGroup(this, event)">
             <span class="group-icon">&#x1F527;</span>
             <span class="group-text">工具实操层</span>
             <span class="expand-icon">&#x25BC;</span>
@@ -876,7 +876,7 @@
           <div class="nav-group-children open">
             <!-- 二级：Excel -->
             <div class="nav-group">
-              <button class="nav-group-header" onclick="toggleGroup(this)">
+              <button class="nav-group-header" onclick="toggleGroup(this, event)">
                 <span class="group-text" style="font-weight:500;">&#x1F4C3; Excel 数据分析</span>
                 <span class="expand-icon">&#x25BC;</span>
               </button>
@@ -897,7 +897,7 @@
             </div>
             <!-- 二级：SQL -->
             <div class="nav-group">
-              <button class="nav-group-header" onclick="toggleGroup(this)">
+              <button class="nav-group-header" onclick="toggleGroup(this, event)">
                 <span class="group-text" style="font-weight:500;">&#x1F5C4; SQL 数据库取数</span>
                 <span class="expand-icon">&#x25BC;</span>
               </button>
@@ -918,7 +918,7 @@
             </div>
             <!-- 二级：Python/R -->
             <div class="nav-group">
-              <button class="nav-group-header" onclick="toggleGroup(this)">
+              <button class="nav-group-header" onclick="toggleGroup(this, event)">
                 <span class="group-text" style="font-weight:500;">&#x1F40D; Python / R 语言</span>
                 <span class="expand-icon">&#x25BC;</span>
               </button>
@@ -939,7 +939,7 @@
             </div>
             <!-- 二级：可视化 -->
             <div class="nav-group">
-              <button class="nav-group-header" onclick="toggleGroup(this)">
+              <button class="nav-group-header" onclick="toggleGroup(this, event)">
                 <span class="group-text" style="font-weight:500;">&#x1F4CA; 数据可视化工具</span>
                 <span class="expand-icon">&#x25BC;</span>
               </button>
@@ -4900,7 +4900,8 @@
     }
 
     // ---------- Toggle Sidebar Group ----------
-    function toggleGroup(header) {
+    function toggleGroup(header, event) {
+      if (event) event.stopPropagation();
       header.classList.toggle('expanded');
       const children = header.nextElementSibling;
       if (children.classList.contains('open')) {
